@@ -1,4 +1,5 @@
 import * as Context from "effect/Context";
+import type * as Duration from "effect/Duration";
 import * as Effect from "effect/Effect";
 import * as HttpClient from "effect/http/HttpClient";
 import type * as HttpClientError from "effect/http/HttpClientError";
@@ -13,8 +14,16 @@ import type * as AST from "effect/SchemaAST";
 import * as Scope from "effect/Scope";
 import type * as Stream from "effect/Stream";
 import { SingleShotGen } from "effect/Utils";
+import { isThrottling } from "./category.ts";
 import * as Pagination from "./pagination.ts";
-import { makeDefault, type Policy as RetryPolicy } from "./retry.ts";
+import {
+  type Backoff,
+  defaultOptions,
+  type Options as RetryOptions,
+  type Policy as RetryPolicy,
+  resolveServerRetryHintCapMs,
+  serverHintMillis,
+} from "./retry.ts";
 
 //#region Protocol
 
@@ -191,42 +200,94 @@ export interface OperationConfig<
  * Wrap one operation call with the caller-provided retry policy, if the
  * operation declares a retry tag and the context carries a policy for it.
  */
+/** Delay before retry `attempt` (0-based) under `b`, in milliseconds. */
+const backoffDelay = (b: Backoff, attempt: number, error: unknown): Effect.Effect<number> => {
+  const base = Math.min(b.baseMs * b.factor ** attempt, b.capMs);
+  const jitter = () => Math.random() * (b.jitterMs ?? 0);
+  if (b.serverHint && (error as { retryAfter?: unknown } | null)?.retryAfter !== undefined) {
+    return Effect.map(resolveServerRetryHintCapMs(), (capMs) => {
+      const hint = serverHintMillis(error, capMs);
+      return (hint ?? base) + jitter();
+    });
+  }
+  const floored =
+    b.minThrottleMs !== undefined && base < b.minThrottleMs && isThrottling(error)
+      ? b.minThrottleMs
+      : base;
+  return Effect.succeed(floored + jitter());
+};
+
+const NO_BACKOFF: Backoff = { baseMs: 0, factor: 1, capMs: 0 };
+
+/**
+ * Wrap one operation call with the caller-provided retry policy, if the
+ * operation declares a retry tag. The call runs once with no retry
+ * machinery; the policy is read only after a failure. Built-in policies are
+ * {@link Backoff} data run by a small loop; a caller-supplied `schedule`
+ * runs under `Effect.retry`, with the first failure replayed as attempt one
+ * so delays and counts match running the whole call under it.
+ */
 const applyRetry = (
   base: Effect.Effect<any, any, any>,
   retryKey: Context.Key<any, RetryPolicy> | undefined,
 ): Effect.Effect<any, any, any> =>
   retryKey === undefined
     ? base
-    : // Run once with no retry machinery; build it only after a failure the
-      // policy retries. Most calls succeed first time, and a Ref + schedule
-      // per call is a large share of a mocked call's cost.
-      Effect.catch(base, (error) =>
+    : Effect.catch(base, (error) =>
         Effect.flatMap(Effect.serviceOption(retryKey), (opt) => {
-          // No policy in context -> makeDefault (transient/throttling/server
-          // errors, capped exponential backoff + jitter, honors server
-          // retryAfter hints). Mirrors the distilled client.
-          const policy = Option.isSome(opt) ? opt.value : makeDefault;
-          return Effect.flatMap(Ref.make<unknown>(error), (lastError) => {
-            const opts = typeof policy === "function" ? policy(lastError) : policy;
-            if (!opts.while || !opts.while(error)) return Effect.fail(error);
-            // The first "attempt" replays the failure we already have, so the
-            // schedule's first delay comes before the next request, exactly
-            // as if the whole call had run under Effect.retry.
-            let replay = true;
-            const attempt = Effect.suspend(() => {
-              if (replay) {
-                replay = false;
-                return Effect.fail(error);
-              }
-              return Effect.tapError(base, (e) => Ref.set(lastError, e));
-            });
-            return Effect.retry(attempt, {
-              while: (e: unknown) => opts.while!(e),
-              ...(opts.schedule ? { schedule: opts.schedule as any } : {}),
-            });
-          });
+          if (Option.isNone(opt)) return retryWith(base, defaultOptions, error);
+          const policy = opt.value;
+          if (typeof policy !== "function") return retryWith(base, policy, error);
+          return Effect.flatMap(Ref.make<unknown>(error), (lastError) =>
+            retryWith(
+              Effect.tapError(base, (e) => Ref.set(lastError, e)),
+              policy(lastError),
+              error,
+            ),
+          );
         }),
       );
+
+const retryWith = (
+  base: Effect.Effect<any, any, any>,
+  opts: RetryOptions,
+  error: unknown,
+): Effect.Effect<any, any, any> => {
+  const keepGoing = opts.while;
+  if (!keepGoing || !keepGoing(error)) return Effect.fail(error);
+  if (opts.schedule) {
+    // Drive the caller's schedule through its own `step`, as Effect.retry
+    // does, without importing the Schedule module into every bundle: the
+    // first failure is the schedule's first input; a step that fails means
+    // the schedule is done.
+    const schedule = opts.schedule as unknown as {
+      readonly step: Effect.Effect<
+        (now: number, input: unknown) => Effect.Effect<readonly [unknown, Duration.Input], unknown>
+      >;
+    };
+    return Effect.flatMap(schedule.step, (next) => {
+      const loop = (e: unknown): Effect.Effect<any, any, any> =>
+        !keepGoing(e)
+          ? Effect.fail(e)
+          : Effect.clockWith((clock) =>
+              Effect.matchEffect(next(clock.currentTimeMillisUnsafe(), e), {
+                onFailure: () => Effect.fail(e),
+                onSuccess: ([, delay]) =>
+                  Effect.flatMap(Effect.sleep(delay), () => Effect.catch(base, loop)),
+              }),
+            );
+      return loop(error);
+    });
+  }
+  const b = opts.backoff ?? NO_BACKOFF;
+  const step = (e: unknown, n: number): Effect.Effect<any, any, any> =>
+    !keepGoing(e) || (b.maxRetries !== undefined && n >= b.maxRetries)
+      ? Effect.fail(e)
+      : Effect.flatMap(backoffDelay(b, n, e), (ms) =>
+          Effect.flatMap(Effect.sleep(ms), () => Effect.catch(base, (next) => step(next, n + 1))),
+        );
+  return step(error, 0);
+};
 
 /**
  * Per-operation state. Kept to one small object per exported operation:
