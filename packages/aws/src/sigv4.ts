@@ -21,7 +21,7 @@ import * as Redacted from "effect/Redacted";
  * Headers left out of the signature by default (matches aws4fetch). Callers
  * opt back in with `allHeaders`.
  */
-const UNSIGNABLE_HEADERS: ReadonlySet<string> = new Set([
+const UNSIGNABLE_HEADERS: ReadonlySet<string> = /*@__PURE__*/ new Set([
   "authorization",
   "content-type",
   "content-length",
@@ -72,24 +72,27 @@ export interface SignedRequest {
 }
 
 /** `options.url` is not an absolute URL the `URL` constructor accepts. */
-export class InvalidSigningUrl extends Data.TaggedError("AWS::SigV4::InvalidSigningUrl")<{
-  readonly url: string;
-  readonly cause: unknown;
-}> {}
+export class InvalidSigningUrl
+  extends /*@__PURE__*/ Data.TaggedError("AWS::SigV4::InvalidSigningUrl")<{
+    readonly url: string;
+    readonly cause: unknown;
+  }> {}
 
 /**
  * A header name or value is not valid HTTP (the `Headers` constructor
  * rejected it), so it cannot be canonicalised.
  */
-export class InvalidSigningHeaders extends Data.TaggedError("AWS::SigV4::InvalidSigningHeaders")<{
-  readonly cause: unknown;
-}> {}
+export class InvalidSigningHeaders
+  extends /*@__PURE__*/ Data.TaggedError("AWS::SigV4::InvalidSigningHeaders")<{
+    readonly cause: unknown;
+  }> {}
 
 /** The crypto implementation (see `@distilled.cloud/core/crypto`) rejected an HMAC or SHA-256 operation. */
-export class CryptoError extends Data.TaggedError("AWS::SigV4::CryptoError")<{
-  readonly operation: "hmac" | "sha256";
-  readonly cause: unknown;
-}> {}
+export class CryptoError
+  extends /*@__PURE__*/ Data.TaggedError("AWS::SigV4::CryptoError")<{
+    readonly operation: "hmac" | "sha256";
+    readonly cause: unknown;
+  }> {}
 
 export type SigningError = InvalidSigningUrl | InvalidSigningHeaders | CryptoError;
 
@@ -165,7 +168,7 @@ interface SigningKey {
  * reference so a scope can substitute its own. Failed derivations are not
  * retained, so a transient WebCrypto failure is retried on the next request.
  */
-export const SigningKeyCache = Context.Reference<
+export const SigningKeyCache = /*@__PURE__*/ Context.Reference<
   Cache.Cache<SigningKeyScope, SigningKey, CryptoError>
 >("AWS::SigningKeyCache", {
   defaultValue: () =>
@@ -182,7 +185,7 @@ export const SigningKeyCache = Context.Reference<
  * or headers cannot be canonicalised or WebCrypto rejects an operation.
  */
 export const sign: (options: SignOptions) => Effect.Effect<SignedRequest, SigningError> =
-  Effect.fnUntraced(function* (options: SignOptions) {
+  /*@__PURE__*/ Effect.fnUntraced(function* (options: SignOptions) {
     const { accessKeyId, service, region, signQuery, allHeaders, body } = options;
     const sessionToken = options.sessionToken ? Redacted.value(options.sessionToken) : undefined;
     const method = options.method ?? (body ? "POST" : "GET");

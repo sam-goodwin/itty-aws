@@ -31,20 +31,16 @@ import * as Category from "@distilled.cloud/core/category";
 import * as Schema from "effect/Schema";
 
 /** Unknown OpenCode error -- returned when nothing else matches the failure. */
-export class UnknownOpencodeError extends Schema.TaggedError<UnknownOpencodeError>()(
-  "UnknownOpencodeError",
-  {
-    code: Schema.optional(Schema.String),
-    message: Schema.optional(Schema.String),
+export class UnknownOpencodeError
+  extends /*@__PURE__*/ Schema.TaggedError<UnknownOpencodeError>()("UnknownOpencodeError", {
+    code: /*@__PURE__*/ Schema.optional(Schema.String),
+    message: /*@__PURE__*/ Schema.optional(Schema.String),
     body: Schema.Unknown,
-  },
-).pipe(Category.withServerError) {}
+  }).pipe(Category.withServerError) {}
 
 /** Schema parse error wrapper. */
-export class OpencodeParseError extends Schema.TaggedError<OpencodeParseError>()(
-  "OpencodeParseError",
-  {
+export class OpencodeParseError
+  extends /*@__PURE__*/ Schema.TaggedError<OpencodeParseError>()("OpencodeParseError", {
     body: Schema.Unknown,
     cause: Schema.Unknown,
-  },
-).pipe(Category.withParseError) {}
+  }).pipe(Category.withParseError) {}

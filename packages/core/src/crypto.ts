@@ -26,10 +26,11 @@ import * as Effect from "effect/Effect";
 import * as Layer from "effect/Layer";
 
 /** A hashing or HMAC operation failed in the crypto implementation. */
-export class CryptoError extends Data.TaggedError("CryptoError")<{
-  readonly operation: "hmac" | "sha256" | "importKey";
-  readonly cause: unknown;
-}> {}
+export class CryptoError
+  extends /*@__PURE__*/ Data.TaggedError("CryptoError")<{
+    readonly operation: "hmac" | "sha256" | "importKey";
+    readonly cause: unknown;
+  }> {}
 
 /** An imported HMAC-SHA256 key. Opaque: only the implementation that made it can use it. */
 export interface HmacKey {
@@ -64,7 +65,7 @@ const nodeModule = (): NodeCryptoModule | undefined => {
   }
 };
 
-const encoder = new TextEncoder();
+const encoder = /*@__PURE__*/ new TextEncoder();
 const toBytes = (data: Bytes): Uint8Array =>
   typeof data === "string" ? encoder.encode(data) : data;
 
@@ -132,7 +133,7 @@ export const makeWebCrypto = (): CryptoImpl => ({
 //#endregion
 
 /** The crypto implementation signing code uses. Defaults to `node:crypto` when available, else WebCrypto. */
-export const Crypto = Context.Reference<CryptoImpl>("@distilled.cloud/core/Crypto", {
+export const Crypto = /*@__PURE__*/ Context.Reference<CryptoImpl>("@distilled.cloud/core/Crypto", {
   defaultValue: () => makeNodeCrypto() ?? makeWebCrypto(),
 });
 
@@ -140,12 +141,12 @@ export const Crypto = Context.Reference<CryptoImpl>("@distilled.cloud/core/Crypt
 export const layer = (impl: CryptoImpl): Layer.Layer<never> => Layer.succeed(Crypto, impl);
 
 /** Force WebCrypto, even where `node:crypto` exists. */
-export const webCrypto: Layer.Layer<never> = Layer.sync(Crypto, makeWebCrypto);
+export const webCrypto: Layer.Layer<never> = /*@__PURE__*/ Layer.sync(Crypto, makeWebCrypto);
 
 /** Force `node:crypto`; fails at layer build when the runtime has none. */
-export const nodeCrypto: Layer.Layer<never, CryptoError> = Layer.effect(
+export const nodeCrypto: Layer.Layer<never, CryptoError> = /*@__PURE__*/ Layer.effect(
   Crypto,
-  Effect.suspend(() => {
+  /*@__PURE__*/ Effect.suspend(() => {
     const impl = makeNodeCrypto();
     return impl
       ? Effect.succeed(impl)
@@ -155,7 +156,7 @@ export const nodeCrypto: Layer.Layer<never, CryptoError> = Layer.effect(
   }),
 );
 
-const HEX = Array.from({ length: 256 }, (_, i) => i.toString(16).padStart(2, "0"));
+const HEX = /*@__PURE__*/ Array.from({ length: 256 }, (_, i) => i.toString(16).padStart(2, "0"));
 /** Lowercase hex of bytes. */
 export const hex = (bytes: Uint8Array): string => {
   let out = "";

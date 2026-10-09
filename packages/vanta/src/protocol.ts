@@ -40,10 +40,10 @@ export type VantaOpError =
 /** Context (requirements) shared by every generated Vanta operation. */
 export type VantaOpContext = Credentials | HttpClient.HttpClient;
 
-export const VantaProtocol: Layer.Layer<API.Protocol> = makeRestProtocol<Config>({
+export const VantaProtocol: Layer.Layer<API.Protocol> = /*@__PURE__*/ makeRestProtocol<Config>({
   // The Credentials service holds an effect -- resolving it here (per
   // request, on the calling fiber) picks up context-provided credentials.
-  credentials: Effect.gen(function* () {
+  credentials: /*@__PURE__*/ Effect.gen(function* () {
     const resolve = yield* Credentials;
     return yield* resolve;
   }),

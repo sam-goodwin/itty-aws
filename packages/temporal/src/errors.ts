@@ -31,20 +31,16 @@ import * as Category from "@distilled.cloud/core/category";
 import * as Schema from "effect/Schema";
 
 /** Unknown Temporal error -- returned when nothing else matches the failure. */
-export class UnknownTemporalError extends Schema.TaggedError<UnknownTemporalError>()(
-  "UnknownTemporalError",
-  {
-    code: Schema.optional(Schema.String),
-    message: Schema.optional(Schema.String),
+export class UnknownTemporalError
+  extends /*@__PURE__*/ Schema.TaggedError<UnknownTemporalError>()("UnknownTemporalError", {
+    code: /*@__PURE__*/ Schema.optional(Schema.String),
+    message: /*@__PURE__*/ Schema.optional(Schema.String),
     body: Schema.Unknown,
-  },
-).pipe(Category.withServerError) {}
+  }).pipe(Category.withServerError) {}
 
 /** Schema parse error wrapper (kept for v0 surface parity). */
-export class TemporalParseError extends Schema.TaggedError<TemporalParseError>()(
-  "TemporalParseError",
-  {
+export class TemporalParseError
+  extends /*@__PURE__*/ Schema.TaggedError<TemporalParseError>()("TemporalParseError", {
     body: Schema.Unknown,
     cause: Schema.Unknown,
-  },
-).pipe(Category.withParseError) {}
+  }).pipe(Category.withParseError) {}

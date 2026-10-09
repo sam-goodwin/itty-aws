@@ -223,11 +223,11 @@ const derToP1363 = (derSig: Buffer, componentLength: number): Buffer => {
  * All Coinbase CDP errors have the same envelope:
  * { errorType, errorMessage, correlationId?, errorLink? }
  */
-const CoinbaseErrorResponse = Schema.Struct({
+const CoinbaseErrorResponse = /*@__PURE__*/ Schema.Struct({
   errorType: Schema.String,
   errorMessage: Schema.String,
-  correlationId: Schema.optional(Schema.String),
-  errorLink: Schema.optional(Schema.String),
+  correlationId: /*@__PURE__*/ Schema.optional(Schema.String),
+  errorLink: /*@__PURE__*/ Schema.optional(Schema.String),
 });
 
 /**
@@ -405,9 +405,9 @@ const decode = ({
  * Uses JWT bearer token authentication signed per request with your CDP API
  * Key Secret.
  */
-export const CoinbaseProtocol: Layer.Layer<API.Protocol> = Layer.succeed(
+export const CoinbaseProtocol: Layer.Layer<API.Protocol> = /*@__PURE__*/ Layer.succeed(
   API.Protocol,
-  API.Protocol.of({
+  /*@__PURE__*/ API.Protocol.of({
     // Erase encode's Credentials requirement (see comment above).
     encode: (args) => encode(args) as Effect.Effect<HttpClientRequest.HttpClientRequest>,
     decode,

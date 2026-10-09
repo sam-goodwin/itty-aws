@@ -143,7 +143,7 @@ export const serializeInputEventStream = <E extends InputEvent>(
 // Schema-driven Input Event Serialization
 // ============================================================================
 
-const textEncoder = new TextEncoder();
+const textEncoder = /*@__PURE__*/ new TextEncoder();
 
 const unwrapRedacted = (value: unknown): unknown =>
   Redacted.isRedacted(value) ? Redacted.value(value) : value;

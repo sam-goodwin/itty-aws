@@ -42,23 +42,19 @@ import * as Schema from "effect/Schema";
  * Unknown Daytona error -- returned when a failed response's HTTP status has
  * no mapped error class.
  */
-export class UnknownDaytonaError extends Schema.TaggedError<UnknownDaytonaError>()(
-  "UnknownDaytonaError",
-  {
-    code: Schema.optional(Schema.String),
-    message: Schema.optional(Schema.String),
+export class UnknownDaytonaError
+  extends /*@__PURE__*/ Schema.TaggedError<UnknownDaytonaError>()("UnknownDaytonaError", {
+    code: /*@__PURE__*/ Schema.optional(Schema.String),
+    message: /*@__PURE__*/ Schema.optional(Schema.String),
     body: Schema.Unknown,
-  },
-).pipe(Category.withServerError) {}
+  }).pipe(Category.withServerError) {}
 
 /** Schema parse error wrapper. */
-export class DaytonaParseError extends Schema.TaggedError<DaytonaParseError>()(
-  "DaytonaParseError",
-  {
+export class DaytonaParseError
+  extends /*@__PURE__*/ Schema.TaggedError<DaytonaParseError>()("DaytonaParseError", {
     body: Schema.Unknown,
     cause: Schema.Unknown,
-  },
-).pipe(Category.withParseError) {}
+  }).pipe(Category.withParseError) {}
 
 /**
  * Errors any Daytona operation may surface in addition to the shared HTTP

@@ -82,32 +82,32 @@ const fail = (e: unknown): Effect.Effect<never> => Effect.fail(e) as Effect.Effe
  * Single GraphQL error in the `errors[]` array of a response envelope.
  * Mirrors the shape produced by graphql-js and used by api.expo.dev.
  */
-const GraphQLError = Schema.Struct({
+const GraphQLError = /*@__PURE__*/ Schema.Struct({
   message: Schema.String,
-  path: Schema.optional(Schema.Array(Schema.Unknown)),
-  locations: Schema.optional(Schema.Array(Schema.Unknown)),
-  extensions: Schema.optional(
-    Schema.Struct({
-      errorCode: Schema.optional(Schema.String),
-      code: Schema.optional(Schema.String),
+  path: /*@__PURE__*/ Schema.optional(/*@__PURE__*/ Schema.Array(Schema.Unknown)),
+  locations: /*@__PURE__*/ Schema.optional(/*@__PURE__*/ Schema.Array(Schema.Unknown)),
+  extensions: /*@__PURE__*/ Schema.optional(
+    /*@__PURE__*/ Schema.Struct({
+      errorCode: /*@__PURE__*/ Schema.optional(Schema.String),
+      code: /*@__PURE__*/ Schema.optional(Schema.String),
     }),
   ),
 });
 
 /** Top-level GraphQL envelope for an error response. */
-const GraphQLEnvelope = Schema.Struct({
-  data: Schema.optional(Schema.NullOr(Schema.Unknown)),
-  errors: Schema.optional(Schema.Array(GraphQLError)),
+const GraphQLEnvelope = /*@__PURE__*/ Schema.Struct({
+  data: /*@__PURE__*/ Schema.optional(/*@__PURE__*/ Schema.NullOr(Schema.Unknown)),
+  errors: /*@__PURE__*/ Schema.optional(/*@__PURE__*/ Schema.Array(GraphQLError)),
 });
 
 /** Plain REST-ish error body, returned for some HTTP-level failures. */
-const RestErrorResponse = Schema.Struct({
-  message: Schema.optional(Schema.String),
-  code: Schema.optional(Schema.String),
+const RestErrorResponse = /*@__PURE__*/ Schema.Struct({
+  message: /*@__PURE__*/ Schema.optional(Schema.String),
+  code: /*@__PURE__*/ Schema.optional(Schema.String),
 });
 
-const decodeEnvelope = Schema.decodeUnknownOption(GraphQLEnvelope);
-const decodeRest = Schema.decodeUnknownOption(RestErrorResponse);
+const decodeEnvelope = /*@__PURE__*/ Schema.decodeUnknownOption(GraphQLEnvelope);
+const decodeRest = /*@__PURE__*/ Schema.decodeUnknownOption(RestErrorResponse);
 
 type StatusClass = new (args: {
   message: string;
@@ -329,9 +329,9 @@ const decode = ({
 /**
  * EAS GraphQL protocol layer.
  */
-export const ExpoGraphqlProtocol: Layer.Layer<API.Protocol> = Layer.succeed(
+export const ExpoGraphqlProtocol: Layer.Layer<API.Protocol> = /*@__PURE__*/ Layer.succeed(
   API.Protocol,
-  API.Protocol.of({
+  /*@__PURE__*/ API.Protocol.of({
     // Erase encode's Credentials requirement (see comment above).
     encode: (args) => encode(args) as Effect.Effect<HttpClientRequest.HttpClientRequest>,
     decode,

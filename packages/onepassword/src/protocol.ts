@@ -41,24 +41,25 @@ export type OnepasswordOpError =
 /** Context (requirements) shared by every generated 1Password operation. */
 export type OnepasswordOpContext = Credentials | HttpClient.HttpClient;
 
-export const OnepasswordProtocol: Layer.Layer<API.Protocol> = makeRestProtocol<Config>({
-  // The Credentials service holds an effect -- resolving it here (per
-  // request, on the calling fiber) picks up context-provided credentials.
-  credentials: Effect.gen(function* () {
-    const resolve = yield* Credentials;
-    return yield* resolve;
-  }),
-  baseUrl: (creds) => creds.apiBaseUrl,
-  headers: (creds) => ({
-    Authorization: `Bearer ${Redacted.value(creds.apiKey)}`,
-  }),
-  // Connect's error body is `{ status?: number, message: string }` -- the
-  // factory's default lenient envelope covers `message`.
-  unknownError: ({ code, message, body }) =>
-    new UnknownOnepasswordError({
-      code: typeof code === "string" ? code : code !== undefined ? String(code) : undefined,
-      message,
-      body,
+export const OnepasswordProtocol: Layer.Layer<API.Protocol> =
+  /*@__PURE__*/ makeRestProtocol<Config>({
+    // The Credentials service holds an effect -- resolving it here (per
+    // request, on the calling fiber) picks up context-provided credentials.
+    credentials: /*@__PURE__*/ Effect.gen(function* () {
+      const resolve = yield* Credentials;
+      return yield* resolve;
     }),
-  parseError: ({ body, cause }) => new OnepasswordParseError({ body, cause }),
-});
+    baseUrl: (creds) => creds.apiBaseUrl,
+    headers: (creds) => ({
+      Authorization: `Bearer ${Redacted.value(creds.apiKey)}`,
+    }),
+    // Connect's error body is `{ status?: number, message: string }` -- the
+    // factory's default lenient envelope covers `message`.
+    unknownError: ({ code, message, body }) =>
+      new UnknownOnepasswordError({
+        code: typeof code === "string" ? code : code !== undefined ? String(code) : undefined,
+        message,
+        body,
+      }),
+    parseError: ({ body, cause }) => new OnepasswordParseError({ body, cause }),
+  });

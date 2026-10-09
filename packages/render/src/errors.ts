@@ -31,17 +31,16 @@ import * as Category from "@distilled.cloud/core/category";
 import * as Schema from "effect/Schema";
 
 /** Unknown Render error -- returned when nothing else matches the failure. */
-export class UnknownRenderError extends Schema.TaggedError<UnknownRenderError>()(
-  "UnknownRenderError",
-  {
-    code: Schema.optional(Schema.String),
-    message: Schema.optional(Schema.String),
+export class UnknownRenderError
+  extends /*@__PURE__*/ Schema.TaggedError<UnknownRenderError>()("UnknownRenderError", {
+    code: /*@__PURE__*/ Schema.optional(Schema.String),
+    message: /*@__PURE__*/ Schema.optional(Schema.String),
     body: Schema.Unknown,
-  },
-).pipe(Category.withServerError) {}
+  }).pipe(Category.withServerError) {}
 
 /** Schema parse error wrapper. */
-export class RenderParseError extends Schema.TaggedError<RenderParseError>()("RenderParseError", {
-  body: Schema.Unknown,
-  cause: Schema.Unknown,
-}).pipe(Category.withParseError) {}
+export class RenderParseError
+  extends /*@__PURE__*/ Schema.TaggedError<RenderParseError>()("RenderParseError", {
+    body: Schema.Unknown,
+    cause: Schema.Unknown,
+  }).pipe(Category.withParseError) {}

@@ -1,3 +1,4 @@
+import * as EffectConfig from "@distilled.cloud/core/config";
 /**
  * Iceberg REST Catalog credentials -- hand-written.
  *
@@ -17,7 +18,6 @@
  *   because some catalogs (a local REST catalog, a sidecar) take none.
  */
 import { ConfigError } from "@distilled.cloud/core/errors";
-import * as EffectConfig from "@distilled.cloud/core/config";
 import * as Context from "effect/Context";
 import * as Effect from "effect/Effect";
 import * as HttpClient from "effect/http/HttpClient";
@@ -35,30 +35,31 @@ export interface Config {
   readonly token?: Redacted.Redacted<string>;
 }
 
-export class Credentials extends Context.Service<Credentials, Effect.Effect<Config>>()(
-  "IcebergCredentials",
-) {}
+export class Credentials
+  extends /*@__PURE__*/ Context.Service<Credentials, Effect.Effect<Config>>()(
+    "IcebergCredentials",
+  ) {}
 
-const envConfig = EffectConfig.all({
-  uri: EffectConfig.String("ICEBERG_CATALOG_URI"),
-  prefix: EffectConfig.String("ICEBERG_PREFIX").pipe(EffectConfig.option),
-  token: EffectConfig.Redacted("ICEBERG_TOKEN").pipe(EffectConfig.option),
+const envConfig = /*@__PURE__*/ EffectConfig.all({
+  uri: /*@__PURE__*/ EffectConfig.String("ICEBERG_CATALOG_URI"),
+  prefix: /*@__PURE__*/ EffectConfig.String("ICEBERG_PREFIX").pipe(EffectConfig.option),
+  token: /*@__PURE__*/ EffectConfig.Redacted("ICEBERG_TOKEN").pipe(EffectConfig.option),
 });
 
 /**
  * `ICEBERG_CATALOG_URI` (required), `ICEBERG_PREFIX` and `ICEBERG_TOKEN`
  * (optional).
  */
-export const CredentialsFromEnv = Layer.succeed(
+export const CredentialsFromEnv = /*@__PURE__*/ Layer.succeed(
   Credentials,
-  envConfig.pipe(
-    Effect.mapError(
+  /*@__PURE__*/ envConfig.pipe(
+    /*@__PURE__*/ Effect.mapError(
       () =>
         new ConfigError({
           message: "ICEBERG_CATALOG_URI environment variable is required",
         }),
     ),
-    Effect.map(({ uri, prefix, token }) => ({
+    /*@__PURE__*/ Effect.map(({ uri, prefix, token }) => ({
       uri,
       prefix: Option.getOrUndefined(prefix),
       token: Option.getOrUndefined(token),

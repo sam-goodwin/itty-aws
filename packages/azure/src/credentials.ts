@@ -1,4 +1,3 @@
-import { ConfigError } from "@distilled.cloud/core/errors";
 /**
  * Azure credentials -- hand-written.
  *
@@ -9,6 +8,7 @@ import { ConfigError } from "@distilled.cloud/core/errors";
  * token -- there is no token-acquisition flow (v0 parity).
  */
 import * as EffectConfig from "@distilled.cloud/core/config";
+import { ConfigError } from "@distilled.cloud/core/errors";
 import * as Context from "effect/Context";
 import * as Effect from "effect/Effect";
 import * as Layer from "effect/Layer";
@@ -31,16 +31,15 @@ export interface Config {
   readonly apiBaseUrl: string;
 }
 
-export class Credentials extends Context.Service<Credentials, Effect.Effect<Config>>()(
-  "AzureCredentials",
-) {}
+export class Credentials
+  extends /*@__PURE__*/ Context.Service<Credentials, Effect.Effect<Config>>()("AzureCredentials") {}
 
-const envConfig = EffectConfig.all({
-  bearerToken: EffectConfig.Redacted("AZURE_BEARER_TOKEN"),
-  subscriptionId: EffectConfig.String("AZURE_SUBSCRIPTION_ID"),
-  tenantId: EffectConfig.option(EffectConfig.String("AZURE_TENANT_ID")),
-  apiBaseUrl: EffectConfig.String("AZURE_API_BASE_URL").pipe(
-    EffectConfig.withDefault(DEFAULT_API_BASE_URL),
+const envConfig = /*@__PURE__*/ EffectConfig.all({
+  bearerToken: /*@__PURE__*/ EffectConfig.Redacted("AZURE_BEARER_TOKEN"),
+  subscriptionId: /*@__PURE__*/ EffectConfig.String("AZURE_SUBSCRIPTION_ID"),
+  tenantId: /*@__PURE__*/ EffectConfig.option(/*@__PURE__*/ EffectConfig.String("AZURE_TENANT_ID")),
+  apiBaseUrl: /*@__PURE__*/ EffectConfig.String("AZURE_API_BASE_URL").pipe(
+    /*@__PURE__*/ EffectConfig.withDefault(DEFAULT_API_BASE_URL),
   ),
 });
 
@@ -52,17 +51,17 @@ const envConfig = EffectConfig.all({
  * - `AZURE_TENANT_ID` -- Azure tenant/directory ID (optional)
  * - `AZURE_API_BASE_URL` -- Optional override for the API base URL
  */
-export const CredentialsFromEnv: Layer.Layer<Credentials> = Layer.succeed(
+export const CredentialsFromEnv: Layer.Layer<Credentials> = /*@__PURE__*/ Layer.succeed(
   Credentials,
-  envConfig.pipe(
-    Effect.mapError(
+  /*@__PURE__*/ envConfig.pipe(
+    /*@__PURE__*/ Effect.mapError(
       () =>
         new ConfigError({
           message:
             "AZURE_BEARER_TOKEN and AZURE_SUBSCRIPTION_ID environment variables are required",
         }),
     ),
-    Effect.map(({ bearerToken, subscriptionId, tenantId, apiBaseUrl }) => ({
+    /*@__PURE__*/ Effect.map(({ bearerToken, subscriptionId, tenantId, apiBaseUrl }) => ({
       bearerToken,
       subscriptionId,
       tenantId: Option.getOrUndefined(tenantId),

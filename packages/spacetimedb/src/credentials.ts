@@ -20,9 +20,10 @@ export interface Config {
   readonly apiBaseUrl: string;
 }
 
-export class Credentials extends Context.Service<Credentials, Effect.Effect<Config>>()(
-  "SpacetimeDBCredentials",
-) {}
+export class Credentials
+  extends /*@__PURE__*/ Context.Service<Credentials, Effect.Effect<Config>>()(
+    "SpacetimeDBCredentials",
+  ) {}
 
 /** Layer from a redacted token + optional base URL. */
 export const fromApiKey = (config: {
@@ -47,9 +48,9 @@ export const fromAnonymous = (config?: {
  * Reads SPACETIMEDB_TOKEN or SPACETIME_TOKEN (optional -- empty is anonymous)
  * and SPACETIMEDB_API_BASE_URL or SPACETIMEDB_HOST (optional).
  */
-export const CredentialsFromEnv: Layer.Layer<Credentials> = Layer.succeed(
+export const CredentialsFromEnv: Layer.Layer<Credentials> = /*@__PURE__*/ Layer.succeed(
   Credentials,
-  Effect.gen(function* () {
+  /*@__PURE__*/ Effect.gen(function* () {
     const apiKey = process.env.SPACETIMEDB_TOKEN ?? process.env.SPACETIME_TOKEN ?? "";
     const apiBaseUrl =
       process.env.SPACETIMEDB_API_BASE_URL ??

@@ -51,11 +51,11 @@ const errorEnvelope = (body: unknown): RestErrorEnvelope | undefined => {
   };
 };
 
-export const ForgejoProtocol: Layer.Layer<API.Protocol> = makeRestProtocol<Config>({
+export const ForgejoProtocol: Layer.Layer<API.Protocol> = /*@__PURE__*/ makeRestProtocol<Config>({
   // Resolved on the CALLING fiber per request (the layer is memoized per
   // process); the Credentials service holds an effect, so a token rotated
   // between calls is picked up without rebuilding the layer.
-  credentials: Effect.gen(function* () {
+  credentials: /*@__PURE__*/ Effect.gen(function* () {
     const resolve = yield* Credentials;
     return yield* resolve;
   }),

@@ -73,11 +73,11 @@ const numericCode = (code: string | number | undefined): number | undefined => {
   return Number.isFinite(n) ? n : undefined;
 };
 
-export const DiscordProtocol: Layer.Layer<API.Protocol> = makeRestProtocol<Config>({
+export const DiscordProtocol: Layer.Layer<API.Protocol> = /*@__PURE__*/ makeRestProtocol<Config>({
   // Resolved on the CALLING fiber per request (the layer is memoized per
   // process); the Credentials service holds an effect so rotating tokens
   // Just Work.
-  credentials: Effect.gen(function* () {
+  credentials: /*@__PURE__*/ Effect.gen(function* () {
     const resolve = yield* Credentials;
     return yield* resolve;
   }),

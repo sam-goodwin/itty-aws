@@ -43,25 +43,26 @@ export type SpacetimeDBOpError =
 /** Context (requirements) shared by every generated SpacetimeDB operation. */
 export type SpacetimeDBOpContext = Credentials | HttpClient.HttpClient;
 
-export const SpacetimeDBProtocol: Layer.Layer<API.Protocol> = makeRestProtocol<Config>({
-  credentials: Effect.gen(function* () {
-    const resolve = yield* Credentials;
-    return yield* resolve;
-  }),
-  baseUrl: (creds) => creds.apiBaseUrl,
-  headers: (creds): Record<string, string> => {
-    const headers: Record<string, string> = {};
-    const token = Redacted.value(creds.apiKey);
-    if (token !== "") {
-      headers.Authorization = `Bearer ${token}`;
-    }
-    return headers;
-  },
-  unknownError: ({ code, message, body }) =>
-    new UnknownSpacetimeDBError({
-      code: typeof code === "string" ? code : code !== undefined ? String(code) : undefined,
-      message,
-      body,
+export const SpacetimeDBProtocol: Layer.Layer<API.Protocol> =
+  /*@__PURE__*/ makeRestProtocol<Config>({
+    credentials: /*@__PURE__*/ Effect.gen(function* () {
+      const resolve = yield* Credentials;
+      return yield* resolve;
     }),
-  parseError: ({ body, cause }) => new SpacetimeDBParseError({ body, cause }),
-});
+    baseUrl: (creds) => creds.apiBaseUrl,
+    headers: (creds): Record<string, string> => {
+      const headers: Record<string, string> = {};
+      const token = Redacted.value(creds.apiKey);
+      if (token !== "") {
+        headers.Authorization = `Bearer ${token}`;
+      }
+      return headers;
+    },
+    unknownError: ({ code, message, body }) =>
+      new UnknownSpacetimeDBError({
+        code: typeof code === "string" ? code : code !== undefined ? String(code) : undefined,
+        message,
+        body,
+      }),
+    parseError: ({ body, cause }) => new SpacetimeDBParseError({ body, cause }),
+  });

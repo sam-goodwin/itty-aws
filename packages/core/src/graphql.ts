@@ -58,8 +58,8 @@ import * as Schedule from "effect/Schedule";
 import * as S from "effect/Schema";
 import * as Stream from "effect/Stream";
 
-export const QuerySymbol = Symbol.for("@distilled.cloud/graphql/Query");
-const inspect = Symbol.for("nodejs.util.inspect.custom");
+export const QuerySymbol = /*@__PURE__*/ Symbol.for("@distilled.cloud/graphql/Query");
+const inspect = /*@__PURE__*/ Symbol.for("nodejs.util.inspect.custom");
 
 /** A plan that cannot be compiled (a programming error, raised as a defect). */
 export class GqlError {
@@ -81,14 +81,18 @@ export class GqlError {
 /** Fields every classified GraphQL error carries. */
 export const errorFields = {
   message: S.String,
-  code: S.optional(S.String),
-  path: S.optional(S.Array(S.Union([S.String, S.Number]))),
-  locations: S.optional(S.Array(S.Struct({ line: S.Number, column: S.Number }))),
-  extensions: S.optional(S.Unknown),
-  traceId: S.optional(S.String),
-  status: S.optional(S.Number),
+  code: /*@__PURE__*/ S.optional(S.String),
+  path: /*@__PURE__*/ S.optional(
+    /*@__PURE__*/ S.Array(/*@__PURE__*/ S.Union([S.String, S.Number])),
+  ),
+  locations: /*@__PURE__*/ S.optional(
+    /*@__PURE__*/ S.Array(/*@__PURE__*/ S.Struct({ line: S.Number, column: S.Number })),
+  ),
+  extensions: /*@__PURE__*/ S.optional(S.Unknown),
+  traceId: /*@__PURE__*/ S.optional(S.String),
+  status: /*@__PURE__*/ S.optional(S.Number),
   /** Server retry hint in seconds. */
-  retryAfter: S.optional(S.Number),
+  retryAfter: /*@__PURE__*/ S.optional(S.Number),
 };
 
 /** The shape shared by every classified GraphQL error. */
@@ -110,23 +114,21 @@ export interface GraphQLIssue {
 export type GraphQLIssueProps = Omit<GraphQLIssue, "_tag">;
 
 /** A GraphQL error no declared matcher recognizes. */
-export class UnknownGraphQLError extends S.TaggedError<UnknownGraphQLError>()(
-  "UnknownGraphQLError",
-  {
+export class UnknownGraphQLError
+  extends /*@__PURE__*/ S.TaggedError<UnknownGraphQLError>()("UnknownGraphQLError", {
     ...errorFields,
     /** Root field the error path points at, when the path is known. */
-    coordinate: S.optional(S.String),
-  },
-) {}
+    coordinate: /*@__PURE__*/ S.optional(S.String),
+  }) {}
 
 /** One response carried errors with different tags; none is hidden. */
-export class GraphQLFailure<E extends GraphQLIssue = GraphQLIssue> extends Data.TaggedError(
-  "GraphQLFailure",
-)<{
-  readonly errors: readonly [E, ...E[]];
-  readonly data: unknown;
-  readonly status?: number;
-}> {
+export class GraphQLFailure<E extends GraphQLIssue = GraphQLIssue>
+  extends /*@__PURE__*/ Data.TaggedError("GraphQLFailure")<{
+    readonly errors: readonly [E, ...E[]];
+    readonly data: unknown;
+    readonly status?: number;
+  }>
+{
   get message(): string {
     return this.errors
       .map((e) => `${e._tag}${e.path?.length ? ` at ${e.path.join(".")}` : ""}: ${e.message}`)
@@ -135,19 +137,21 @@ export class GraphQLFailure<E extends GraphQLIssue = GraphQLIssue> extends Data.
 }
 
 /** The request never produced a GraphQL response (network, HTTP, non-JSON). */
-export class GraphQLTransportError extends Data.TaggedError("GraphQLTransportError")<{
-  readonly message: string;
-  readonly status?: number;
-  /** Server retry hint in seconds. */
-  readonly retryAfter?: number;
-  readonly cause?: unknown;
-}> {}
+export class GraphQLTransportError
+  extends /*@__PURE__*/ Data.TaggedError("GraphQLTransportError")<{
+    readonly message: string;
+    readonly status?: number;
+    /** Server retry hint in seconds. */
+    readonly retryAfter?: number;
+    readonly cause?: unknown;
+  }> {}
 
 /** A paginated connection reported more pages without a new cursor. */
-export class GraphQLPaginationError extends Data.TaggedError("GraphQLPaginationError")<{
-  readonly message: string;
-  readonly cursor: string | null;
-}> {}
+export class GraphQLPaginationError
+  extends /*@__PURE__*/ Data.TaggedError("GraphQLPaginationError")<{
+    readonly message: string;
+    readonly cursor: string | null;
+  }> {}
 
 /** Recognizes a raw GraphQL error. Every present property must match. */
 export interface ErrorMatcher {
@@ -289,14 +293,15 @@ export interface CompiledOperation {
   readonly tree: SelNode;
 }
 
-export class GqlTransport extends Context.Service<
-  GqlTransport,
-  {
-    readonly execute: (
-      req: CompiledOperation,
-    ) => Effect.Effect<GraphQLResponse, GraphQLTransportError, any>;
-  }
->()("@distilled.cloud/graphql/Transport") {}
+export class GqlTransport
+  extends /*@__PURE__*/ Context.Service<
+    GqlTransport,
+    {
+      readonly execute: (
+        req: CompiledOperation,
+      ) => Effect.Effect<GraphQLResponse, GraphQLTransportError, any>;
+    }
+  >()("@distilled.cloud/graphql/Transport") {}
 
 const log = (..._args: Array<unknown>): void => {};
 

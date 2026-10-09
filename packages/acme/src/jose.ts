@@ -23,7 +23,7 @@ export interface Jwk {
   readonly [key: string]: unknown;
 }
 
-const encoder = new TextEncoder();
+const encoder = /*@__PURE__*/ new TextEncoder();
 
 export const base64url = (bytes: Uint8Array | ArrayBuffer): string => {
   const view = bytes instanceof Uint8Array ? bytes : new Uint8Array(bytes);

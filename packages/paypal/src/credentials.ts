@@ -23,9 +23,10 @@ export interface Config {
   readonly apiBaseUrl: string;
 }
 
-export class Credentials extends Context.Service<Credentials, Effect.Effect<Config>>()(
-  "PaypalCredentials",
-) {}
+export class Credentials
+  extends /*@__PURE__*/ Context.Service<Credentials, Effect.Effect<Config>>()(
+    "PaypalCredentials",
+  ) {}
 
 /** Layer from a redacted access token + optional base URL. */
 export const fromApiKey = (config: {
@@ -41,9 +42,9 @@ export const fromApiKey = (config: {
   );
 
 /** Reads PAYPAL_ACCESS_TOKEN (required) and PAYPAL_API_BASE_URL (optional). */
-export const CredentialsFromEnv: Layer.Layer<Credentials> = Layer.succeed(
+export const CredentialsFromEnv: Layer.Layer<Credentials> = /*@__PURE__*/ Layer.succeed(
   Credentials,
-  Effect.gen(function* () {
+  /*@__PURE__*/ Effect.gen(function* () {
     const apiKey = process.env.PAYPAL_ACCESS_TOKEN;
 
     if (!apiKey) {

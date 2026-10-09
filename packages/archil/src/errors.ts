@@ -31,17 +31,16 @@ import * as Category from "@distilled.cloud/core/category";
 import * as Schema from "effect/Schema";
 
 /** Unknown Archil error -- returned when nothing else matches the failure. */
-export class UnknownArchilError extends Schema.TaggedError<UnknownArchilError>()(
-  "UnknownArchilError",
-  {
-    code: Schema.optional(Schema.String),
-    message: Schema.optional(Schema.String),
+export class UnknownArchilError
+  extends /*@__PURE__*/ Schema.TaggedError<UnknownArchilError>()("UnknownArchilError", {
+    code: /*@__PURE__*/ Schema.optional(Schema.String),
+    message: /*@__PURE__*/ Schema.optional(Schema.String),
     body: Schema.Unknown,
-  },
-).pipe(Category.withServerError) {}
+  }).pipe(Category.withServerError) {}
 
 /** Schema parse error wrapper. */
-export class ArchilParseError extends Schema.TaggedError<ArchilParseError>()("ArchilParseError", {
-  body: Schema.Unknown,
-  cause: Schema.Unknown,
-}).pipe(Category.withParseError) {}
+export class ArchilParseError
+  extends /*@__PURE__*/ Schema.TaggedError<ArchilParseError>()("ArchilParseError", {
+    body: Schema.Unknown,
+    cause: Schema.Unknown,
+  }).pipe(Category.withParseError) {}

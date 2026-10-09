@@ -31,20 +31,16 @@ import * as Category from "@distilled.cloud/core/category";
 import * as Schema from "effect/Schema";
 
 /** Unknown Trigger.dev error -- returned when nothing else matches the failure. */
-export class UnknownTriggerDevError extends Schema.TaggedError<UnknownTriggerDevError>()(
-  "UnknownTriggerDevError",
-  {
-    code: Schema.optional(Schema.String),
-    message: Schema.optional(Schema.String),
+export class UnknownTriggerDevError
+  extends /*@__PURE__*/ Schema.TaggedError<UnknownTriggerDevError>()("UnknownTriggerDevError", {
+    code: /*@__PURE__*/ Schema.optional(Schema.String),
+    message: /*@__PURE__*/ Schema.optional(Schema.String),
     body: Schema.Unknown,
-  },
-).pipe(Category.withServerError) {}
+  }).pipe(Category.withServerError) {}
 
 /** Schema parse error wrapper. */
-export class TriggerDevParseError extends Schema.TaggedError<TriggerDevParseError>()(
-  "TriggerDevParseError",
-  {
+export class TriggerDevParseError
+  extends /*@__PURE__*/ Schema.TaggedError<TriggerDevParseError>()("TriggerDevParseError", {
     body: Schema.Unknown,
     cause: Schema.Unknown,
-  },
-).pipe(Category.withParseError) {}
+  }).pipe(Category.withParseError) {}

@@ -9,14 +9,15 @@ import * as Effect from "effect/Effect";
 import * as Layer from "effect/Layer";
 import * as Option from "effect/Option";
 
-export class Endpoint extends Context.Service<Endpoint, Effect.Effect<string | undefined>>()(
-  "GCP::Endpoint",
-) {}
+export class Endpoint
+  extends /*@__PURE__*/ Context.Service<Endpoint, Effect.Effect<string | undefined>>()(
+    "GCP::Endpoint",
+  ) {}
 
 /** `GOOGLE_API_ENDPOINT`; resolves `undefined` when unset. */
-export const fromEnvironment = Config.String("GOOGLE_API_ENDPOINT").pipe(
+export const fromEnvironment = /*@__PURE__*/ Config.String("GOOGLE_API_ENDPOINT").pipe(
   Config.option,
-  Effect.map(Option.getOrUndefined),
+  /*@__PURE__*/ Effect.map(Option.getOrUndefined),
 );
 
 /** Override the endpoint with whatever the environment names, if anything. */

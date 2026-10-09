@@ -1,3 +1,4 @@
+import * as EffectConfig from "@distilled.cloud/core/config";
 /**
  * Typesense credentials -- hand-written.
  *
@@ -7,7 +8,6 @@
  * layers may resolve the key lazily (env, vaults, ...).
  */
 import { ConfigError } from "@distilled.cloud/core/errors";
-import * as EffectConfig from "@distilled.cloud/core/config";
 import * as Context from "effect/Context";
 import * as Effect from "effect/Effect";
 import * as Layer from "effect/Layer";
@@ -25,25 +25,26 @@ export interface Config {
   readonly apiBaseUrl: string;
 }
 
-export class Credentials extends Context.Service<Credentials, Effect.Effect<Config>>()(
-  "TypesenseCredentials",
-) {}
+export class Credentials
+  extends /*@__PURE__*/ Context.Service<Credentials, Effect.Effect<Config>>()(
+    "TypesenseCredentials",
+  ) {}
 
-const envConfig = EffectConfig.all({
-  apiKey: EffectConfig.String("TYPESENSE_API_KEY"),
-  apiBaseUrl: EffectConfig.String("TYPESENSE_API_URL"),
+const envConfig = /*@__PURE__*/ EffectConfig.all({
+  apiKey: /*@__PURE__*/ EffectConfig.String("TYPESENSE_API_KEY"),
+  apiBaseUrl: /*@__PURE__*/ EffectConfig.String("TYPESENSE_API_URL"),
 });
 
-export const CredentialsFromEnv = Layer.succeed(
+export const CredentialsFromEnv = /*@__PURE__*/ Layer.succeed(
   Credentials,
-  envConfig.pipe(
-    Effect.mapError(
+  /*@__PURE__*/ envConfig.pipe(
+    /*@__PURE__*/ Effect.mapError(
       () =>
         new ConfigError({
           message: "TYPESENSE_API_KEY and TYPESENSE_API_URL environment variables are required",
         }),
     ),
-    Effect.map(({ apiKey, apiBaseUrl }) => ({
+    /*@__PURE__*/ Effect.map(({ apiKey, apiBaseUrl }) => ({
       apiKey: Redacted.make(apiKey),
       apiBaseUrl,
     })),

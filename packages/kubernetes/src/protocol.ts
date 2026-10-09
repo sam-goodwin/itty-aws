@@ -54,25 +54,27 @@ const statusReason = (body: unknown): string | undefined => {
   return typeof reason === "string" ? reason : undefined;
 };
 
-export const KubernetesProtocol: Layer.Layer<API.Protocol> = makeRestProtocol<Config>({
-  // The Credentials service holds an effect -- resolving it here (per
-  // request, on the calling fiber) picks up context-provided credentials.
-  credentials: Effect.gen(function* () {
-    const resolve = yield* Credentials;
-    return yield* resolve;
-  }),
-  baseUrl: (creds) => creds.apiBaseUrl,
-  headers: (creds) => ({
-    Authorization: `Bearer ${Redacted.value(creds.token)}`,
-  }),
-  // The k8s error body is `v1.Status` -- `{ message, reason, code }`. The
-  // factory's default lenient envelope reads `message`/`code`; `reason` is
-  // recovered from the raw body for the unknown fallback below.
-  unknownError: ({ message, body }) =>
-    new UnknownKubernetesError({
-      reason: statusReason(body),
-      message,
-      body,
+export const KubernetesProtocol: Layer.Layer<API.Protocol> = /*@__PURE__*/ makeRestProtocol<Config>(
+  {
+    // The Credentials service holds an effect -- resolving it here (per
+    // request, on the calling fiber) picks up context-provided credentials.
+    credentials: /*@__PURE__*/ Effect.gen(function* () {
+      const resolve = yield* Credentials;
+      return yield* resolve;
     }),
-  parseError: ({ body, cause }) => new KubernetesParseError({ body, cause }),
-});
+    baseUrl: (creds) => creds.apiBaseUrl,
+    headers: (creds) => ({
+      Authorization: `Bearer ${Redacted.value(creds.token)}`,
+    }),
+    // The k8s error body is `v1.Status` -- `{ message, reason, code }`. The
+    // factory's default lenient envelope reads `message`/`code`; `reason` is
+    // recovered from the raw body for the unknown fallback below.
+    unknownError: ({ message, body }) =>
+      new UnknownKubernetesError({
+        reason: statusReason(body),
+        message,
+        body,
+      }),
+    parseError: ({ body, cause }) => new KubernetesParseError({ body, cause }),
+  },
+);

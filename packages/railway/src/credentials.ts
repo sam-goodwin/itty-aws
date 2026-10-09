@@ -1,3 +1,4 @@
+import * as EffectConfig from "@distilled.cloud/core/config";
 /**
  * Railway credentials -- hand-written.
  *
@@ -13,7 +14,6 @@
  * guesses from the value.
  */
 import { ConfigError } from "@distilled.cloud/core/errors";
-import * as EffectConfig from "@distilled.cloud/core/config";
 import * as Context from "effect/Context";
 import * as Effect from "effect/Effect";
 import * as Layer from "effect/Layer";
@@ -54,9 +54,10 @@ export const toConfig = (config: {
   apiBaseUrl: config.apiBaseUrl ?? DEFAULT_API_BASE_URL,
 });
 
-export class Credentials extends Context.Service<Credentials, Effect.Effect<Config>>()(
-  "RailwayCredentials",
-) {}
+export class Credentials
+  extends /*@__PURE__*/ Context.Service<Credentials, Effect.Effect<Config>>()(
+    "RailwayCredentials",
+  ) {}
 
 /** Build {@link Credentials} from an explicit token. */
 export const CredentialsFromToken = (config: {
@@ -66,12 +67,18 @@ export const CredentialsFromToken = (config: {
   readonly apiBaseUrl?: string;
 }): Layer.Layer<Credentials> => Layer.succeed(Credentials, Effect.succeed(toConfig(config)));
 
-const envConfig = EffectConfig.all({
-  apiToken: EffectConfig.option(EffectConfig.String("RAILWAY_API_TOKEN")),
-  railwayToken: EffectConfig.option(EffectConfig.String("RAILWAY_TOKEN")),
-  projectToken: EffectConfig.option(EffectConfig.String("RAILWAY_PROJECT_TOKEN")),
-  apiBaseUrl: EffectConfig.String("RAILWAY_API_URL").pipe(
-    EffectConfig.withDefault(DEFAULT_API_BASE_URL),
+const envConfig = /*@__PURE__*/ EffectConfig.all({
+  apiToken: /*@__PURE__*/ EffectConfig.option(
+    /*@__PURE__*/ EffectConfig.String("RAILWAY_API_TOKEN"),
+  ),
+  railwayToken: /*@__PURE__*/ EffectConfig.option(
+    /*@__PURE__*/ EffectConfig.String("RAILWAY_TOKEN"),
+  ),
+  projectToken: /*@__PURE__*/ EffectConfig.option(
+    /*@__PURE__*/ EffectConfig.String("RAILWAY_PROJECT_TOKEN"),
+  ),
+  apiBaseUrl: /*@__PURE__*/ EffectConfig.String("RAILWAY_API_URL").pipe(
+    /*@__PURE__*/ EffectConfig.withDefault(DEFAULT_API_BASE_URL),
   ),
 });
 
@@ -93,9 +100,9 @@ const MISSING_TOKEN =
  * credential, so preferring it keeps every operation reachable instead of
  * silently confining the client to one project environment.
  */
-export const CredentialsFromEnv: Layer.Layer<Credentials> = Layer.succeed(
+export const CredentialsFromEnv: Layer.Layer<Credentials> = /*@__PURE__*/ Layer.succeed(
   Credentials,
-  Effect.gen(function* () {
+  /*@__PURE__*/ Effect.gen(function* () {
     const config = yield* envConfig.pipe(
       Effect.mapError(() => new ConfigError({ message: MISSING_TOKEN })),
     );

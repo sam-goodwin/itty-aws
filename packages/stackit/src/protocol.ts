@@ -117,9 +117,9 @@ const baseUrlFor = (creds: Config, inputAst: AST.AST): string => {
   return applyRegion(specUrl, creds.region);
 };
 
-export const StackitProtocol: Layer.Layer<API.Protocol> = Layer.succeed(
+export const StackitProtocol: Layer.Layer<API.Protocol> = /*@__PURE__*/ Layer.succeed(
   API.Protocol,
-  API.Protocol.of({
+  /*@__PURE__*/ API.Protocol.of({
     encode: ({ input, inputAst }: { readonly input: unknown; readonly inputAst: AST.AST }) =>
       Effect.gen(function* () {
         const resolve = yield* Credentials;

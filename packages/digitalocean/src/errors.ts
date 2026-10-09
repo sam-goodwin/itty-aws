@@ -31,20 +31,16 @@ import * as Category from "@distilled.cloud/core/category";
 import * as Schema from "effect/Schema";
 
 /** Unknown DigitalOcean error -- returned when nothing else matches the failure. */
-export class UnknownDigitalOceanError extends Schema.TaggedError<UnknownDigitalOceanError>()(
-  "UnknownDigitalOceanError",
-  {
-    code: Schema.optional(Schema.String),
-    message: Schema.optional(Schema.String),
+export class UnknownDigitalOceanError
+  extends /*@__PURE__*/ Schema.TaggedError<UnknownDigitalOceanError>()("UnknownDigitalOceanError", {
+    code: /*@__PURE__*/ Schema.optional(Schema.String),
+    message: /*@__PURE__*/ Schema.optional(Schema.String),
     body: Schema.Unknown,
-  },
-).pipe(Category.withServerError) {}
+  }).pipe(Category.withServerError) {}
 
 /** Schema parse error wrapper. */
-export class DigitalOceanParseError extends Schema.TaggedError<DigitalOceanParseError>()(
-  "DigitalOceanParseError",
-  {
+export class DigitalOceanParseError
+  extends /*@__PURE__*/ Schema.TaggedError<DigitalOceanParseError>()("DigitalOceanParseError", {
     body: Schema.Unknown,
     cause: Schema.Unknown,
-  },
-).pipe(Category.withParseError) {}
+  }).pipe(Category.withParseError) {}

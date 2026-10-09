@@ -41,10 +41,10 @@ export type SentryOpError =
 /** Context (requirements) shared by every generated Sentry operation. */
 export type SentryOpContext = Credentials | HttpClient.HttpClient;
 
-export const SentryProtocol: Layer.Layer<API.Protocol> = makeRestProtocol<Config>({
+export const SentryProtocol: Layer.Layer<API.Protocol> = /*@__PURE__*/ makeRestProtocol<Config>({
   // The Credentials service holds an effect -- resolving it here (per
   // request, on the calling fiber) picks up context-provided credentials.
-  credentials: Effect.gen(function* () {
+  credentials: /*@__PURE__*/ Effect.gen(function* () {
     const resolve = yield* Credentials;
     return yield* resolve;
   }),

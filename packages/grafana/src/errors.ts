@@ -31,20 +31,16 @@ import * as Category from "@distilled.cloud/core/category";
 import * as Schema from "effect/Schema";
 
 /** Unknown Grafana error -- returned when nothing else matches the failure. */
-export class UnknownGrafanaError extends Schema.TaggedError<UnknownGrafanaError>()(
-  "UnknownGrafanaError",
-  {
-    code: Schema.optional(Schema.String),
-    message: Schema.optional(Schema.String),
+export class UnknownGrafanaError
+  extends /*@__PURE__*/ Schema.TaggedError<UnknownGrafanaError>()("UnknownGrafanaError", {
+    code: /*@__PURE__*/ Schema.optional(Schema.String),
+    message: /*@__PURE__*/ Schema.optional(Schema.String),
     body: Schema.Unknown,
-  },
-).pipe(Category.withServerError) {}
+  }).pipe(Category.withServerError) {}
 
 /** Schema parse error wrapper. */
-export class GrafanaParseError extends Schema.TaggedError<GrafanaParseError>()(
-  "GrafanaParseError",
-  {
+export class GrafanaParseError
+  extends /*@__PURE__*/ Schema.TaggedError<GrafanaParseError>()("GrafanaParseError", {
     body: Schema.Unknown,
     cause: Schema.Unknown,
-  },
-).pipe(Category.withParseError) {}
+  }).pipe(Category.withParseError) {}

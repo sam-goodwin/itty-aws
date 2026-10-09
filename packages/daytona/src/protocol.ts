@@ -39,7 +39,7 @@ export type DaytonaOpError = DefaultErrors | ConfigError | HttpClientError.HttpC
 /** Context (requirements) shared by every generated Daytona operation. */
 export type DaytonaOpContext = Credentials | HttpClient.HttpClient;
 
-const TOOLBOX_ROOT_SET: ReadonlySet<string> = new Set(TOOLBOX_ROOTS);
+const TOOLBOX_ROOT_SET: ReadonlySet<string> = /*@__PURE__*/ new Set(TOOLBOX_ROOTS);
 
 const firstSegment = (uri: string): string => uri.split("/").filter(Boolean)[0] ?? "";
 
@@ -65,11 +65,11 @@ const baseUrlFor = (creds: Config, uri: string): string => {
   return creds.toolboxBaseUrl.replaceAll("{sandboxId}", creds.sandboxId);
 };
 
-export const DaytonaProtocol: Layer.Layer<API.Protocol> = makeRestProtocol<Config>({
+export const DaytonaProtocol: Layer.Layer<API.Protocol> = /*@__PURE__*/ makeRestProtocol<Config>({
   // Resolved on the CALLING fiber per request (the layer is memoized per
   // process); the Credentials service holds an effect, so a key rotated
   // between calls is picked up without rebuilding the layer.
-  credentials: Effect.gen(function* () {
+  credentials: /*@__PURE__*/ Effect.gen(function* () {
     const resolve = yield* Credentials;
     return yield* resolve;
   }),

@@ -48,9 +48,10 @@ import * as Schema from "effect/Schema";
  * In practice this means the SDK and the API disagree about a route, so it
  * is a bug report rather than something to branch on.
  */
-export class MethodNotAllowed extends Schema.TaggedError<MethodNotAllowed>()("MethodNotAllowed", {
-  message: Schema.String,
-}).pipe(Category.withBadRequestError) {}
+export class MethodNotAllowed
+  extends /*@__PURE__*/ Schema.TaggedError<MethodNotAllowed>()("MethodNotAllowed", {
+    message: Schema.String,
+  }).pipe(Category.withBadRequestError) {}
 
 /**
  * HTTP 410 -- `deprecated_api_endpoint`: the endpoint's functionality was
@@ -60,9 +61,10 @@ export class MethodNotAllowed extends Schema.TaggedError<MethodNotAllowed>()("Me
  * operation means the pinned spec has fallen behind and needs a
  * regeneration. The error `details` carry a changelog link.
  */
-export class Gone extends Schema.TaggedError<Gone>()("Gone", {
-  message: Schema.String,
-}).pipe(Category.withNotFoundError) {}
+export class Gone
+  extends /*@__PURE__*/ Schema.TaggedError<Gone>()("Gone", {
+    message: Schema.String,
+  }).pipe(Category.withNotFoundError) {}
 
 /**
  * HTTP 412 -- `resource_unavailable`: the resource itself is fine, but what
@@ -71,12 +73,10 @@ export class Gone extends Schema.TaggedError<Gone>()("Gone", {
  * unchanged will keep failing until Hetzner has capacity again, so it is NOT
  * marked retryable; a different Location or Server type is the fix.
  */
-export class PreconditionFailed extends Schema.TaggedError<PreconditionFailed>()(
-  "PreconditionFailed",
-  {
+export class PreconditionFailed
+  extends /*@__PURE__*/ Schema.TaggedError<PreconditionFailed>()("PreconditionFailed", {
     message: Schema.String,
-  },
-).pipe(Category.withConflictError) {}
+  }).pipe(Category.withConflictError) {}
 
 /**
  * Unknown Hetzner error -- returned when a failed response's HTTP status has
@@ -87,24 +87,20 @@ export class PreconditionFailed extends Schema.TaggedError<PreconditionFailed>()
  * `resource_limit_exceeded`. See
  * https://docs.hetzner.cloud/reference/cloud#errors.
  */
-export class UnknownHetznerError extends Schema.TaggedError<UnknownHetznerError>()(
-  "UnknownHetznerError",
-  {
-    code: Schema.optional(Schema.String),
-    message: Schema.optional(Schema.String),
-    details: Schema.optional(Schema.Unknown),
+export class UnknownHetznerError
+  extends /*@__PURE__*/ Schema.TaggedError<UnknownHetznerError>()("UnknownHetznerError", {
+    code: /*@__PURE__*/ Schema.optional(Schema.String),
+    message: /*@__PURE__*/ Schema.optional(Schema.String),
+    details: /*@__PURE__*/ Schema.optional(Schema.Unknown),
     body: Schema.Unknown,
-  },
-).pipe(Category.withServerError) {}
+  }).pipe(Category.withServerError) {}
 
 /** Schema parse error wrapper. */
-export class HetznerParseError extends Schema.TaggedError<HetznerParseError>()(
-  "HetznerParseError",
-  {
+export class HetznerParseError
+  extends /*@__PURE__*/ Schema.TaggedError<HetznerParseError>()("HetznerParseError", {
     body: Schema.Unknown,
     cause: Schema.Unknown,
-  },
-).pipe(Category.withParseError) {}
+  }).pipe(Category.withParseError) {}
 
 /**
  * Errors any Hetzner operation may surface in addition to the shared HTTP

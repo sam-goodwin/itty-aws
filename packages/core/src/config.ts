@@ -22,10 +22,11 @@ import * as Option from "effect/Option";
 import * as Redact from "effect/Redacted";
 
 /** A required configuration value is missing. */
-export class ConfigMissing extends Data.TaggedError("ConfigError")<{
-  readonly name: string;
-  readonly message: string;
-}> {}
+export class ConfigMissing
+  extends /*@__PURE__*/ Data.TaggedError("ConfigError")<{
+    readonly name: string;
+    readonly message: string;
+  }> {}
 
 const CONFIG_PROVIDER_KEY = "effect/ConfigProvider";
 

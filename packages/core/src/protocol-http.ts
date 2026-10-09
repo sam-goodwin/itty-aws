@@ -308,7 +308,7 @@ export const mapKeys = (
 
 //#region Request building
 
-const BODYLESS = new Set(["GET", "HEAD"]);
+const BODYLESS = /*@__PURE__*/ new Set(["GET", "HEAD"]);
 
 /**
  * Serialize one query member. Scalars go as `k=v`, arrays as repeated `k=v`

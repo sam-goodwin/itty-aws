@@ -42,10 +42,10 @@ export type DopplerOpError =
 /** Context (requirements) shared by every generated Doppler operation. */
 export type DopplerOpContext = Credentials | HttpClient.HttpClient;
 
-export const DopplerProtocol: Layer.Layer<API.Protocol> = makeRestProtocol<Config>({
+export const DopplerProtocol: Layer.Layer<API.Protocol> = /*@__PURE__*/ makeRestProtocol<Config>({
   // The Credentials service holds an effect -- resolving it here (per
   // request, on the calling fiber) picks up context-provided credentials.
-  credentials: Effect.gen(function* () {
+  credentials: /*@__PURE__*/ Effect.gen(function* () {
     const resolve = yield* Credentials;
     return yield* resolve;
   }),
@@ -91,8 +91,8 @@ export const DopplerProtocol: Layer.Layer<API.Protocol> = makeRestProtocol<Confi
 
 /** Unauthenticated browser-login operations never resolve or send credentials. */
 export type DopplerPublicOpContext = HttpClient.HttpClient;
-export const DopplerPublicProtocol: Layer.Layer<API.Protocol> = makeRestProtocol({
-  credentials: Effect.succeed(undefined),
+export const DopplerPublicProtocol: Layer.Layer<API.Protocol> = /*@__PURE__*/ makeRestProtocol({
+  credentials: /*@__PURE__*/ Effect.succeed(undefined),
   baseUrl: () => "https://api.doppler.com",
   headers: () => ({ Accept: "application/json" }),
   unknownError: ({ code, message }) =>

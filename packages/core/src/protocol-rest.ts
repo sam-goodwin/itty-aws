@@ -51,7 +51,9 @@ import { httpSymbol, makeAnnotation, type HttpTrait } from "./trait.ts";
 // Traits
 // =============================================================================
 
-export const sensitiveValueSymbol = Symbol.for("@distilled.cloud/core/sensitive-value");
+export const sensitiveValueSymbol = /*@__PURE__*/ Symbol.for(
+  "@distilled.cloud/core/sensitive-value",
+);
 /**
  * Marks a string member as sensitive (mirrors `smithy.api#sensitive`).
  * The REST protocol wraps decoded values in `Redacted` on the way out and
@@ -61,14 +63,16 @@ export const sensitiveValueSymbol = Symbol.for("@distilled.cloud/core/sensitive-
  */
 export const SensitiveValue = (_value?: unknown) => makeAnnotation(sensitiveValueSymbol, true);
 
-export const rawResponseSymbol = Symbol.for("@distilled.cloud/core/raw-response");
+export const rawResponseSymbol = /*@__PURE__*/ Symbol.for("@distilled.cloud/core/raw-response");
 /**
  * Marks the sole output member that carries a bare (array/scalar) response
  * body (mirrors `com.distilled.openapi#rawResponse`).
  */
 export const RawResponse = (_value?: unknown) => makeAnnotation(rawResponseSymbol, true);
 
-export const rawResponseRootSymbol = Symbol.for("@distilled.cloud/core/raw-response-root");
+export const rawResponseRootSymbol = /*@__PURE__*/ Symbol.for(
+  "@distilled.cloud/core/raw-response-root",
+);
 /**
  * Marks a response schema whose ENTIRE value is the response body (the
  * generator's `rootPipe` for synthesized bare-payload wrappers): the emitted
@@ -77,7 +81,9 @@ export const rawResponseRootSymbol = Symbol.for("@distilled.cloud/core/raw-respo
  */
 export const RawResponseRoot = () => makeAnnotation(rawResponseRootSymbol, true);
 
-export const binaryResponseSymbol = Symbol.for("@distilled.cloud/core/binary-response");
+export const binaryResponseSymbol = /*@__PURE__*/ Symbol.for(
+  "@distilled.cloud/core/binary-response",
+);
 
 /** Decode a successful raw binary response as bytes, without text conversion. */
 export const BinaryResponse = () => makeAnnotation(binaryResponseSymbol, true);

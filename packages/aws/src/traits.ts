@@ -212,10 +212,10 @@ export const Ec2QueryName = (name: string) => makeAnnotation(ec2QueryNameSymbol,
  * DateFromString - String <-> Date transformation via ISO 8601.
  * Use this instead of bare S.Date when the wire format is a string.
  */
-export const DateFromString = S.Date.pipe(
-  S.encodeTo(
+export const DateFromString = /*@__PURE__*/ S.Date.pipe(
+  /*@__PURE__*/ S.encodeTo(
     S.String,
-    SchemaTransformation.transform({
+    /*@__PURE__*/ SchemaTransformation.transform({
       decode: (s: string) => new Date(s),
       encode: (d: Date) => d.toISOString(),
     }),
@@ -608,10 +608,10 @@ export const isIdempotencyToken = (ast: AST.AST): boolean =>
  * Smithy blob type - binary data that encodes to base64 on the wire.
  * Used for non-streaming blobs in request/response bodies.
  */
-export const Blob = S.String.pipe(
-  S.decodeTo(
-    S.instanceOf(Uint8Array<ArrayBufferLike>),
-    SchemaTransformation.transform({
+export const Blob = /*@__PURE__*/ S.String.pipe(
+  /*@__PURE__*/ S.decodeTo(
+    /*@__PURE__*/ S.instanceOf(Uint8Array<ArrayBufferLike>),
+    /*@__PURE__*/ SchemaTransformation.transform({
       decode: (s) =>
         Uint8Array.from(atob(s), (c) => c.charCodeAt(0)) as any as Uint8Array<ArrayBufferLike>,
       encode: (u) => btoa(String.fromCharCode(...u)),
@@ -694,7 +694,7 @@ export type StreamingInputBody =
 /**
  * Schema for streaming input bodies.
  */
-export const StreamingInput = S.declare(
+export const StreamingInput = /*@__PURE__*/ S.declare(
   (u): u is StreamingInputBody =>
     typeof u === "string" ||
     ArrayBuffer.isView(u) ||
@@ -711,7 +711,7 @@ export const StreamingInput = S.declare(
 /**
  * Streaming output body - always Effect Stream for composability.
  */
-export const StreamingOutput = S.declare(
+export const StreamingOutput = /*@__PURE__*/ S.declare(
   (u): u is Stream.Stream<Uint8Array<ArrayBufferLike>, Error, never> => isEffectStream(u),
 ).annotate({
   [streamingSymbol]: true,
@@ -762,7 +762,7 @@ export interface EventStreamCodec {
   readonly parseEventStreamToUnion: typeof import("./eventstream/parser.ts").parseEventStreamToUnion;
   readonly serializeInputEventStreamWithSchema: typeof import("./eventstream/serializer.ts").serializeInputEventStreamWithSchema;
 }
-const eventStreamCodecs = new WeakMap<object, () => Promise<EventStreamCodec>>();
+const eventStreamCodecs = /*@__PURE__*/ new WeakMap<object, () => Promise<EventStreamCodec>>();
 let codecPromise: Promise<EventStreamCodec> | undefined;
 const loadEventStreamCodec = (): Promise<EventStreamCodec> =>
   (codecPromise ??= Promise.all([

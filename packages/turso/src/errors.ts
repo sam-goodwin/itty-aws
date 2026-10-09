@@ -41,23 +41,22 @@ import * as Schema from "effect/Schema";
  * a shared HTTP status class. Carries the raw `code` string Turso sometimes
  * includes in its error body.
  */
-export class UnknownTursoError extends Schema.TaggedError<UnknownTursoError>()(
-  "UnknownTursoError",
-  {
-    code: Schema.optional(Schema.String),
-    message: Schema.optional(Schema.String),
+export class UnknownTursoError
+  extends /*@__PURE__*/ Schema.TaggedError<UnknownTursoError>()("UnknownTursoError", {
+    code: /*@__PURE__*/ Schema.optional(Schema.String),
+    message: /*@__PURE__*/ Schema.optional(Schema.String),
     body: Schema.Unknown,
-  },
-).pipe(Category.withServerError) {}
+  }).pipe(Category.withServerError) {}
 
 /**
  * Schema parse error wrapper -- kept for parity with the distilled turso SDK's
  * error surface.
  */
-export class TursoParseError extends Schema.TaggedError<TursoParseError>()("TursoParseError", {
-  body: Schema.Unknown,
-  cause: Schema.Unknown,
-}).pipe(Category.withParseError) {}
+export class TursoParseError
+  extends /*@__PURE__*/ Schema.TaggedError<TursoParseError>()("TursoParseError", {
+    body: Schema.Unknown,
+    cause: Schema.Unknown,
+  }).pipe(Category.withParseError) {}
 
 /**
  * Errors any Turso operation may surface beyond the core HTTP defaults.

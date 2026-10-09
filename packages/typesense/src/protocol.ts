@@ -32,10 +32,10 @@ export type TypesenseOpError = DefaultErrors | ConfigError | HttpClientError.Htt
 /** Context (requirements) shared by every generated Typesense operation. */
 export type TypesenseOpContext = Credentials | HttpClient.HttpClient;
 
-export const TypesenseProtocol: Layer.Layer<API.Protocol> = makeRestProtocol<Config>({
+export const TypesenseProtocol: Layer.Layer<API.Protocol> = /*@__PURE__*/ makeRestProtocol<Config>({
   // Resolved on the calling fiber, per request -- the Credentials service
   // holds an effect, so lazily-resolved keys Just Work.
-  credentials: Effect.gen(function* () {
+  credentials: /*@__PURE__*/ Effect.gen(function* () {
     const resolve = yield* Credentials;
     return yield* resolve;
   }),

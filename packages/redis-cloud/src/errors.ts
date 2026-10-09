@@ -31,20 +31,16 @@ import * as Category from "@distilled.cloud/core/category";
 import * as Schema from "effect/Schema";
 
 /** Unknown Redis Cloud error -- returned when nothing else matches the failure. */
-export class UnknownRedisCloudError extends Schema.TaggedError<UnknownRedisCloudError>()(
-  "UnknownRedisCloudError",
-  {
-    code: Schema.optional(Schema.String),
-    message: Schema.optional(Schema.String),
+export class UnknownRedisCloudError
+  extends /*@__PURE__*/ Schema.TaggedError<UnknownRedisCloudError>()("UnknownRedisCloudError", {
+    code: /*@__PURE__*/ Schema.optional(Schema.String),
+    message: /*@__PURE__*/ Schema.optional(Schema.String),
     body: Schema.Unknown,
-  },
-).pipe(Category.withServerError) {}
+  }).pipe(Category.withServerError) {}
 
 /** Schema parse error wrapper. */
-export class RedisCloudParseError extends Schema.TaggedError<RedisCloudParseError>()(
-  "RedisCloudParseError",
-  {
+export class RedisCloudParseError
+  extends /*@__PURE__*/ Schema.TaggedError<RedisCloudParseError>()("RedisCloudParseError", {
     body: Schema.Unknown,
     cause: Schema.Unknown,
-  },
-).pipe(Category.withParseError) {}
+  }).pipe(Category.withParseError) {}

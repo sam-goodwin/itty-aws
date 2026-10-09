@@ -31,20 +31,16 @@ import * as Category from "@distilled.cloud/core/category";
 import * as Schema from "effect/Schema";
 
 /** Unknown Inngest error -- returned when nothing else matches the failure. */
-export class UnknownInngestError extends Schema.TaggedError<UnknownInngestError>()(
-  "UnknownInngestError",
-  {
-    code: Schema.optional(Schema.String),
-    message: Schema.optional(Schema.String),
+export class UnknownInngestError
+  extends /*@__PURE__*/ Schema.TaggedError<UnknownInngestError>()("UnknownInngestError", {
+    code: /*@__PURE__*/ Schema.optional(Schema.String),
+    message: /*@__PURE__*/ Schema.optional(Schema.String),
     body: Schema.Unknown,
-  },
-).pipe(Category.withServerError) {}
+  }).pipe(Category.withServerError) {}
 
 /** Schema parse error wrapper. */
-export class InngestParseError extends Schema.TaggedError<InngestParseError>()(
-  "InngestParseError",
-  {
+export class InngestParseError
+  extends /*@__PURE__*/ Schema.TaggedError<InngestParseError>()("InngestParseError", {
     body: Schema.Unknown,
     cause: Schema.Unknown,
-  },
-).pipe(Category.withParseError) {}
+  }).pipe(Category.withParseError) {}

@@ -36,11 +36,11 @@ export type TursoOpError = DefaultErrors | ConfigError | HttpClientError.HttpCli
 /** Context (requirements) shared by every generated Turso operation. */
 export type TursoOpContext = Credentials | HttpClient.HttpClient;
 
-export const TursoProtocol: Layer.Layer<API.Protocol> = makeRestProtocol<Config>({
+export const TursoProtocol: Layer.Layer<API.Protocol> = /*@__PURE__*/ makeRestProtocol<Config>({
   // The Credentials service holds an effect -- resolving it here (per
   // request) picks up rotations. Its error channel is erased at the protocol
   // boundary; TursoOpError reintroduces it for callers.
-  credentials: Effect.gen(function* () {
+  credentials: /*@__PURE__*/ Effect.gen(function* () {
     const resolve = yield* Credentials;
     return yield* resolve;
   }),

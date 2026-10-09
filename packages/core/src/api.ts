@@ -60,29 +60,30 @@ export interface ProtocolOperationConfig {
  *
  * Swap implementations by providing a different `Layer<Protocol>`.
  */
-export class Protocol extends Context.Service<
-  Protocol,
-  {
-    readonly encode: (args: {
-      readonly input: unknown;
-      readonly inputAst: AST.AST;
-      /** The operation's config (memoized per operation -- see {@link ProtocolOperationConfig}). */
-      readonly config: ProtocolOperationConfig;
-    }) => Effect.Effect<HttpClientRequest.HttpClientRequest>;
-    readonly decode: (args: {
-      readonly response: HttpClientResponse.HttpClientResponse;
-      readonly outputAst: AST.AST;
-      /**
-       * The operation's declared error classes (from `OperationConfig.errors`).
-       * Protocols use these to surface wire failures as the operation's typed
-       * errors -- e.g. by consulting matcher metadata stamped on the class.
-       */
-      readonly errors: ReadonlyArray<ApiErrorClass>;
-      /** The operation's config (memoized per operation -- see {@link ProtocolOperationConfig}). */
-      readonly config: ProtocolOperationConfig;
-    }) => Effect.Effect<unknown>;
-  }
->()("Protocol") {}
+export class Protocol
+  extends /*@__PURE__*/ Context.Service<
+    Protocol,
+    {
+      readonly encode: (args: {
+        readonly input: unknown;
+        readonly inputAst: AST.AST;
+        /** The operation's config (memoized per operation -- see {@link ProtocolOperationConfig}). */
+        readonly config: ProtocolOperationConfig;
+      }) => Effect.Effect<HttpClientRequest.HttpClientRequest>;
+      readonly decode: (args: {
+        readonly response: HttpClientResponse.HttpClientResponse;
+        readonly outputAst: AST.AST;
+        /**
+         * The operation's declared error classes (from `OperationConfig.errors`).
+         * Protocols use these to surface wire failures as the operation's typed
+         * errors -- e.g. by consulting matcher metadata stamped on the class.
+         */
+        readonly errors: ReadonlyArray<ApiErrorClass>;
+        /** The operation's config (memoized per operation -- see {@link ProtocolOperationConfig}). */
+        readonly config: ProtocolOperationConfig;
+      }) => Effect.Effect<unknown>;
+    }
+  >()("Protocol") {}
 
 //#endregion
 
@@ -146,9 +147,12 @@ export interface OperationSchemas<I, O> {
  * options -- must be resolved inside `encode`/`decode`, which execute on the
  * calling fiber and therefore see the caller's services on every request.
  */
-const protocolMemoMap = Layer.makeMemoMapUnsafe();
-const protocolScope = Scope.makeUnsafe();
-const protocolContexts = new WeakMap<Layer.Layer<Protocol, any, any>, Context.Context<Protocol>>();
+const protocolMemoMap = /*@__PURE__*/ Layer.makeMemoMapUnsafe();
+const protocolScope = /*@__PURE__*/ Scope.makeUnsafe();
+const protocolContexts = /*@__PURE__*/ new WeakMap<
+  Layer.Layer<Protocol, any, any>,
+  Context.Context<Protocol>
+>();
 
 const protocolContext = <PE, PR>(
   layer: Layer.Layer<Protocol, PE, PR>,
@@ -308,7 +312,7 @@ interface Prepared {
   readonly outputAst: AST.AST;
 }
 
-const stateKey = Symbol.for("@distilled.cloud/core/api/OperationState");
+const stateKey = /*@__PURE__*/ Symbol.for("@distilled.cloud/core/api/OperationState");
 
 // Lazily resolve the operation config + schema ASTs on first call, not at
 // module-load time. Generated SDKs wrap each request/response schema in
@@ -371,7 +375,7 @@ const bindContext = (op: (input: unknown) => Effect.Effect<any, any, any>) =>
  * `.operationName` / `.pagination`) as lazy getters, so importing a service
  * module doesn't force its suspended schemas.
  */
-const OperationProto: object = Object.setPrototypeOf(
+const OperationProto: object = /*@__PURE__*/ Object.setPrototypeOf(
   {
     [Symbol.iterator](this: any) {
       return new SingleShotGen(this.asEffect());
@@ -516,9 +520,9 @@ const streamGetter = (name: "pages" | "items") =>
     return fns[name];
   };
 
-const PaginatedOperationProto: object = Object.create(OperationProto, {
-  pages: { get: streamGetter("pages"), configurable: true },
-  items: { get: streamGetter("items"), configurable: true },
+const PaginatedOperationProto: object = /*@__PURE__*/ Object.create(OperationProto, {
+  pages: { get: /*@__PURE__*/ streamGetter("pages"), configurable: true },
+  items: { get: /*@__PURE__*/ streamGetter("items"), configurable: true },
   // `yield* operation` returns a fresh context-bound function; give it
   // `.pages` / `.items` too (distilled #145). Same fallback (not snapshot)
   // semantics as the plain operation.

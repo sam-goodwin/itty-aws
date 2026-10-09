@@ -18,7 +18,7 @@ const systemError =
       cause,
     });
 
-export const nodeFileSystem = FileSystem.makeNoop({
+export const nodeFileSystem = /*@__PURE__*/ FileSystem.makeNoop({
   readFileString: (path) =>
     Effect.tryPromise({
       try: () => readFile(path, "utf8"),

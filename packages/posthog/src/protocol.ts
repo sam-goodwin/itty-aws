@@ -67,11 +67,11 @@ const drfErrorEnvelope = (body: unknown): RestErrorEnvelope | undefined => {
   return { code, message };
 };
 
-export const PosthogProtocol: Layer.Layer<API.Protocol> = makeRestProtocol<Config>({
+export const PosthogProtocol: Layer.Layer<API.Protocol> = /*@__PURE__*/ makeRestProtocol<Config>({
   // The Credentials service holds an effect -- resolving it here (per
   // request) picks up rotations. Its ConfigError channel is erased at the
   // protocol boundary; PosthogOpError reintroduces it for callers.
-  credentials: Effect.flatMap(Credentials, (resolve) => resolve),
+  credentials: /*@__PURE__*/ Effect.flatMap(Credentials, (resolve) => resolve),
   baseUrl: (creds) => creds.apiBaseUrl,
   headers: (creds) => ({
     Authorization: `Bearer ${Redacted.value(creds.apiKey)}`,

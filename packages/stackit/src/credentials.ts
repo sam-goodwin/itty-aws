@@ -1,4 +1,3 @@
-import { ConfigError } from "@distilled.cloud/core/errors";
 /**
  * STACKIT credentials -- hand-written.
  *
@@ -18,6 +17,7 @@ import { ConfigError } from "@distilled.cloud/core/errors";
  * overrides that host for every call -- a proxy, not a per-product map.
  */
 import * as EffectConfig from "@distilled.cloud/core/config";
+import { ConfigError } from "@distilled.cloud/core/errors";
 import * as Context from "effect/Context";
 import * as Effect from "effect/Effect";
 import * as Layer from "effect/Layer";
@@ -38,28 +38,31 @@ export interface Config {
   readonly apiBaseUrl?: string;
 }
 
-export class Credentials extends Context.Service<Credentials, Effect.Effect<Config>>()(
-  "StackitCredentials",
-) {}
+export class Credentials
+  extends /*@__PURE__*/ Context.Service<Credentials, Effect.Effect<Config>>()(
+    "StackitCredentials",
+  ) {}
 
-const envConfig = EffectConfig.all({
+const envConfig = /*@__PURE__*/ EffectConfig.all({
   // `STACKIT_SERVICE_ACCOUNT_TOKEN` / `STACKIT_REGION` are what the
   // official Go SDK, CLI and Terraform provider read.
-  token: EffectConfig.String("STACKIT_SERVICE_ACCOUNT_TOKEN"),
-  region: EffectConfig.String("STACKIT_REGION").pipe(EffectConfig.withDefault(DEFAULT_REGION)),
-  apiBaseUrl: EffectConfig.String("STACKIT_API_BASE_URL").pipe(EffectConfig.option),
+  token: /*@__PURE__*/ EffectConfig.String("STACKIT_SERVICE_ACCOUNT_TOKEN"),
+  region: /*@__PURE__*/ EffectConfig.String("STACKIT_REGION").pipe(
+    /*@__PURE__*/ EffectConfig.withDefault(DEFAULT_REGION),
+  ),
+  apiBaseUrl: /*@__PURE__*/ EffectConfig.String("STACKIT_API_BASE_URL").pipe(EffectConfig.option),
 });
 
-export const CredentialsFromEnv = Layer.succeed(
+export const CredentialsFromEnv = /*@__PURE__*/ Layer.succeed(
   Credentials,
-  envConfig.pipe(
-    Effect.mapError(
+  /*@__PURE__*/ envConfig.pipe(
+    /*@__PURE__*/ Effect.mapError(
       () =>
         new ConfigError({
           message: "STACKIT_SERVICE_ACCOUNT_TOKEN environment variable is required",
         }),
     ),
-    Effect.map(({ token, region, apiBaseUrl }) => ({
+    /*@__PURE__*/ Effect.map(({ token, region, apiBaseUrl }) => ({
       token: Redacted.make(token),
       region,
       apiBaseUrl: apiBaseUrl._tag === "Some" ? apiBaseUrl.value : undefined,

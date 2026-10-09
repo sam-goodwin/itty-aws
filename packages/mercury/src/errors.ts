@@ -31,20 +31,16 @@ import * as Category from "@distilled.cloud/core/category";
 import * as Schema from "effect/Schema";
 
 /** Unknown Mercury error -- returned when nothing else matches the failure. */
-export class UnknownMercuryError extends Schema.TaggedError<UnknownMercuryError>()(
-  "UnknownMercuryError",
-  {
-    code: Schema.optional(Schema.String),
-    message: Schema.optional(Schema.String),
+export class UnknownMercuryError
+  extends /*@__PURE__*/ Schema.TaggedError<UnknownMercuryError>()("UnknownMercuryError", {
+    code: /*@__PURE__*/ Schema.optional(Schema.String),
+    message: /*@__PURE__*/ Schema.optional(Schema.String),
     body: Schema.Unknown,
-  },
-).pipe(Category.withServerError) {}
+  }).pipe(Category.withServerError) {}
 
 /** Schema parse error wrapper (kept for v0 surface parity). */
-export class MercuryParseError extends Schema.TaggedError<MercuryParseError>()(
-  "MercuryParseError",
-  {
+export class MercuryParseError
+  extends /*@__PURE__*/ Schema.TaggedError<MercuryParseError>()("MercuryParseError", {
     body: Schema.Unknown,
     cause: Schema.Unknown,
-  },
-).pipe(Category.withParseError) {}
+  }).pipe(Category.withParseError) {}

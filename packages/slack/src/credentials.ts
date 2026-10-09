@@ -1,4 +1,3 @@
-import { ConfigError } from "@distilled.cloud/core/errors";
 /**
  * Slack credentials -- hand-written.
  *
@@ -19,6 +18,7 @@ import { ConfigError } from "@distilled.cloud/core/errors";
  * Authorization header.
  */
 import * as EffectConfig from "@distilled.cloud/core/config";
+import { ConfigError } from "@distilled.cloud/core/errors";
 import * as Context from "effect/Context";
 import * as Effect from "effect/Effect";
 import * as Layer from "effect/Layer";
@@ -35,31 +35,30 @@ export interface Config {
   readonly apiBaseUrl: string;
 }
 
-export class Credentials extends Context.Service<Credentials, Effect.Effect<Config>>()(
-  "SlackCredentials",
-) {}
+export class Credentials
+  extends /*@__PURE__*/ Context.Service<Credentials, Effect.Effect<Config>>()("SlackCredentials") {}
 
-const envConfig = EffectConfig.all({
+const envConfig = /*@__PURE__*/ EffectConfig.all({
   // SLACK_BOT_TOKEN is the spelling Bolt and most hosting platforms use;
   // SLACK_TOKEN is the fallback (the node SDK's CLI convention).
-  token: EffectConfig.String("SLACK_BOT_TOKEN").pipe(
-    EffectConfig.orElse(() => EffectConfig.String("SLACK_TOKEN")),
+  token: /*@__PURE__*/ EffectConfig.String("SLACK_BOT_TOKEN").pipe(
+    /*@__PURE__*/ EffectConfig.orElse(() => EffectConfig.String("SLACK_TOKEN")),
   ),
-  apiBaseUrl: EffectConfig.String("SLACK_API_URL").pipe(
-    EffectConfig.withDefault(DEFAULT_API_BASE_URL),
+  apiBaseUrl: /*@__PURE__*/ EffectConfig.String("SLACK_API_URL").pipe(
+    /*@__PURE__*/ EffectConfig.withDefault(DEFAULT_API_BASE_URL),
   ),
 });
 
-export const CredentialsFromEnv = Layer.succeed(
+export const CredentialsFromEnv = /*@__PURE__*/ Layer.succeed(
   Credentials,
-  envConfig.pipe(
-    Effect.mapError(
+  /*@__PURE__*/ envConfig.pipe(
+    /*@__PURE__*/ Effect.mapError(
       () =>
         new ConfigError({
           message: "SLACK_BOT_TOKEN (or SLACK_TOKEN) environment variable is required",
         }),
     ),
-    Effect.map(({ token, apiBaseUrl }) => ({
+    /*@__PURE__*/ Effect.map(({ token, apiBaseUrl }) => ({
       token: Redacted.make(token),
       apiBaseUrl,
     })),

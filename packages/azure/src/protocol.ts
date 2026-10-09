@@ -293,9 +293,9 @@ const decode = ({
     return wrapSensitive(outputAst, mapped);
   });
 
-export const AzureProtocol: Layer.Layer<API.Protocol> = Layer.succeed(
+export const AzureProtocol: Layer.Layer<API.Protocol> = /*@__PURE__*/ Layer.succeed(
   API.Protocol,
-  API.Protocol.of({
+  /*@__PURE__*/ API.Protocol.of({
     // Erase encode's Credentials requirement (resolved on the calling
     // fiber; see the note above `encode`).
     encode: (args) => encode(args) as Effect.Effect<HttpClientRequest.HttpClientRequest>,

@@ -59,12 +59,12 @@ const errorEnvelope = (body: unknown): RestErrorEnvelope | undefined => {
   return env && { code: env.code, message: env.message };
 };
 
-export const PrismaProtocol: Layer.Layer<API.Protocol> = makeRestProtocol<Config>({
+export const PrismaProtocol: Layer.Layer<API.Protocol> = /*@__PURE__*/ makeRestProtocol<Config>({
   // Resolved per request on the calling fiber -- the Credentials service
   // holds an effect, so rotated tokens are picked up. Its ConfigError
   // channel is erased at this boundary (Protocol effects carry none) and
   // reintroduced for callers by `PrismaOpError`.
-  credentials: Effect.gen(function* () {
+  credentials: /*@__PURE__*/ Effect.gen(function* () {
     const resolve = yield* Credentials;
     return yield* resolve;
   }),

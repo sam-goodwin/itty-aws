@@ -52,7 +52,7 @@ export interface GraphQLOpTrait {
   readonly type: "query" | "mutation";
 }
 
-export const graphqlOpSymbol = Symbol.for("@distilled.cloud/expo-eas/graphql-op");
+export const graphqlOpSymbol = /*@__PURE__*/ Symbol.for("@distilled.cloud/expo-eas/graphql-op");
 
 /**
  * Marks an operation's input schema with its GraphQL document. Mirrors
@@ -60,7 +60,9 @@ export const graphqlOpSymbol = Symbol.for("@distilled.cloud/expo-eas/graphql-op"
  */
 export const GraphQLOp = (op: GraphQLOpTrait) => makeAnnotation(graphqlOpSymbol, op);
 
-export const responsePathSymbol = Symbol.for("@distilled.cloud/expo-eas/response-path");
+export const responsePathSymbol = /*@__PURE__*/ Symbol.for(
+  "@distilled.cloud/expo-eas/response-path",
+);
 
 /**
  * The dotted path under the GraphQL `data` envelope that holds this
@@ -70,7 +72,7 @@ export const responsePathSymbol = Symbol.for("@distilled.cloud/expo-eas/response
  */
 export const ResponsePath = (path: string) => makeAnnotation(responsePathSymbol, path);
 
-export const graphqlPayloadRootSymbol = Symbol.for(
+export const graphqlPayloadRootSymbol = /*@__PURE__*/ Symbol.for(
   "@distilled.cloud/expo-eas/graphql-payload-root",
 );
 

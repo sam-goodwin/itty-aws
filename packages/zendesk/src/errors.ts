@@ -31,20 +31,16 @@ import * as Category from "@distilled.cloud/core/category";
 import * as Schema from "effect/Schema";
 
 /** Unknown Zendesk error -- returned when nothing else matches the failure. */
-export class UnknownZendeskError extends Schema.TaggedError<UnknownZendeskError>()(
-  "UnknownZendeskError",
-  {
-    code: Schema.optional(Schema.String),
-    message: Schema.optional(Schema.String),
+export class UnknownZendeskError
+  extends /*@__PURE__*/ Schema.TaggedError<UnknownZendeskError>()("UnknownZendeskError", {
+    code: /*@__PURE__*/ Schema.optional(Schema.String),
+    message: /*@__PURE__*/ Schema.optional(Schema.String),
     body: Schema.Unknown,
-  },
-).pipe(Category.withServerError) {}
+  }).pipe(Category.withServerError) {}
 
 /** Schema parse error wrapper (kept for surface parity with other SDKs). */
-export class ZendeskParseError extends Schema.TaggedError<ZendeskParseError>()(
-  "ZendeskParseError",
-  {
+export class ZendeskParseError
+  extends /*@__PURE__*/ Schema.TaggedError<ZendeskParseError>()("ZendeskParseError", {
     body: Schema.Unknown,
     cause: Schema.Unknown,
-  },
-).pipe(Category.withParseError) {}
+  }).pipe(Category.withParseError) {}

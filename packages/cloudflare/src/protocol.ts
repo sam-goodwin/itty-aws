@@ -525,12 +525,12 @@ const makeDecode =
       return yield* validate(result);
     });
 
-export const CloudflareProtocol: Layer.Layer<API.Protocol> = Layer.succeed(
+export const CloudflareProtocol: Layer.Layer<API.Protocol> = /*@__PURE__*/ Layer.succeed(
   API.Protocol,
-  API.Protocol.of({
+  /*@__PURE__*/ API.Protocol.of({
     // Erase encode's Credentials requirement (see comment above).
     encode: (args) => encode(args) as Effect.Effect<HttpClientRequest.HttpClientRequest>,
-    decode: makeDecode({ resultInfo: false }),
+    decode: /*@__PURE__*/ makeDecode({ resultInfo: false }),
   }),
 );
 
@@ -540,10 +540,10 @@ export const CloudflareProtocol: Layer.Layer<API.Protocol> = Layer.succeed(
  * the member marked `T.ResultInfo()`, camelCased) so `.pages()` / `.items()`
  * can advance and callers can read totals.
  */
-export const CloudflarePaginatedProtocol: Layer.Layer<API.Protocol> = Layer.succeed(
+export const CloudflarePaginatedProtocol: Layer.Layer<API.Protocol> = /*@__PURE__*/ Layer.succeed(
   API.Protocol,
-  API.Protocol.of({
+  /*@__PURE__*/ API.Protocol.of({
     encode: (args) => encode(args) as Effect.Effect<HttpClientRequest.HttpClientRequest>,
-    decode: makeDecode({ resultInfo: true }),
+    decode: /*@__PURE__*/ makeDecode({ resultInfo: true }),
   }),
 );

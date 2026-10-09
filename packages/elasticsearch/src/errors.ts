@@ -31,20 +31,19 @@ import * as Category from "@distilled.cloud/core/category";
 import * as Schema from "effect/Schema";
 
 /** Unknown Elasticsearch error -- returned when nothing else matches the failure. */
-export class UnknownElasticsearchError extends Schema.TaggedError<UnknownElasticsearchError>()(
-  "UnknownElasticsearchError",
-  {
-    code: Schema.optional(Schema.String),
-    message: Schema.optional(Schema.String),
-    body: Schema.Unknown,
-  },
-).pipe(Category.withServerError) {}
+export class UnknownElasticsearchError
+  extends /*@__PURE__*/ Schema.TaggedError<UnknownElasticsearchError>()(
+    "UnknownElasticsearchError",
+    {
+      code: /*@__PURE__*/ Schema.optional(Schema.String),
+      message: /*@__PURE__*/ Schema.optional(Schema.String),
+      body: Schema.Unknown,
+    },
+  ).pipe(Category.withServerError) {}
 
 /** Schema parse error wrapper. */
-export class ElasticsearchParseError extends Schema.TaggedError<ElasticsearchParseError>()(
-  "ElasticsearchParseError",
-  {
+export class ElasticsearchParseError
+  extends /*@__PURE__*/ Schema.TaggedError<ElasticsearchParseError>()("ElasticsearchParseError", {
     body: Schema.Unknown,
     cause: Schema.Unknown,
-  },
-).pipe(Category.withParseError) {}
+  }).pipe(Category.withParseError) {}

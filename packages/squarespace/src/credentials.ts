@@ -29,9 +29,10 @@ export interface Config {
   readonly userAgent: string;
 }
 
-export class Credentials extends Context.Service<Credentials, Effect.Effect<Config>>()(
-  "SquarespaceCredentials",
-) {}
+export class Credentials
+  extends /*@__PURE__*/ Context.Service<Credentials, Effect.Effect<Config>>()(
+    "SquarespaceCredentials",
+  ) {}
 
 /** Layer from a redacted API key + optional base URL / User-Agent. */
 export const fromApiKey = (config: {
@@ -49,9 +50,9 @@ export const fromApiKey = (config: {
   );
 
 /** Reads SQUARESPACE_API_KEY (required) and optional base URL / User-Agent. */
-export const CredentialsFromEnv: Layer.Layer<Credentials> = Layer.succeed(
+export const CredentialsFromEnv: Layer.Layer<Credentials> = /*@__PURE__*/ Layer.succeed(
   Credentials,
-  Effect.gen(function* () {
+  /*@__PURE__*/ Effect.gen(function* () {
     const apiKey = process.env.SQUARESPACE_API_KEY;
 
     if (!apiKey) {

@@ -1,4 +1,3 @@
-import { ConfigError } from "@distilled.cloud/core/errors";
 /**
  * Whop credentials -- hand-written.
  *
@@ -19,6 +18,7 @@ import { ConfigError } from "@distilled.cloud/core/errors";
  * @see https://docs.whop.com/developer/api/getting-started
  */
 import * as EffectConfig from "@distilled.cloud/core/config";
+import { ConfigError } from "@distilled.cloud/core/errors";
 import * as Context from "effect/Context";
 import * as Effect from "effect/Effect";
 import * as Layer from "effect/Layer";
@@ -54,31 +54,30 @@ export interface Config {
   readonly apiVersionDate: string;
 }
 
-export class Credentials extends Context.Service<Credentials, Effect.Effect<Config>>()(
-  "WhopCredentials",
-) {}
+export class Credentials
+  extends /*@__PURE__*/ Context.Service<Credentials, Effect.Effect<Config>>()("WhopCredentials") {}
 
-const envConfig = EffectConfig.all({
+const envConfig = /*@__PURE__*/ EffectConfig.all({
   // `WHOP_API_KEY` is what Whop's dashboard, CLI and app templates emit.
-  apiKey: EffectConfig.String("WHOP_API_KEY"),
-  apiBaseUrl: EffectConfig.String("WHOP_API_BASE_URL").pipe(
-    EffectConfig.withDefault(DEFAULT_API_BASE_URL),
+  apiKey: /*@__PURE__*/ EffectConfig.String("WHOP_API_KEY"),
+  apiBaseUrl: /*@__PURE__*/ EffectConfig.String("WHOP_API_BASE_URL").pipe(
+    /*@__PURE__*/ EffectConfig.withDefault(DEFAULT_API_BASE_URL),
   ),
-  apiVersionDate: EffectConfig.String("WHOP_API_VERSION_DATE").pipe(
-    EffectConfig.withDefault(API_VERSION_DATE),
+  apiVersionDate: /*@__PURE__*/ EffectConfig.String("WHOP_API_VERSION_DATE").pipe(
+    /*@__PURE__*/ EffectConfig.withDefault(API_VERSION_DATE),
   ),
 });
 
-export const CredentialsFromEnv = Layer.succeed(
+export const CredentialsFromEnv = /*@__PURE__*/ Layer.succeed(
   Credentials,
-  envConfig.pipe(
-    Effect.mapError(
+  /*@__PURE__*/ envConfig.pipe(
+    /*@__PURE__*/ Effect.mapError(
       () =>
         new ConfigError({
           message: "WHOP_API_KEY environment variable is required",
         }),
     ),
-    Effect.map(({ apiKey, apiBaseUrl, apiVersionDate }) => ({
+    /*@__PURE__*/ Effect.map(({ apiKey, apiBaseUrl, apiVersionDate }) => ({
       apiKey: Redacted.make(apiKey),
       apiBaseUrl,
       apiVersionDate,

@@ -31,20 +31,16 @@ import * as Category from "@distilled.cloud/core/category";
 import * as Schema from "effect/Schema";
 
 /** Unknown Coolify error -- returned when nothing else matches the failure. */
-export class UnknownCoolifyError extends Schema.TaggedError<UnknownCoolifyError>()(
-  "UnknownCoolifyError",
-  {
-    code: Schema.optional(Schema.String),
-    message: Schema.optional(Schema.String),
+export class UnknownCoolifyError
+  extends /*@__PURE__*/ Schema.TaggedError<UnknownCoolifyError>()("UnknownCoolifyError", {
+    code: /*@__PURE__*/ Schema.optional(Schema.String),
+    message: /*@__PURE__*/ Schema.optional(Schema.String),
     body: Schema.Unknown,
-  },
-).pipe(Category.withServerError) {}
+  }).pipe(Category.withServerError) {}
 
 /** Schema parse error wrapper. */
-export class CoolifyParseError extends Schema.TaggedError<CoolifyParseError>()(
-  "CoolifyParseError",
-  {
+export class CoolifyParseError
+  extends /*@__PURE__*/ Schema.TaggedError<CoolifyParseError>()("CoolifyParseError", {
     body: Schema.Unknown,
     cause: Schema.Unknown,
-  },
-).pipe(Category.withParseError) {}
+  }).pipe(Category.withParseError) {}

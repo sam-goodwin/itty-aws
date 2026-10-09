@@ -29,9 +29,8 @@ export interface Config {
   readonly apiVersion: string;
 }
 
-export class Credentials extends Context.Service<Credentials, Effect.Effect<Config>>()(
-  "GustoCredentials",
-) {}
+export class Credentials
+  extends /*@__PURE__*/ Context.Service<Credentials, Effect.Effect<Config>>()("GustoCredentials") {}
 
 /** Layer from a redacted access token + optional base URL and API version. */
 export const fromApiKey = (config: {
@@ -52,9 +51,9 @@ export const fromApiKey = (config: {
  * Reads GUSTO_ACCESS_TOKEN (or GUSTO_API_TOKEN / GUSTO_API_KEY),
  * GUSTO_API_BASE_URL, and GUSTO_API_VERSION.
  */
-export const CredentialsFromEnv: Layer.Layer<Credentials> = Layer.succeed(
+export const CredentialsFromEnv: Layer.Layer<Credentials> = /*@__PURE__*/ Layer.succeed(
   Credentials,
-  Effect.gen(function* () {
+  /*@__PURE__*/ Effect.gen(function* () {
     const apiKey =
       process.env.GUSTO_ACCESS_TOKEN ?? process.env.GUSTO_API_TOKEN ?? process.env.GUSTO_API_KEY;
 

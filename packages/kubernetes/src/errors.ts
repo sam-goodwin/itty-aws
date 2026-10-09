@@ -40,23 +40,19 @@ import * as Schema from "effect/Schema";
  * map to a known HTTP status class. The `reason` field mirrors the
  * `reason` from the Kubernetes `v1.Status` object.
  */
-export class UnknownKubernetesError extends Schema.TaggedError<UnknownKubernetesError>()(
-  "UnknownKubernetesError",
-  {
-    reason: Schema.optional(Schema.String),
-    message: Schema.optional(Schema.String),
+export class UnknownKubernetesError
+  extends /*@__PURE__*/ Schema.TaggedError<UnknownKubernetesError>()("UnknownKubernetesError", {
+    reason: /*@__PURE__*/ Schema.optional(Schema.String),
+    message: /*@__PURE__*/ Schema.optional(Schema.String),
     body: Schema.Unknown,
-  },
-).pipe(Category.withServerError) {}
+  }).pipe(Category.withServerError) {}
 
 /**
  * Returned when a Kubernetes API response cannot be decoded
  * against the expected schema (kept for v0 surface parity).
  */
-export class KubernetesParseError extends Schema.TaggedError<KubernetesParseError>()(
-  "KubernetesParseError",
-  {
+export class KubernetesParseError
+  extends /*@__PURE__*/ Schema.TaggedError<KubernetesParseError>()("KubernetesParseError", {
     body: Schema.Unknown,
     cause: Schema.Unknown,
-  },
-).pipe(Category.withParseError) {}
+  }).pipe(Category.withParseError) {}

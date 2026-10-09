@@ -18,7 +18,7 @@
 import type * as S from "effect/Schema";
 import { lazyFrom, type LazyBuilder } from "./schema.ts";
 
-const builders = new WeakMap<(j: number) => unknown, LazyBuilder>();
+const builders = /*@__PURE__*/ new WeakMap<(j: number) => unknown, LazyBuilder>();
 
 /** Schema `j` of the chunk `build`, built on first use. */
 // `any`: each const keeps the type it declares or casts to.

@@ -29,9 +29,8 @@ export interface Config {
   readonly apiBaseUrl: string;
 }
 
-export class Credentials extends Context.Service<Credentials, Effect.Effect<Config>>()(
-  "OvhCredentials",
-) {}
+export class Credentials
+  extends /*@__PURE__*/ Context.Service<Credentials, Effect.Effect<Config>>()("OvhCredentials") {}
 
 const baseUrlFromEnv = (): string => {
   const explicit = process.env.OVH_API_BASE_URL;
@@ -57,9 +56,9 @@ export const fromApiKey = (config: {
   );
 
 /** Reads OVH_ACCESS_TOKEN (required) and OVH_API_BASE_URL / OVH_ENDPOINT. */
-export const CredentialsFromEnv: Layer.Layer<Credentials> = Layer.succeed(
+export const CredentialsFromEnv: Layer.Layer<Credentials> = /*@__PURE__*/ Layer.succeed(
   Credentials,
-  Effect.gen(function* () {
+  /*@__PURE__*/ Effect.gen(function* () {
     const apiKey = process.env.OVH_ACCESS_TOKEN;
 
     if (!apiKey) {

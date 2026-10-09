@@ -38,10 +38,10 @@ import { extractJsonErrorCode, extractJsonErrorData, sanitizeErrorCode } from ".
 import { readStreamAsText } from "../util/stream.ts";
 
 /** AWS JSON 1.0 Protocol */
-export const awsJson1_0Protocol = createAwsJsonProtocol("1.0");
+export const awsJson1_0Protocol = /*@__PURE__*/ createAwsJsonProtocol("1.0");
 
 /** AWS JSON 1.1 Protocol */
-export const awsJson1_1Protocol = createAwsJsonProtocol("1.1");
+export const awsJson1_1Protocol = /*@__PURE__*/ createAwsJsonProtocol("1.1");
 
 /**
  * Create an AWS JSON protocol handler for the specified version.

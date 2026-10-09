@@ -33,23 +33,19 @@ import * as Schema from "effect/Schema";
  * Unknown Hugging Face error -- returned when a failed response's HTTP status
  * has no mapped error class. Carries the raw body for later cataloging.
  */
-export class UnknownHuggingFaceError extends Schema.TaggedError<UnknownHuggingFaceError>()(
-  "UnknownHuggingFaceError",
-  {
-    code: Schema.optional(Schema.String),
-    message: Schema.optional(Schema.String),
+export class UnknownHuggingFaceError
+  extends /*@__PURE__*/ Schema.TaggedError<UnknownHuggingFaceError>()("UnknownHuggingFaceError", {
+    code: /*@__PURE__*/ Schema.optional(Schema.String),
+    message: /*@__PURE__*/ Schema.optional(Schema.String),
     body: Schema.Unknown,
-  },
-).pipe(Category.withServerError) {}
+  }).pipe(Category.withServerError) {}
 
 /** Schema parse error wrapper. */
-export class HuggingFaceParseError extends Schema.TaggedError<HuggingFaceParseError>()(
-  "HuggingFaceParseError",
-  {
+export class HuggingFaceParseError
+  extends /*@__PURE__*/ Schema.TaggedError<HuggingFaceParseError>()("HuggingFaceParseError", {
     body: Schema.Unknown,
     cause: Schema.Unknown,
-  },
-).pipe(Category.withParseError) {}
+  }).pipe(Category.withParseError) {}
 
 /**
  * Errors any Hugging Face operation may surface in addition to the

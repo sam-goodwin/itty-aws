@@ -34,21 +34,20 @@ import * as Schema from "effect/Schema";
  * per-operation error class and no HTTP status class. Carries the envelope's
  * `code`/`message`/`hint` and the raw body for later cataloging.
  */
-export class UnknownPrismaError extends Schema.TaggedError<UnknownPrismaError>()(
-  "UnknownPrismaError",
-  {
-    code: Schema.optional(Schema.String),
-    message: Schema.optional(Schema.String),
-    hint: Schema.optional(Schema.String),
+export class UnknownPrismaError
+  extends /*@__PURE__*/ Schema.TaggedError<UnknownPrismaError>()("UnknownPrismaError", {
+    code: /*@__PURE__*/ Schema.optional(Schema.String),
+    message: /*@__PURE__*/ Schema.optional(Schema.String),
+    hint: /*@__PURE__*/ Schema.optional(Schema.String),
     body: Schema.Unknown,
-  },
-).pipe(Category.withServerError) {}
+  }).pipe(Category.withServerError) {}
 
 /** Schema parse error wrapper (kept for v0 API compatibility). */
-export class PrismaParseError extends Schema.TaggedError<PrismaParseError>()("PrismaParseError", {
-  body: Schema.Unknown,
-  cause: Schema.Unknown,
-}).pipe(Category.withParseError) {}
+export class PrismaParseError
+  extends /*@__PURE__*/ Schema.TaggedError<PrismaParseError>()("PrismaParseError", {
+    body: Schema.Unknown,
+    cause: Schema.Unknown,
+  }).pipe(Category.withParseError) {}
 
 /**
  * Errors any Prisma operation may surface in addition to the

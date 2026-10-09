@@ -54,25 +54,26 @@ const errorEnvelope = (body: unknown): RestErrorEnvelope | undefined => {
   };
 };
 
-export const HuggingFaceProtocol: Layer.Layer<API.Protocol> = makeRestProtocol<Config>({
-  // Resolved on the CALLING fiber per request (the layer is memoized per
-  // process); the Credentials service holds an effect, so a token rotated
-  // between calls is picked up without rebuilding the layer.
-  credentials: Effect.gen(function* () {
-    const resolve = yield* Credentials;
-    return yield* resolve;
-  }),
-  baseUrl: (creds) => creds.apiBaseUrl,
-  headers: (creds) => ({
-    Authorization: `Bearer ${Redacted.value(creds.token)}`,
-  }),
-  errorEnvelope,
-  statusMap: HTTP_STATUS_MAP,
-  unknownError: ({ code, message, body }) =>
-    new UnknownHuggingFaceError({
-      code: typeof code === "string" ? code : code !== undefined ? String(code) : undefined,
-      message,
-      body,
+export const HuggingFaceProtocol: Layer.Layer<API.Protocol> =
+  /*@__PURE__*/ makeRestProtocol<Config>({
+    // Resolved on the CALLING fiber per request (the layer is memoized per
+    // process); the Credentials service holds an effect, so a token rotated
+    // between calls is picked up without rebuilding the layer.
+    credentials: /*@__PURE__*/ Effect.gen(function* () {
+      const resolve = yield* Credentials;
+      return yield* resolve;
     }),
-  parseError: ({ body, cause }) => new HuggingFaceParseError({ body, cause }),
-});
+    baseUrl: (creds) => creds.apiBaseUrl,
+    headers: (creds) => ({
+      Authorization: `Bearer ${Redacted.value(creds.token)}`,
+    }),
+    errorEnvelope,
+    statusMap: HTTP_STATUS_MAP,
+    unknownError: ({ code, message, body }) =>
+      new UnknownHuggingFaceError({
+        code: typeof code === "string" ? code : code !== undefined ? String(code) : undefined,
+        message,
+        body,
+      }),
+    parseError: ({ body, cause }) => new HuggingFaceParseError({ body, cause }),
+  });

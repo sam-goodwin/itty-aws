@@ -31,20 +31,16 @@ import * as Category from "@distilled.cloud/core/category";
 import * as Schema from "effect/Schema";
 
 /** Unknown Chronosphere error -- returned when nothing else matches. */
-export class UnknownChronosphereError extends Schema.TaggedError<UnknownChronosphereError>()(
-  "UnknownChronosphereError",
-  {
-    code: Schema.optional(Schema.String),
-    message: Schema.optional(Schema.String),
+export class UnknownChronosphereError
+  extends /*@__PURE__*/ Schema.TaggedError<UnknownChronosphereError>()("UnknownChronosphereError", {
+    code: /*@__PURE__*/ Schema.optional(Schema.String),
+    message: /*@__PURE__*/ Schema.optional(Schema.String),
     body: Schema.Unknown,
-  },
-).pipe(Category.withServerError) {}
+  }).pipe(Category.withServerError) {}
 
 /** Schema parse error wrapper. */
-export class ChronosphereParseError extends Schema.TaggedError<ChronosphereParseError>()(
-  "ChronosphereParseError",
-  {
+export class ChronosphereParseError
+  extends /*@__PURE__*/ Schema.TaggedError<ChronosphereParseError>()("ChronosphereParseError", {
     body: Schema.Unknown,
     cause: Schema.Unknown,
-  },
-).pipe(Category.withParseError) {}
+  }).pipe(Category.withParseError) {}

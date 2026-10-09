@@ -31,20 +31,16 @@ import * as Category from "@distilled.cloud/core/category";
 import * as Schema from "effect/Schema";
 
 /** Unknown Metabase error -- returned when nothing else matches the failure. */
-export class UnknownMetabaseError extends Schema.TaggedError<UnknownMetabaseError>()(
-  "UnknownMetabaseError",
-  {
-    code: Schema.optional(Schema.String),
-    message: Schema.optional(Schema.String),
+export class UnknownMetabaseError
+  extends /*@__PURE__*/ Schema.TaggedError<UnknownMetabaseError>()("UnknownMetabaseError", {
+    code: /*@__PURE__*/ Schema.optional(Schema.String),
+    message: /*@__PURE__*/ Schema.optional(Schema.String),
     body: Schema.Unknown,
-  },
-).pipe(Category.withServerError) {}
+  }).pipe(Category.withServerError) {}
 
 /** Schema parse error wrapper. */
-export class MetabaseParseError extends Schema.TaggedError<MetabaseParseError>()(
-  "MetabaseParseError",
-  {
+export class MetabaseParseError
+  extends /*@__PURE__*/ Schema.TaggedError<MetabaseParseError>()("MetabaseParseError", {
     body: Schema.Unknown,
     cause: Schema.Unknown,
-  },
-).pipe(Category.withParseError) {}
+  }).pipe(Category.withParseError) {}

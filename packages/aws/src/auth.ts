@@ -86,9 +86,9 @@ export const ssoRoleCredentialsCacheName = (
     ].join("\n"),
   );
 
-export const Default = Effect.serviceOption(Auth).pipe(
-  Effect.map(Option.getOrUndefined),
-  Effect.flatMap((c) => (c ? Effect.succeed(c) : makeAuthService())),
+export const Default = /*@__PURE__*/ Effect.serviceOption(Auth).pipe(
+  /*@__PURE__*/ Effect.map(Option.getOrUndefined),
+  /*@__PURE__*/ Effect.flatMap((c) => (c ? Effect.succeed(c) : makeAuthService())),
 );
 
 export const loadProfile = (profile: string) =>

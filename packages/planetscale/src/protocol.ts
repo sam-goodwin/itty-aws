@@ -43,22 +43,23 @@ export type PlanetScaleOpError =
 /** Context (requirements) shared by every generated PlanetScale operation. */
 export type PlanetScaleOpContext = Credentials | HttpClient.HttpClient;
 
-export const PlanetScaleProtocol: Layer.Layer<API.Protocol> = makeRestProtocol<Config>({
-  // The Credentials service holds an effect -- resolving it here (per
-  // request, on the calling fiber) picks up context-provided credentials.
-  credentials: Effect.gen(function* () {
-    const resolve = yield* Credentials;
-    return yield* resolve;
-  }),
-  baseUrl: (creds) => creds.apiBaseUrl,
-  headers: (creds) => formatHeaders(creds),
-  // PlanetScale's error body is `{ code: string, message?: string }` -- the
-  // factory's default lenient envelope covers it.
-  unknownError: ({ code, message, body }) =>
-    new UnknownPlanetScaleError({
-      code: typeof code === "string" ? code : code !== undefined ? String(code) : undefined,
-      message,
-      body,
+export const PlanetScaleProtocol: Layer.Layer<API.Protocol> =
+  /*@__PURE__*/ makeRestProtocol<Config>({
+    // The Credentials service holds an effect -- resolving it here (per
+    // request, on the calling fiber) picks up context-provided credentials.
+    credentials: /*@__PURE__*/ Effect.gen(function* () {
+      const resolve = yield* Credentials;
+      return yield* resolve;
     }),
-  parseError: ({ body, cause }) => new PlanetScaleParseError({ body, cause }),
-});
+    baseUrl: (creds) => creds.apiBaseUrl,
+    headers: (creds) => formatHeaders(creds),
+    // PlanetScale's error body is `{ code: string, message?: string }` -- the
+    // factory's default lenient envelope covers it.
+    unknownError: ({ code, message, body }) =>
+      new UnknownPlanetScaleError({
+        code: typeof code === "string" ? code : code !== undefined ? String(code) : undefined,
+        message,
+        body,
+      }),
+    parseError: ({ body, cause }) => new PlanetScaleParseError({ body, cause }),
+  });

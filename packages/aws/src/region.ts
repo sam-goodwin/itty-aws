@@ -18,7 +18,8 @@ import * as Context from "effect/Context";
 import * as Effect from "effect/Effect";
 import * as Layer from "effect/Layer";
 
-export class Region extends Context.Service<Region, Effect.Effect<RegionName>>()("AWS::Region") {}
+export class Region
+  extends /*@__PURE__*/ Context.Service<Region, Effect.Effect<RegionName>>()("AWS::Region") {}
 
 /**
  * `AWS_REGION`, then `AWS_DEFAULT_REGION` -- the variables every AWS tool
@@ -26,9 +27,9 @@ export class Region extends Context.Service<Region, Effect.Effect<RegionName>>()
  * (rather than dying) so a provider can turn it into a typed
  * `MissingRegion` alongside its other credential-resolution failures.
  */
-export const fromEnvironment = Config.String("AWS_REGION").pipe(
-  Config.orElse(() => Config.String("AWS_DEFAULT_REGION")),
-  Effect.map((region) => region as RegionName),
+export const fromEnvironment = /*@__PURE__*/ Config.String("AWS_REGION").pipe(
+  /*@__PURE__*/ Config.orElse(() => Config.String("AWS_DEFAULT_REGION")),
+  /*@__PURE__*/ Effect.map((region) => region as RegionName),
 );
 
 /** Override the region with whatever the environment names. */

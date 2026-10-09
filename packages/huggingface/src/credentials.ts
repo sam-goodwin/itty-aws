@@ -1,4 +1,3 @@
-import { ConfigError } from "@distilled.cloud/core/errors";
 /**
  * Hugging Face credentials -- hand-written.
  *
@@ -12,6 +11,7 @@ import { ConfigError } from "@distilled.cloud/core/errors";
  * limits and gated/private repos 404.
  */
 import * as EffectConfig from "@distilled.cloud/core/config";
+import { ConfigError } from "@distilled.cloud/core/errors";
 import * as Context from "effect/Context";
 import * as Effect from "effect/Effect";
 import * as Layer from "effect/Layer";
@@ -25,28 +25,29 @@ export interface Config {
   readonly apiBaseUrl: string;
 }
 
-export class Credentials extends Context.Service<Credentials, Effect.Effect<Config>>()(
-  "HuggingFaceCredentials",
-) {}
+export class Credentials
+  extends /*@__PURE__*/ Context.Service<Credentials, Effect.Effect<Config>>()(
+    "HuggingFaceCredentials",
+  ) {}
 
-const envConfig = EffectConfig.all({
+const envConfig = /*@__PURE__*/ EffectConfig.all({
   // `HF_TOKEN` is what huggingface_hub, huggingface.js and the hf CLI read.
-  token: EffectConfig.String("HF_TOKEN"),
-  apiBaseUrl: EffectConfig.String("HF_API_URL").pipe(
-    EffectConfig.withDefault(DEFAULT_API_BASE_URL),
+  token: /*@__PURE__*/ EffectConfig.String("HF_TOKEN"),
+  apiBaseUrl: /*@__PURE__*/ EffectConfig.String("HF_API_URL").pipe(
+    /*@__PURE__*/ EffectConfig.withDefault(DEFAULT_API_BASE_URL),
   ),
 });
 
-export const CredentialsFromEnv = Layer.succeed(
+export const CredentialsFromEnv = /*@__PURE__*/ Layer.succeed(
   Credentials,
-  envConfig.pipe(
-    Effect.mapError(
+  /*@__PURE__*/ envConfig.pipe(
+    /*@__PURE__*/ Effect.mapError(
       () =>
         new ConfigError({
           message: "HF_TOKEN environment variable is required",
         }),
     ),
-    Effect.map(({ token, apiBaseUrl }) => ({
+    /*@__PURE__*/ Effect.map(({ token, apiBaseUrl }) => ({
       token: Redacted.make(token),
       apiBaseUrl,
     })),

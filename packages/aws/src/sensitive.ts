@@ -59,7 +59,7 @@ export const Sensitive = <A>(schema: S.Schema<A>): S.Schema<A | Redacted.Redacte
  * Wire format is plain string, TypeScript type is string | Redacted<string>.
  * At runtime, decoded values are always Redacted<string>.
  */
-export const SensitiveString = Sensitive(S.String).annotate({
+export const SensitiveString = /*@__PURE__*/ Sensitive(S.String).annotate({
   identifier: "SensitiveString",
 });
 
@@ -68,11 +68,11 @@ export const SensitiveString = Sensitive(S.String).annotate({
  * Wire format is base64 string, TypeScript type is Uint8Array | Redacted<Uint8Array>.
  * At runtime, decoded values are always Redacted<Uint8Array>.
  */
-export const SensitiveBlob = Sensitive(
-  S.String.pipe(
-    S.decodeTo(
-      S.instanceOf(Uint8Array),
-      SchemaTransformation.transform({
+export const SensitiveBlob = /*@__PURE__*/ Sensitive(
+  /*@__PURE__*/ S.String.pipe(
+    /*@__PURE__*/ S.decodeTo(
+      /*@__PURE__*/ S.instanceOf(Uint8Array),
+      /*@__PURE__*/ SchemaTransformation.transform({
         decode: (s) => Uint8Array.from(atob(s), (c) => c.charCodeAt(0)),
         encode: toBase64,
       }),

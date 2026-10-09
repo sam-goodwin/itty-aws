@@ -31,20 +31,16 @@ import * as Category from "@distilled.cloud/core/category";
 import * as Schema from "effect/Schema";
 
 /** Unknown Squarespace error -- returned when nothing else matches the failure. */
-export class UnknownSquarespaceError extends Schema.TaggedError<UnknownSquarespaceError>()(
-  "UnknownSquarespaceError",
-  {
-    code: Schema.optional(Schema.String),
-    message: Schema.optional(Schema.String),
+export class UnknownSquarespaceError
+  extends /*@__PURE__*/ Schema.TaggedError<UnknownSquarespaceError>()("UnknownSquarespaceError", {
+    code: /*@__PURE__*/ Schema.optional(Schema.String),
+    message: /*@__PURE__*/ Schema.optional(Schema.String),
     body: Schema.Unknown,
-  },
-).pipe(Category.withServerError) {}
+  }).pipe(Category.withServerError) {}
 
 /** Schema parse error wrapper (kept for v0 surface parity). */
-export class SquarespaceParseError extends Schema.TaggedError<SquarespaceParseError>()(
-  "SquarespaceParseError",
-  {
+export class SquarespaceParseError
+  extends /*@__PURE__*/ Schema.TaggedError<SquarespaceParseError>()("SquarespaceParseError", {
     body: Schema.Unknown,
     cause: Schema.Unknown,
-  },
-).pipe(Category.withParseError) {}
+  }).pipe(Category.withParseError) {}

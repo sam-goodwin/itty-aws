@@ -86,7 +86,7 @@ const fail = (e: unknown): Effect.Effect<never> => Effect.fail(e) as Effect.Effe
  * `access_denied`, ...) stay {@link SlackError}: they carry method-specific
  * detail (`needed`/`provided`) the shared class would drop.
  */
-const AUTH_SLUGS = new Set([
+const AUTH_SLUGS = /*@__PURE__*/ new Set([
   "not_authed",
   "invalid_auth",
   "account_inactive",
@@ -300,9 +300,9 @@ const decode = ({
     return wrapSensitive(outputAst, mapped);
   });
 
-export const SlackProtocol: Layer.Layer<API.Protocol> = Layer.succeed(
+export const SlackProtocol: Layer.Layer<API.Protocol> = /*@__PURE__*/ Layer.succeed(
   API.Protocol,
-  API.Protocol.of({
+  /*@__PURE__*/ API.Protocol.of({
     // Erase encode's Credentials requirement (see comment above).
     encode: (args) => encode(args) as Effect.Effect<HttpClientRequest.HttpClientRequest>,
     decode,

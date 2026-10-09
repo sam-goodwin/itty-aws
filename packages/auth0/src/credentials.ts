@@ -24,9 +24,8 @@ export interface Config {
   readonly apiBaseUrl: string;
 }
 
-export class Credentials extends Context.Service<Credentials, Effect.Effect<Config>>()(
-  "Auth0Credentials",
-) {}
+export class Credentials
+  extends /*@__PURE__*/ Context.Service<Credentials, Effect.Effect<Config>>()("Auth0Credentials") {}
 
 /** Layer from a Management API token + tenant domain. */
 export const fromToken = (config: {
@@ -47,9 +46,9 @@ export const fromToken = (config: {
  * Reads AUTH0_DOMAIN and AUTH0_MANAGEMENT_TOKEN (required) and
  * AUTH0_API_BASE_URL (optional override of `https://{domain}/api/v2`).
  */
-export const CredentialsFromEnv: Layer.Layer<Credentials> = Layer.succeed(
+export const CredentialsFromEnv: Layer.Layer<Credentials> = /*@__PURE__*/ Layer.succeed(
   Credentials,
-  Effect.gen(function* () {
+  /*@__PURE__*/ Effect.gen(function* () {
     const domain = process.env.AUTH0_DOMAIN;
     const token = process.env.AUTH0_MANAGEMENT_TOKEN;
 

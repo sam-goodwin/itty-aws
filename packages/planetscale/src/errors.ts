@@ -37,20 +37,16 @@ import * as Schema from "effect/Schema";
 export { HTTP_STATUS_MAP as ERROR_CODE_MAP } from "@distilled.cloud/core/errors";
 
 /** Unknown PlanetScale error -- returned when nothing else matches the failure. */
-export class UnknownPlanetScaleError extends Schema.TaggedError<UnknownPlanetScaleError>()(
-  "UnknownPlanetScaleError",
-  {
-    code: Schema.optional(Schema.String),
-    message: Schema.optional(Schema.String),
+export class UnknownPlanetScaleError
+  extends /*@__PURE__*/ Schema.TaggedError<UnknownPlanetScaleError>()("UnknownPlanetScaleError", {
+    code: /*@__PURE__*/ Schema.optional(Schema.String),
+    message: /*@__PURE__*/ Schema.optional(Schema.String),
     body: Schema.Unknown,
-  },
-).pipe(Category.withServerError) {}
+  }).pipe(Category.withServerError) {}
 
 /** Schema parse error wrapper (kept for v0 surface parity). */
-export class PlanetScaleParseError extends Schema.TaggedError<PlanetScaleParseError>()(
-  "PlanetScaleParseError",
-  {
+export class PlanetScaleParseError
+  extends /*@__PURE__*/ Schema.TaggedError<PlanetScaleParseError>()("PlanetScaleParseError", {
     body: Schema.Unknown,
     cause: Schema.Unknown,
-  },
-).pipe(Category.withParseError) {}
+  }).pipe(Category.withParseError) {}

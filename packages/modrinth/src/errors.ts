@@ -31,20 +31,16 @@ import * as Category from "@distilled.cloud/core/category";
 import * as Schema from "effect/Schema";
 
 /** Unknown Modrinth error -- returned when nothing else matches the failure. */
-export class UnknownModrinthError extends Schema.TaggedError<UnknownModrinthError>()(
-  "UnknownModrinthError",
-  {
-    code: Schema.optional(Schema.String),
-    message: Schema.optional(Schema.String),
+export class UnknownModrinthError
+  extends /*@__PURE__*/ Schema.TaggedError<UnknownModrinthError>()("UnknownModrinthError", {
+    code: /*@__PURE__*/ Schema.optional(Schema.String),
+    message: /*@__PURE__*/ Schema.optional(Schema.String),
     body: Schema.Unknown,
-  },
-).pipe(Category.withServerError) {}
+  }).pipe(Category.withServerError) {}
 
 /** Schema parse error wrapper. */
-export class ModrinthParseError extends Schema.TaggedError<ModrinthParseError>()(
-  "ModrinthParseError",
-  {
+export class ModrinthParseError
+  extends /*@__PURE__*/ Schema.TaggedError<ModrinthParseError>()("ModrinthParseError", {
     body: Schema.Unknown,
     cause: Schema.Unknown,
-  },
-).pipe(Category.withParseError) {}
+  }).pipe(Category.withParseError) {}

@@ -31,17 +31,16 @@ import * as Category from "@distilled.cloud/core/category";
 import * as Schema from "effect/Schema";
 
 /** Unknown PayPal error -- returned when nothing else matches the failure. */
-export class UnknownPaypalError extends Schema.TaggedError<UnknownPaypalError>()(
-  "UnknownPaypalError",
-  {
-    code: Schema.optional(Schema.String),
-    message: Schema.optional(Schema.String),
+export class UnknownPaypalError
+  extends /*@__PURE__*/ Schema.TaggedError<UnknownPaypalError>()("UnknownPaypalError", {
+    code: /*@__PURE__*/ Schema.optional(Schema.String),
+    message: /*@__PURE__*/ Schema.optional(Schema.String),
     body: Schema.Unknown,
-  },
-).pipe(Category.withServerError) {}
+  }).pipe(Category.withServerError) {}
 
 /** Schema parse error wrapper. */
-export class PaypalParseError extends Schema.TaggedError<PaypalParseError>()("PaypalParseError", {
-  body: Schema.Unknown,
-  cause: Schema.Unknown,
-}).pipe(Category.withParseError) {}
+export class PaypalParseError
+  extends /*@__PURE__*/ Schema.TaggedError<PaypalParseError>()("PaypalParseError", {
+    body: Schema.Unknown,
+    cause: Schema.Unknown,
+  }).pipe(Category.withParseError) {}

@@ -54,8 +54,8 @@ const errorEnvelope = (body: unknown): RestErrorEnvelope | undefined => {
   return { code, message };
 };
 
-export const ModalProtocol: Layer.Layer<API.Protocol> = makeRestProtocol<Config>({
-  credentials: Effect.gen(function* () {
+export const ModalProtocol: Layer.Layer<API.Protocol> = /*@__PURE__*/ makeRestProtocol<Config>({
+  credentials: /*@__PURE__*/ Effect.gen(function* () {
     const resolve = yield* Credentials;
     return yield* resolve;
   }),

@@ -31,20 +31,19 @@ import * as Category from "@distilled.cloud/core/category";
 import * as Schema from "effect/Schema";
 
 /** Unknown Apache Superset error -- returned when nothing else matches. */
-export class UnknownApacheSupersetError extends Schema.TaggedError<UnknownApacheSupersetError>()(
-  "UnknownApacheSupersetError",
-  {
-    code: Schema.optional(Schema.String),
-    message: Schema.optional(Schema.String),
-    body: Schema.Unknown,
-  },
-).pipe(Category.withServerError) {}
+export class UnknownApacheSupersetError
+  extends /*@__PURE__*/ Schema.TaggedError<UnknownApacheSupersetError>()(
+    "UnknownApacheSupersetError",
+    {
+      code: /*@__PURE__*/ Schema.optional(Schema.String),
+      message: /*@__PURE__*/ Schema.optional(Schema.String),
+      body: Schema.Unknown,
+    },
+  ).pipe(Category.withServerError) {}
 
 /** Schema parse error wrapper. */
-export class ApacheSupersetParseError extends Schema.TaggedError<ApacheSupersetParseError>()(
-  "ApacheSupersetParseError",
-  {
+export class ApacheSupersetParseError
+  extends /*@__PURE__*/ Schema.TaggedError<ApacheSupersetParseError>()("ApacheSupersetParseError", {
     body: Schema.Unknown,
     cause: Schema.Unknown,
-  },
-).pipe(Category.withParseError) {}
+  }).pipe(Category.withParseError) {}

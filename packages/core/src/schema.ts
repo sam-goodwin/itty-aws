@@ -82,8 +82,8 @@ export const Any: any = S.Any;
  * options for later `.annotate` / `.check` calls.
  */
 const SchemaProto: object = /*@__PURE__*/ Object.getPrototypeOf(S.String);
-const buildKey = Symbol.for("@distilled.cloud/core/schema/build");
-const annotationsKey = Symbol.for("@distilled.cloud/core/schema/annotations");
+const buildKey = /*@__PURE__*/ Symbol.for("@distilled.cloud/core/schema/build");
+const annotationsKey = /*@__PURE__*/ Symbol.for("@distilled.cloud/core/schema/annotations");
 
 type Annotations = Record<string, unknown>;
 
@@ -94,7 +94,7 @@ type Annotations = Record<string, unknown>;
 export interface LazyBuilder {
   readonly build: (data: unknown) => S.Top;
 }
-const dataKey = Symbol.for("@distilled.cloud/core/schema/data");
+const dataKey = /*@__PURE__*/ Symbol.for("@distilled.cloud/core/schema/data");
 
 interface LazySchema {
   [buildKey]?: (() => S.Top) | LazyBuilder;
@@ -125,10 +125,10 @@ const forwarded = (name: string): PropertyDescriptor => ({
   },
 });
 
-const LazyProto: object = Object.create(SchemaProto, {
-  ast: forwarded("ast"),
-  value: forwarded("value"),
-  key: forwarded("key"),
+const LazyProto: object = /*@__PURE__*/ Object.create(SchemaProto, {
+  ast: /*@__PURE__*/ forwarded("ast"),
+  value: /*@__PURE__*/ forwarded("value"),
+  key: /*@__PURE__*/ forwarded("key"),
   annotate: {
     configurable: true,
     writable: true,
@@ -192,7 +192,7 @@ const lazyRecord = (key: S.Top, value: S.Top): S.Top => lazy(() => S.Record(key 
  * marker answer without building. Instances behave as before: same
  * `_tag`, fields, validation, `instanceof`, stack and `Effect.catchTag`.
  */
-const lazyErrorKey = Symbol.for("@distilled.cloud/core/schema/lazyError");
+const lazyErrorKey = /*@__PURE__*/ Symbol.for("@distilled.cloud/core/schema/lazyError");
 
 interface LazyErrorState {
   readonly identifier: string | undefined;

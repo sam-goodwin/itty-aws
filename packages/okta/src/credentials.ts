@@ -27,9 +27,8 @@ export interface Config {
   readonly authScheme: AuthScheme;
 }
 
-export class Credentials extends Context.Service<Credentials, Effect.Effect<Config>>()(
-  "OktaCredentials",
-) {}
+export class Credentials
+  extends /*@__PURE__*/ Context.Service<Credentials, Effect.Effect<Config>>()("OktaCredentials") {}
 
 const stripTrailingSlash = (url: string): string => url.replace(/\/+$/, "");
 
@@ -63,9 +62,9 @@ export const fromAccessToken = (config: {
  * Reads OKTA_API_TOKEN + OKTA_ORG_URL (required) and OKTA_AUTH_SCHEME
  * (optional, `SSWS` or `Bearer`; default SSWS).
  */
-export const CredentialsFromEnv: Layer.Layer<Credentials> = Layer.succeed(
+export const CredentialsFromEnv: Layer.Layer<Credentials> = /*@__PURE__*/ Layer.succeed(
   Credentials,
-  Effect.gen(function* () {
+  /*@__PURE__*/ Effect.gen(function* () {
     const apiToken = process.env.OKTA_API_TOKEN;
     const apiBaseUrl = process.env.OKTA_ORG_URL;
     const scheme = process.env.OKTA_AUTH_SCHEME;

@@ -31,20 +31,16 @@ import * as Category from "@distilled.cloud/core/category";
 import * as Schema from "effect/Schema";
 
 /** Unknown Datadog error -- returned when nothing else matches the failure. */
-export class UnknownDatadogError extends Schema.TaggedError<UnknownDatadogError>()(
-  "UnknownDatadogError",
-  {
-    code: Schema.optional(Schema.String),
-    message: Schema.optional(Schema.String),
+export class UnknownDatadogError
+  extends /*@__PURE__*/ Schema.TaggedError<UnknownDatadogError>()("UnknownDatadogError", {
+    code: /*@__PURE__*/ Schema.optional(Schema.String),
+    message: /*@__PURE__*/ Schema.optional(Schema.String),
     body: Schema.Unknown,
-  },
-).pipe(Category.withServerError) {}
+  }).pipe(Category.withServerError) {}
 
 /** Schema parse error wrapper. */
-export class DatadogParseError extends Schema.TaggedError<DatadogParseError>()(
-  "DatadogParseError",
-  {
+export class DatadogParseError
+  extends /*@__PURE__*/ Schema.TaggedError<DatadogParseError>()("DatadogParseError", {
     body: Schema.Unknown,
     cause: Schema.Unknown,
-  },
-).pipe(Category.withParseError) {}
+  }).pipe(Category.withParseError) {}

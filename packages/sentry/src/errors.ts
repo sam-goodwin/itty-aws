@@ -31,17 +31,16 @@ import * as Category from "@distilled.cloud/core/category";
 import * as Schema from "effect/Schema";
 
 /** Unknown Sentry error -- returned when nothing else matches the failure. */
-export class UnknownSentryError extends Schema.TaggedError<UnknownSentryError>()(
-  "UnknownSentryError",
-  {
-    code: Schema.optional(Schema.String),
-    message: Schema.optional(Schema.String),
+export class UnknownSentryError
+  extends /*@__PURE__*/ Schema.TaggedError<UnknownSentryError>()("UnknownSentryError", {
+    code: /*@__PURE__*/ Schema.optional(Schema.String),
+    message: /*@__PURE__*/ Schema.optional(Schema.String),
     body: Schema.Unknown,
-  },
-).pipe(Category.withServerError) {}
+  }).pipe(Category.withServerError) {}
 
 /** Schema parse error wrapper (kept for v0 surface parity). */
-export class SentryParseError extends Schema.TaggedError<SentryParseError>()("SentryParseError", {
-  body: Schema.Unknown,
-  cause: Schema.Unknown,
-}).pipe(Category.withParseError) {}
+export class SentryParseError
+  extends /*@__PURE__*/ Schema.TaggedError<SentryParseError>()("SentryParseError", {
+    body: Schema.Unknown,
+    cause: Schema.Unknown,
+  }).pipe(Category.withParseError) {}

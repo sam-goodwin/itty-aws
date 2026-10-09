@@ -16,11 +16,12 @@ import type { AwsCredentialIdentity } from "../credentials-service.ts";
  * final (e.g. a malformed URL, an MFA prompt that cannot be answered) and
  * the chain stops there instead of trying the next source.
  */
-export class CredentialSourceError extends Data.TaggedError("AWS::CredentialSourceError")<{
-  message: string;
-  tryNextLink?: boolean;
-  cause?: unknown;
-}> {}
+export class CredentialSourceError
+  extends /*@__PURE__*/ Data.TaggedError("AWS::CredentialSourceError")<{
+    message: string;
+    tryNextLink?: boolean;
+    cause?: unknown;
+  }> {}
 
 export type CredentialSource = Effect.Effect<AwsCredentialIdentity, CredentialSourceError, never>;
 

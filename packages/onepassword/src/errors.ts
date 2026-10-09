@@ -31,20 +31,16 @@ import * as Category from "@distilled.cloud/core/category";
 import * as Schema from "effect/Schema";
 
 /** Unknown 1Password error -- returned when nothing else matches the failure. */
-export class UnknownOnepasswordError extends Schema.TaggedError<UnknownOnepasswordError>()(
-  "UnknownOnepasswordError",
-  {
-    code: Schema.optional(Schema.String),
-    message: Schema.optional(Schema.String),
+export class UnknownOnepasswordError
+  extends /*@__PURE__*/ Schema.TaggedError<UnknownOnepasswordError>()("UnknownOnepasswordError", {
+    code: /*@__PURE__*/ Schema.optional(Schema.String),
+    message: /*@__PURE__*/ Schema.optional(Schema.String),
     body: Schema.Unknown,
-  },
-).pipe(Category.withServerError) {}
+  }).pipe(Category.withServerError) {}
 
 /** Schema parse error wrapper. */
-export class OnepasswordParseError extends Schema.TaggedError<OnepasswordParseError>()(
-  "OnepasswordParseError",
-  {
+export class OnepasswordParseError
+  extends /*@__PURE__*/ Schema.TaggedError<OnepasswordParseError>()("OnepasswordParseError", {
     body: Schema.Unknown,
     cause: Schema.Unknown,
-  },
-).pipe(Category.withParseError) {}
+  }).pipe(Category.withParseError) {}

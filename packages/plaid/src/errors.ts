@@ -31,17 +31,16 @@ import * as Category from "@distilled.cloud/core/category";
 import * as Schema from "effect/Schema";
 
 /** Unknown Plaid error -- returned when nothing else matches the failure. */
-export class UnknownPlaidError extends Schema.TaggedError<UnknownPlaidError>()(
-  "UnknownPlaidError",
-  {
-    code: Schema.optional(Schema.String),
-    message: Schema.optional(Schema.String),
+export class UnknownPlaidError
+  extends /*@__PURE__*/ Schema.TaggedError<UnknownPlaidError>()("UnknownPlaidError", {
+    code: /*@__PURE__*/ Schema.optional(Schema.String),
+    message: /*@__PURE__*/ Schema.optional(Schema.String),
     body: Schema.Unknown,
-  },
-).pipe(Category.withServerError) {}
+  }).pipe(Category.withServerError) {}
 
 /** Schema parse error wrapper (kept for v0 surface parity). */
-export class PlaidParseError extends Schema.TaggedError<PlaidParseError>()("PlaidParseError", {
-  body: Schema.Unknown,
-  cause: Schema.Unknown,
-}).pipe(Category.withParseError) {}
+export class PlaidParseError
+  extends /*@__PURE__*/ Schema.TaggedError<PlaidParseError>()("PlaidParseError", {
+    body: Schema.Unknown,
+    cause: Schema.Unknown,
+  }).pipe(Category.withParseError) {}

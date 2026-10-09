@@ -51,7 +51,7 @@ export {
 // Cloudflare v4 envelope traits
 // =============================================================================
 
-export const envelopePayloadRootSymbol = Symbol.for(
+export const envelopePayloadRootSymbol = /*@__PURE__*/ Symbol.for(
   "@distilled.cloud/cloudflare/envelope-payload-root",
 );
 
@@ -64,7 +64,7 @@ export const envelopePayloadRootSymbol = Symbol.for(
  */
 export const EnvelopePayloadRoot = () => makeAnnotation(envelopePayloadRootSymbol, true);
 
-export const resultInfoSymbol = Symbol.for("@distilled.cloud/cloudflare/result-info");
+export const resultInfoSymbol = /*@__PURE__*/ Symbol.for("@distilled.cloud/cloudflare/result-info");
 
 /**
  * Marks the output member that receives the envelope's top-level
@@ -73,7 +73,9 @@ export const resultInfoSymbol = Symbol.for("@distilled.cloud/cloudflare/result-i
  */
 export const ResultInfo = () => makeAnnotation(resultInfoSymbol, true);
 
-export const envelopePayloadSymbol = Symbol.for("@distilled.cloud/cloudflare/envelope-payload");
+export const envelopePayloadSymbol = /*@__PURE__*/ Symbol.for(
+  "@distilled.cloud/cloudflare/envelope-payload",
+);
 
 /**
  * Marks the single output member that receives the envelope's `result` value
@@ -88,7 +90,7 @@ export const envelopePayloadSymbol = Symbol.for("@distilled.cloud/cloudflare/env
  */
 export const EnvelopePayload = () => makeAnnotation(envelopePayloadSymbol, true);
 
-export const binaryResponseBodySymbol = Symbol.for(
+export const binaryResponseBodySymbol = /*@__PURE__*/ Symbol.for(
   "@distilled.cloud/cloudflare/binary-response-body",
 );
 
@@ -109,7 +111,7 @@ export type BinaryResponseBody = Stream.Stream<Uint8Array, HttpClientError.HttpC
 // Per-operation host
 // =============================================================================
 
-export const hostSymbol = Symbol.for("@distilled.cloud/cloudflare/host");
+export const hostSymbol = /*@__PURE__*/ Symbol.for("@distilled.cloud/cloudflare/host");
 
 /**
  * Marks an operation input whose requests go to their own origin instead of

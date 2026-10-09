@@ -31,20 +31,16 @@ import * as Category from "@distilled.cloud/core/category";
 import * as Schema from "effect/Schema";
 
 /** Unknown Infisical error -- returned when nothing else matches the failure. */
-export class UnknownInfisicalError extends Schema.TaggedError<UnknownInfisicalError>()(
-  "UnknownInfisicalError",
-  {
-    code: Schema.optional(Schema.String),
-    message: Schema.optional(Schema.String),
+export class UnknownInfisicalError
+  extends /*@__PURE__*/ Schema.TaggedError<UnknownInfisicalError>()("UnknownInfisicalError", {
+    code: /*@__PURE__*/ Schema.optional(Schema.String),
+    message: /*@__PURE__*/ Schema.optional(Schema.String),
     body: Schema.Unknown,
-  },
-).pipe(Category.withServerError) {}
+  }).pipe(Category.withServerError) {}
 
 /** Schema parse error wrapper. */
-export class InfisicalParseError extends Schema.TaggedError<InfisicalParseError>()(
-  "InfisicalParseError",
-  {
+export class InfisicalParseError
+  extends /*@__PURE__*/ Schema.TaggedError<InfisicalParseError>()("InfisicalParseError", {
     body: Schema.Unknown,
     cause: Schema.Unknown,
-  },
-).pipe(Category.withParseError) {}
+  }).pipe(Category.withParseError) {}

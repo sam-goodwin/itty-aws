@@ -31,20 +31,16 @@ import * as Category from "@distilled.cloud/core/category";
 import * as Schema from "effect/Schema";
 
 /** Unknown turbopuffer error -- returned when nothing else matches the failure. */
-export class UnknownTurbopufferError extends Schema.TaggedError<UnknownTurbopufferError>()(
-  "UnknownTurbopufferError",
-  {
-    code: Schema.optional(Schema.String),
-    message: Schema.optional(Schema.String),
+export class UnknownTurbopufferError
+  extends /*@__PURE__*/ Schema.TaggedError<UnknownTurbopufferError>()("UnknownTurbopufferError", {
+    code: /*@__PURE__*/ Schema.optional(Schema.String),
+    message: /*@__PURE__*/ Schema.optional(Schema.String),
     body: Schema.Unknown,
-  },
-).pipe(Category.withServerError) {}
+  }).pipe(Category.withServerError) {}
 
 /** Schema parse error wrapper (kept for Neon-style surface parity). */
-export class TurbopufferParseError extends Schema.TaggedError<TurbopufferParseError>()(
-  "TurbopufferParseError",
-  {
+export class TurbopufferParseError
+  extends /*@__PURE__*/ Schema.TaggedError<TurbopufferParseError>()("TurbopufferParseError", {
     body: Schema.Unknown,
     cause: Schema.Unknown,
-  },
-).pipe(Category.withParseError) {}
+  }).pipe(Category.withParseError) {}

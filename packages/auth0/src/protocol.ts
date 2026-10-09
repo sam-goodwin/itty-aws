@@ -42,10 +42,10 @@ export type Auth0OpError =
 /** Context (requirements) shared by every generated Auth0 operation. */
 export type Auth0OpContext = Credentials | HttpClient.HttpClient;
 
-export const Auth0Protocol: Layer.Layer<API.Protocol> = makeRestProtocol<Config>({
+export const Auth0Protocol: Layer.Layer<API.Protocol> = /*@__PURE__*/ makeRestProtocol<Config>({
   // The Credentials service holds an effect -- resolving it here (per
   // request, on the calling fiber) picks up context-provided credentials.
-  credentials: Effect.gen(function* () {
+  credentials: /*@__PURE__*/ Effect.gen(function* () {
     const resolve = yield* Credentials;
     return yield* resolve;
   }),

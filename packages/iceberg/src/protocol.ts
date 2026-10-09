@@ -43,7 +43,7 @@ export type IcebergOpError = DefaultErrors | ConfigError | HttpClientError.HttpC
 export type IcebergOpContext = Credentials | HttpClient.HttpClient;
 
 /** Routes that are not scoped to a warehouse prefix. */
-const UNPREFIXED_ROUTES = new Set(["/config"]);
+const UNPREFIXED_ROUTES = /*@__PURE__*/ new Set(["/config"]);
 
 /** `<uri>/v1` or `<uri>/v1/<prefix>` for a route. Exported for tests. */
 export const baseUrlFor = (creds: Config, uri: string): string => {
@@ -68,10 +68,10 @@ const errorEnvelope = (body: unknown): RestErrorEnvelope | undefined => {
   };
 };
 
-export const IcebergProtocol: Layer.Layer<API.Protocol> = makeRestProtocol<Config>({
+export const IcebergProtocol: Layer.Layer<API.Protocol> = /*@__PURE__*/ makeRestProtocol<Config>({
   // Resolved on the CALLING fiber per request; the Credentials service holds
   // an effect, so a token rotated between calls is picked up.
-  credentials: Effect.gen(function* () {
+  credentials: /*@__PURE__*/ Effect.gen(function* () {
     const resolve = yield* Credentials;
     return yield* resolve;
   }),

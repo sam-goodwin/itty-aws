@@ -43,20 +43,19 @@ import * as Schema from "effect/Schema";
  * Unknown Notion error -- returned when a failed response's HTTP status has
  * no mapped error class.
  */
-export class UnknownNotionError extends Schema.TaggedError<UnknownNotionError>()(
-  "UnknownNotionError",
-  {
-    code: Schema.optional(Schema.String),
-    message: Schema.optional(Schema.String),
+export class UnknownNotionError
+  extends /*@__PURE__*/ Schema.TaggedError<UnknownNotionError>()("UnknownNotionError", {
+    code: /*@__PURE__*/ Schema.optional(Schema.String),
+    message: /*@__PURE__*/ Schema.optional(Schema.String),
     body: Schema.Unknown,
-  },
-).pipe(Category.withServerError) {}
+  }).pipe(Category.withServerError) {}
 
 /** Schema parse error wrapper. */
-export class NotionParseError extends Schema.TaggedError<NotionParseError>()("NotionParseError", {
-  body: Schema.Unknown,
-  cause: Schema.Unknown,
-}).pipe(Category.withParseError) {}
+export class NotionParseError
+  extends /*@__PURE__*/ Schema.TaggedError<NotionParseError>()("NotionParseError", {
+    body: Schema.Unknown,
+    cause: Schema.Unknown,
+  }).pipe(Category.withParseError) {}
 
 /**
  * Errors any Notion operation may surface in addition to the shared HTTP

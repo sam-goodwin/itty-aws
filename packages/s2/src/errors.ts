@@ -48,9 +48,10 @@ import * as Schema from "effect/Schema";
  * the error is marked retryable and the default policy re-asks after a
  * short backoff.
  */
-export class RequestTimeout extends Schema.TaggedError<RequestTimeout>()("RequestTimeout", {
-  message: Schema.String,
-}).pipe(Category.withRetryableError) {}
+export class RequestTimeout
+  extends /*@__PURE__*/ Schema.TaggedError<RequestTimeout>()("RequestTimeout", {
+    message: Schema.String,
+  }).pipe(Category.withRetryableError) {}
 
 /**
  * HTTP 412 -- `append_condition_failed`: an append's precondition did not
@@ -60,41 +61,39 @@ export class RequestTimeout extends Schema.TaggedError<RequestTimeout>()("Reques
  * with the stream's actual tail, so it is NOT retryable; `checkTail` is the
  * fix.
  */
-export class PreconditionFailed extends Schema.TaggedError<PreconditionFailed>()(
-  "PreconditionFailed",
-  {
+export class PreconditionFailed
+  extends /*@__PURE__*/ Schema.TaggedError<PreconditionFailed>()("PreconditionFailed", {
     message: Schema.String,
-  },
-).pipe(Category.withConflictError) {}
+  }).pipe(Category.withConflictError) {}
 
 /**
  * HTTP 416 -- the requested read position is outside the stream's current
  * range: a `seq_num` past the tail, or a `timestamp` older than anything
  * retained. Not retryable as-is -- read from an earlier/clamped position.
  */
-export class RangeNotSatisfiable extends Schema.TaggedError<RangeNotSatisfiable>()(
-  "RangeNotSatisfiable",
-  {
+export class RangeNotSatisfiable
+  extends /*@__PURE__*/ Schema.TaggedError<RangeNotSatisfiable>()("RangeNotSatisfiable", {
     message: Schema.String,
-  },
-).pipe(Category.withBadRequestError) {}
+  }).pipe(Category.withBadRequestError) {}
 
 /**
  * Unknown S2 error -- returned when a failed response's HTTP status has no
  * mapped error class. `code` is S2's own error code (the machine-parsable
  * half of its error envelope). See https://s2.dev/docs.
  */
-export class UnknownS2Error extends Schema.TaggedError<UnknownS2Error>()("UnknownS2Error", {
-  code: Schema.optional(Schema.String),
-  message: Schema.optional(Schema.String),
-  body: Schema.Unknown,
-}).pipe(Category.withServerError) {}
+export class UnknownS2Error
+  extends /*@__PURE__*/ Schema.TaggedError<UnknownS2Error>()("UnknownS2Error", {
+    code: /*@__PURE__*/ Schema.optional(Schema.String),
+    message: /*@__PURE__*/ Schema.optional(Schema.String),
+    body: Schema.Unknown,
+  }).pipe(Category.withServerError) {}
 
 /** Schema parse error wrapper. */
-export class S2ParseError extends Schema.TaggedError<S2ParseError>()("S2ParseError", {
-  body: Schema.Unknown,
-  cause: Schema.Unknown,
-}).pipe(Category.withParseError) {}
+export class S2ParseError
+  extends /*@__PURE__*/ Schema.TaggedError<S2ParseError>()("S2ParseError", {
+    body: Schema.Unknown,
+    cause: Schema.Unknown,
+  }).pipe(Category.withParseError) {}
 
 /**
  * Errors any S2 operation may surface in addition to the shared HTTP

@@ -319,9 +319,9 @@ const decode = ({
     ).pipe(Effect.catch(fail));
   });
 
-export const GcpProtocol: Layer.Layer<API.Protocol> = Layer.succeed(
+export const GcpProtocol: Layer.Layer<API.Protocol> = /*@__PURE__*/ Layer.succeed(
   API.Protocol,
-  API.Protocol.of({
+  /*@__PURE__*/ API.Protocol.of({
     // Erase encode's Credentials requirement (see comment above).
     encode: (args) => encode(args) as Effect.Effect<HttpClientRequest.HttpClientRequest>,
     decode,

@@ -31,20 +31,16 @@ import * as Category from "@distilled.cloud/core/category";
 import * as Schema from "effect/Schema";
 
 /** Unknown Meilisearch error -- returned when nothing else matches the failure. */
-export class UnknownMeilisearchError extends Schema.TaggedError<UnknownMeilisearchError>()(
-  "UnknownMeilisearchError",
-  {
-    code: Schema.optional(Schema.String),
-    message: Schema.optional(Schema.String),
+export class UnknownMeilisearchError
+  extends /*@__PURE__*/ Schema.TaggedError<UnknownMeilisearchError>()("UnknownMeilisearchError", {
+    code: /*@__PURE__*/ Schema.optional(Schema.String),
+    message: /*@__PURE__*/ Schema.optional(Schema.String),
     body: Schema.Unknown,
-  },
-).pipe(Category.withServerError) {}
+  }).pipe(Category.withServerError) {}
 
 /** Schema parse error wrapper. */
-export class MeilisearchParseError extends Schema.TaggedError<MeilisearchParseError>()(
-  "MeilisearchParseError",
-  {
+export class MeilisearchParseError
+  extends /*@__PURE__*/ Schema.TaggedError<MeilisearchParseError>()("MeilisearchParseError", {
     body: Schema.Unknown,
     cause: Schema.Unknown,
-  },
-).pipe(Category.withParseError) {}
+  }).pipe(Category.withParseError) {}

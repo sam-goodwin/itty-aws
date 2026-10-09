@@ -71,10 +71,10 @@ const errorEnvelope = (body: unknown): RestErrorEnvelope | undefined => {
   return message !== undefined || code !== undefined ? { code, message } : undefined;
 };
 
-export const DatadogProtocol: Layer.Layer<API.Protocol> = makeRestProtocol<Config>({
+export const DatadogProtocol: Layer.Layer<API.Protocol> = /*@__PURE__*/ makeRestProtocol<Config>({
   // The Credentials service holds an effect -- resolving it here (per
   // request, on the calling fiber) picks up context-provided credentials.
-  credentials: Effect.gen(function* () {
+  credentials: /*@__PURE__*/ Effect.gen(function* () {
     const resolve = yield* Credentials;
     return yield* resolve;
   }),

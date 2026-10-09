@@ -6,13 +6,14 @@ export interface XmlObject {
   [name: string]: XmlValue;
 }
 
-export class XmlParseError extends Data.TaggedError("XmlParseError")<{
-  readonly message: string;
-  /** UTF-16 offset in the original input; line and column are one-based. */
-  readonly offset: number;
-  readonly line: number;
-  readonly column: number;
-}> {}
+export class XmlParseError
+  extends /*@__PURE__*/ Data.TaggedError("XmlParseError")<{
+    readonly message: string;
+    /** UTF-16 offset in the original input; line and column are one-based. */
+    readonly offset: number;
+    readonly line: number;
+    readonly column: number;
+  }> {}
 
 export interface XmlParseOptions {
   /** Maximum open elements, including the root. Defaults to 256. */

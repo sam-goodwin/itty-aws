@@ -40,39 +40,43 @@ import * as Schema from "effect/Schema";
  * `messages` carries the envelope's `response_metadata.messages` (per-field
  * validation detail on `invalid_arguments`).
  */
-export class SlackError extends Schema.TaggedError<SlackError>()("SlackError", {
-  code: Schema.String,
-  message: Schema.optional(Schema.String),
-  needed: Schema.optional(Schema.String),
-  provided: Schema.optional(Schema.String),
-  messages: Schema.optional(Schema.Array(Schema.String)),
-}) {}
+export class SlackError
+  extends /*@__PURE__*/ Schema.TaggedError<SlackError>()("SlackError", {
+    code: Schema.String,
+    message: /*@__PURE__*/ Schema.optional(Schema.String),
+    needed: /*@__PURE__*/ Schema.optional(Schema.String),
+    provided: /*@__PURE__*/ Schema.optional(Schema.String),
+    messages: /*@__PURE__*/ Schema.optional(/*@__PURE__*/ Schema.Array(Schema.String)),
+  }) {}
 
 /**
  * Slack rate limit -- a 429 or the `rate_limited`/`ratelimited` slug. Slack
  * answers with a `Retry-After` header the default retry policy honors.
  */
-export class SlackRateLimited extends Schema.TaggedError<SlackRateLimited>()("SlackRateLimited", {
-  code: Schema.String,
-  message: Schema.optional(Schema.String),
-  retryAfter: Schema.optional(DurationSchema),
-}).pipe(withCategory(RETRYABLE), Category.withThrottlingError) {}
+export class SlackRateLimited
+  extends /*@__PURE__*/ Schema.TaggedError<SlackRateLimited>()("SlackRateLimited", {
+    code: Schema.String,
+    message: /*@__PURE__*/ Schema.optional(Schema.String),
+    retryAfter: /*@__PURE__*/ Schema.optional(DurationSchema),
+  }).pipe(/*@__PURE__*/ withCategory(RETRYABLE), Category.withThrottlingError) {}
 
 /**
  * HTTP error -- a non-2xx response without a parseable Slack error envelope
  * (proxy pages, HTML 5xx bodies).
  */
-export class SlackHttpError extends Schema.TaggedError<SlackHttpError>()("SlackHttpError", {
-  status: Schema.Number,
-  message: Schema.String,
-  body: Schema.optional(Schema.String),
-}) {}
+export class SlackHttpError
+  extends /*@__PURE__*/ Schema.TaggedError<SlackHttpError>()("SlackHttpError", {
+    status: Schema.Number,
+    message: Schema.String,
+    body: /*@__PURE__*/ Schema.optional(Schema.String),
+  }) {}
 
 /** Schema parse error wrapper. */
-export class SlackParseError extends Schema.TaggedError<SlackParseError>()("SlackParseError", {
-  body: Schema.Unknown,
-  cause: Schema.Unknown,
-}).pipe(Category.withParseError) {}
+export class SlackParseError
+  extends /*@__PURE__*/ Schema.TaggedError<SlackParseError>()("SlackParseError", {
+    body: Schema.Unknown,
+    cause: Schema.Unknown,
+  }).pipe(Category.withParseError) {}
 
 /**
  * Errors any Slack operation may surface in addition to the shared HTTP

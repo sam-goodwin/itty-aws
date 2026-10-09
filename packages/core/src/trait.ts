@@ -1,4 +1,6 @@
-export const annotationMetaSymbol = Symbol.for("@distilled.cloud/core/annotation-meta");
+export const annotationMetaSymbol = /*@__PURE__*/ Symbol.for(
+  "@distilled.cloud/core/annotation-meta",
+);
 
 export type Annotatable = {
   annotate(annotations: any): Annotatable;
@@ -86,7 +88,7 @@ export interface HttpTrait {
   readonly accept?: string;
 }
 
-export const httpSymbol = Symbol.for("@distilled.cloud/core/http");
+export const httpSymbol = /*@__PURE__*/ Symbol.for("@distilled.cloud/core/http");
 /**
  * Operation-level HTTP binding: the request method + URI template. Stamped on
  * the input schema so the protocol can build the request line. URI `{labels}`
@@ -94,11 +96,13 @@ export const httpSymbol = Symbol.for("@distilled.cloud/core/http");
  */
 export const Http = (trait: HttpTrait) => makeAnnotation(httpSymbol, trait);
 
-export const labelSymbol = Symbol.for("@distilled.cloud/core/http/label");
+export const labelSymbol = /*@__PURE__*/ Symbol.for("@distilled.cloud/core/http/label");
 /** Bind a member to a `{name}` placeholder in the operation's URI template. */
 export const Label = (name?: string) => makeAnnotation(labelSymbol, name ?? true);
 
-export const labelEncodingSymbol = Symbol.for("@distilled.cloud/core/http/label-encoding");
+export const labelEncodingSymbol = /*@__PURE__*/ Symbol.for(
+  "@distilled.cloud/core/http/label-encoding",
+);
 /** Preserve selected RFC 3986 pchar delimiters inside a single URI label. */
 export const LabelEncoding = (options: { readonly preserve: string }) => {
   if (!/^[!$&'()*+,;=:@]*$/.test(options.preserve)) {
@@ -107,19 +111,21 @@ export const LabelEncoding = (options: { readonly preserve: string }) => {
   return makeAnnotation(labelEncodingSymbol, options.preserve);
 };
 
-export const responseCodeSymbol = Symbol.for("@distilled.cloud/core/http/response-code");
+export const responseCodeSymbol = /*@__PURE__*/ Symbol.for(
+  "@distilled.cloud/core/http/response-code",
+);
 export const ResponseCode = () => makeAnnotation(responseCodeSymbol, true);
 
-export const headerSymbol = Symbol.for("@distilled.cloud/core/http/header");
+export const headerSymbol = /*@__PURE__*/ Symbol.for("@distilled.cloud/core/http/header");
 export const Header = (name?: string) => makeAnnotation(headerSymbol, name ?? true);
 
-export const bodySymbol = Symbol.for("@distilled.cloud/core/http/body");
+export const bodySymbol = /*@__PURE__*/ Symbol.for("@distilled.cloud/core/http/body");
 export const Body = (name?: string) => makeAnnotation(bodySymbol, name ?? true);
 
-export const querySymbol = Symbol.for("@distilled.cloud/core/http/query");
+export const querySymbol = /*@__PURE__*/ Symbol.for("@distilled.cloud/core/http/query");
 export const Query = (name?: string) => makeAnnotation(querySymbol, name ?? true);
 
-export const deepQuerySymbol = Symbol.for("@distilled.cloud/core/http/deep-query");
+export const deepQuerySymbol = /*@__PURE__*/ Symbol.for("@distilled.cloud/core/http/deep-query");
 /**
  * Binds a struct-valued input member to a family of DOTTED query parameters:
  * `{ account: { id, name } }` with `DeepQuery("account")` serializes as
@@ -130,7 +136,7 @@ export const deepQuerySymbol = Symbol.for("@distilled.cloud/core/http/deep-query
  */
 export const DeepQuery = (name?: string) => makeAnnotation(deepQuerySymbol, name ?? true);
 
-export const httpBodySymbol = Symbol.for("@distilled.cloud/core/http-body");
+export const httpBodySymbol = /*@__PURE__*/ Symbol.for("@distilled.cloud/core/http-body");
 /**
  * Marks the input member whose value IS the entire request body (raw arrays/
  * scalars -- e.g. endpoints that POST a bare JSON array). Mirrors
@@ -138,7 +144,9 @@ export const httpBodySymbol = Symbol.for("@distilled.cloud/core/http-body");
  */
 export const HttpBody = () => makeAnnotation(httpBodySymbol, true);
 
-export const stringEncodedSymbol = Symbol.for("@distilled.cloud/core/http/string-encoded");
+export const stringEncodedSymbol = /*@__PURE__*/ Symbol.for(
+  "@distilled.cloud/core/http/string-encoded",
+);
 /**
  * Marks a member the API only accepts as the STRING spelling of its value --
  * `true` travels as `"true"`, `3` as `"3"` -- while the TS surface keeps the
@@ -150,7 +158,7 @@ export const stringEncodedSymbol = Symbol.for("@distilled.cloud/core/http/string
  */
 export const StringEncoded = () => makeAnnotation(stringEncodedSymbol, true);
 
-export const formDataFileSymbol = Symbol.for("@distilled.cloud/core/form-data-file");
+export const formDataFileSymbol = /*@__PURE__*/ Symbol.for("@distilled.cloud/core/form-data-file");
 /**
  * Marks an input member holding `File`/`Blob` parts for a multipart upload
  * (`Http({ contentType: "multipart" })`). Each file is appended to the form
@@ -161,7 +169,7 @@ export const FormDataFile = () => makeAnnotation(formDataFileSymbol, true);
 
 //#region Generic JSON traits
 
-export const keyDictionarySymbol = Symbol.for("@distilled.cloud/core/key-dictionary");
+export const keyDictionarySymbol = /*@__PURE__*/ Symbol.for("@distilled.cloud/core/key-dictionary");
 /**
  * Deep TS-name->wire-name key dictionary for members whose full structure is
  * not modeled (opaque `Document` content). The protocol renames any matching
@@ -179,7 +187,7 @@ export type KeyDictionaryEntries = Record<string, string | ReadonlyArray<string>
 export const KeyDictionary = (dict: KeyDictionaryEntries) =>
   makeAnnotation(keyDictionarySymbol, dict);
 
-export const unionCasesSymbol = Symbol.for("@distilled.cloud/core/union-cases");
+export const unionCasesSymbol = /*@__PURE__*/ Symbol.for("@distilled.cloud/core/union-cases");
 
 /**
  * The literal member every case of a union fixes to its own value -- what the
@@ -211,7 +219,7 @@ export const UnionCases = (
 
 //#region Error matcher traits
 
-export const errorMatchersSymbol = Symbol.for("@distilled.cloud/core/error-matchers");
+export const errorMatchersSymbol = /*@__PURE__*/ Symbol.for("@distilled.cloud/core/error-matchers");
 
 /** Exact text, or the conjunction of substring and regular-expression constraints. */
 export type ErrorTextMatcher = string | { readonly includes?: string; readonly matches?: string };

@@ -110,9 +110,10 @@ export type StripeRequestOptions = {
  * call argument; v1 operations take only their input, so options travel on
  * the calling fiber's context instead -- see {@link withRequestOptions}.
  */
-export class RequestOptions extends Context.Service<RequestOptions, StripeRequestOptions>()(
-  "StripeRequestOptions",
-) {}
+export class RequestOptions
+  extends /*@__PURE__*/ Context.Service<RequestOptions, StripeRequestOptions>()(
+    "StripeRequestOptions",
+  ) {}
 
 /**
  * Provide {@link StripeRequestOptions} to every Stripe API call below it.
@@ -188,7 +189,7 @@ const fail = (e: unknown): Effect.Effect<never> => Effect.fail(e) as Effect.Effe
 // Stripe query / form encoding (ported from distilled v0)
 // =============================================================================
 
-const BODYLESS = new Set(["GET", "HEAD"]);
+const BODYLESS = /*@__PURE__*/ new Set(["GET", "HEAD"]);
 
 const appendQueryValue = (query: URLSearchParams, key: string, value: unknown): void => {
   if (value === undefined || value === null) return;
@@ -548,9 +549,9 @@ const decode = ({
     return wrapSensitive(outputAst, mapped);
   });
 
-export const StripeProtocol: Layer.Layer<API.Protocol> = Layer.succeed(
+export const StripeProtocol: Layer.Layer<API.Protocol> = /*@__PURE__*/ Layer.succeed(
   API.Protocol,
-  API.Protocol.of({
+  /*@__PURE__*/ API.Protocol.of({
     // Erase encode's Credentials requirement (see comment above).
     encode: (args) => encode(args) as Effect.Effect<HttpClientRequest.HttpClientRequest>,
     decode,

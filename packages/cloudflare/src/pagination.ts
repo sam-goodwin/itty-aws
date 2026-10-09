@@ -36,18 +36,18 @@ export interface ResultInfo {
   readonly cursors?: ResultInfoCursors | null;
 }
 
-export const ResultInfo: S.Schema<ResultInfo> = S.Struct({
-  count: S.optional(S.NullOr(S.Number)),
-  page: S.optional(S.NullOr(S.Number)),
-  perPage: S.optional(S.NullOr(S.Number)),
-  totalCount: S.optional(S.NullOr(S.Number)),
-  totalPages: S.optional(S.NullOr(S.Number)),
-  cursor: S.optional(S.NullOr(S.String)),
-  cursors: S.optional(
-    S.NullOr(
-      S.Struct({
-        after: S.optional(S.NullOr(S.String)),
-        before: S.optional(S.NullOr(S.String)),
+export const ResultInfo: S.Schema<ResultInfo> = /*@__PURE__*/ S.Struct({
+  count: /*@__PURE__*/ S.optional(/*@__PURE__*/ S.NullOr(S.Number)),
+  page: /*@__PURE__*/ S.optional(/*@__PURE__*/ S.NullOr(S.Number)),
+  perPage: /*@__PURE__*/ S.optional(/*@__PURE__*/ S.NullOr(S.Number)),
+  totalCount: /*@__PURE__*/ S.optional(/*@__PURE__*/ S.NullOr(S.Number)),
+  totalPages: /*@__PURE__*/ S.optional(/*@__PURE__*/ S.NullOr(S.Number)),
+  cursor: /*@__PURE__*/ S.optional(/*@__PURE__*/ S.NullOr(S.String)),
+  cursors: /*@__PURE__*/ S.optional(
+    /*@__PURE__*/ S.NullOr(
+      /*@__PURE__*/ S.Struct({
+        after: /*@__PURE__*/ S.optional(/*@__PURE__*/ S.NullOr(S.String)),
+        before: /*@__PURE__*/ S.optional(/*@__PURE__*/ S.NullOr(S.String)),
       }),
     ),
   ),

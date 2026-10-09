@@ -31,17 +31,16 @@ import * as Category from "@distilled.cloud/core/category";
 import * as Schema from "effect/Schema";
 
 /** Unknown Remote error -- returned when nothing else matches the failure. */
-export class UnknownRemoteError extends Schema.TaggedError<UnknownRemoteError>()(
-  "UnknownRemoteError",
-  {
-    code: Schema.optional(Schema.String),
-    message: Schema.optional(Schema.String),
+export class UnknownRemoteError
+  extends /*@__PURE__*/ Schema.TaggedError<UnknownRemoteError>()("UnknownRemoteError", {
+    code: /*@__PURE__*/ Schema.optional(Schema.String),
+    message: /*@__PURE__*/ Schema.optional(Schema.String),
     body: Schema.Unknown,
-  },
-).pipe(Category.withServerError) {}
+  }).pipe(Category.withServerError) {}
 
 /** Schema parse error wrapper. */
-export class RemoteParseError extends Schema.TaggedError<RemoteParseError>()("RemoteParseError", {
-  body: Schema.Unknown,
-  cause: Schema.Unknown,
-}).pipe(Category.withParseError) {}
+export class RemoteParseError
+  extends /*@__PURE__*/ Schema.TaggedError<RemoteParseError>()("RemoteParseError", {
+    body: Schema.Unknown,
+    cause: Schema.Unknown,
+  }).pipe(Category.withParseError) {}

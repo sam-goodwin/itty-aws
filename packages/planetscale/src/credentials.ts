@@ -1,3 +1,4 @@
+import * as EffectConfig from "@distilled.cloud/core/config";
 /**
  * PlanetScale credentials -- hand-written.
  *
@@ -10,7 +11,6 @@
  * resolves it per request.
  */
 import { ConfigError } from "@distilled.cloud/core/errors";
-import * as EffectConfig from "@distilled.cloud/core/config";
 import * as Context from "effect/Context";
 import * as Effect from "effect/Effect";
 import * as Layer from "effect/Layer";
@@ -50,9 +50,10 @@ export interface OAuthConfig {
 
 export type Config = ServiceTokenConfig | OAuthConfig;
 
-export class Credentials extends Context.Service<Credentials, Effect.Effect<Config>>()(
-  "PlanetScaleCredentials",
-) {}
+export class Credentials
+  extends /*@__PURE__*/ Context.Service<Credentials, Effect.Effect<Config>>()(
+    "PlanetScaleCredentials",
+  ) {}
 
 /**
  * Build the `Authorization` header for a resolved set of credentials.
@@ -84,24 +85,24 @@ export const fromOAuth = (input: {
     }),
   );
 
-const envConfig = EffectConfig.all({
-  tokenId: EffectConfig.Redacted("PLANETSCALE_API_TOKEN_ID"),
-  token: EffectConfig.Redacted("PLANETSCALE_API_TOKEN"),
-  organization: EffectConfig.String("PLANETSCALE_ORGANIZATION"),
+const envConfig = /*@__PURE__*/ EffectConfig.all({
+  tokenId: /*@__PURE__*/ EffectConfig.Redacted("PLANETSCALE_API_TOKEN_ID"),
+  token: /*@__PURE__*/ EffectConfig.Redacted("PLANETSCALE_API_TOKEN"),
+  organization: /*@__PURE__*/ EffectConfig.String("PLANETSCALE_ORGANIZATION"),
 });
 
-export const CredentialsFromEnv = Layer.succeed(
+export const CredentialsFromEnv = /*@__PURE__*/ Layer.succeed(
   Credentials,
-  envConfig
+  /*@__PURE__*/ envConfig
     .pipe(
-      Effect.mapError(
+      /*@__PURE__*/ Effect.mapError(
         () =>
           new ConfigError({
             message:
               "PLANETSCALE_API_TOKEN_ID, PLANETSCALE_API_TOKEN, and PLANETSCALE_ORGANIZATION environment variables are required",
           }),
       ),
-      Effect.map(({ tokenId, token, organization }) => ({
+      /*@__PURE__*/ Effect.map(({ tokenId, token, organization }) => ({
         tokenId,
         token,
         organization,

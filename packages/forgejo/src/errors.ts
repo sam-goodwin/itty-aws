@@ -40,23 +40,19 @@ import * as Schema from "effect/Schema";
  * Unknown Forgejo error -- returned when a failed response's HTTP status has
  * no mapped error class. Carries the raw body for later cataloging.
  */
-export class UnknownForgejoError extends Schema.TaggedError<UnknownForgejoError>()(
-  "UnknownForgejoError",
-  {
-    code: Schema.optional(Schema.String),
-    message: Schema.optional(Schema.String),
+export class UnknownForgejoError
+  extends /*@__PURE__*/ Schema.TaggedError<UnknownForgejoError>()("UnknownForgejoError", {
+    code: /*@__PURE__*/ Schema.optional(Schema.String),
+    message: /*@__PURE__*/ Schema.optional(Schema.String),
     body: Schema.Unknown,
-  },
-).pipe(Category.withServerError) {}
+  }).pipe(Category.withServerError) {}
 
 /** Schema parse error wrapper. */
-export class ForgejoParseError extends Schema.TaggedError<ForgejoParseError>()(
-  "ForgejoParseError",
-  {
+export class ForgejoParseError
+  extends /*@__PURE__*/ Schema.TaggedError<ForgejoParseError>()("ForgejoParseError", {
     body: Schema.Unknown,
     cause: Schema.Unknown,
-  },
-).pipe(Category.withParseError) {}
+  }).pipe(Category.withParseError) {}
 
 /**
  * Errors any Forgejo operation may surface in addition to the per-operation

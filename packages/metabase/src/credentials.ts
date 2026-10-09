@@ -20,9 +20,10 @@ export interface Config {
   readonly apiBaseUrl: string;
 }
 
-export class Credentials extends Context.Service<Credentials, Effect.Effect<Config>>()(
-  "MetabaseCredentials",
-) {}
+export class Credentials
+  extends /*@__PURE__*/ Context.Service<Credentials, Effect.Effect<Config>>()(
+    "MetabaseCredentials",
+  ) {}
 
 /** Layer from a redacted API key + optional instance origin. */
 export const fromApiKey = (config: {
@@ -38,9 +39,9 @@ export const fromApiKey = (config: {
   );
 
 /** Reads METABASE_API_KEY (required) and METABASE_API_BASE_URL (optional). */
-export const CredentialsFromEnv: Layer.Layer<Credentials> = Layer.succeed(
+export const CredentialsFromEnv: Layer.Layer<Credentials> = /*@__PURE__*/ Layer.succeed(
   Credentials,
-  Effect.gen(function* () {
+  /*@__PURE__*/ Effect.gen(function* () {
     const apiKey = process.env.METABASE_API_KEY;
 
     if (!apiKey) {

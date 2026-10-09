@@ -42,24 +42,25 @@ export type ElasticsearchOpError =
 /** Context (requirements) shared by every generated Elasticsearch operation. */
 export type ElasticsearchOpContext = Credentials | HttpClient.HttpClient;
 
-export const ElasticsearchProtocol: Layer.Layer<API.Protocol> = makeRestProtocol<Config>({
-  // The Credentials service holds an effect -- resolving it here (per
-  // request, on the calling fiber) picks up context-provided credentials.
-  credentials: Effect.gen(function* () {
-    const resolve = yield* Credentials;
-    return yield* resolve;
-  }),
-  baseUrl: (creds) => creds.apiBaseUrl,
-  headers: (creds) => ({
-    Authorization: `ApiKey ${Redacted.value(creds.apiKey)}`,
-  }),
-  // Elasticsearch's error body is `{ error?: { type, reason }, status? }`
-  // -- the factory's default lenient envelope covers `message`/`reason`.
-  unknownError: ({ code, message, body }) =>
-    new UnknownElasticsearchError({
-      code: typeof code === "string" ? code : code !== undefined ? String(code) : undefined,
-      message,
-      body,
+export const ElasticsearchProtocol: Layer.Layer<API.Protocol> =
+  /*@__PURE__*/ makeRestProtocol<Config>({
+    // The Credentials service holds an effect -- resolving it here (per
+    // request, on the calling fiber) picks up context-provided credentials.
+    credentials: /*@__PURE__*/ Effect.gen(function* () {
+      const resolve = yield* Credentials;
+      return yield* resolve;
     }),
-  parseError: ({ body, cause }) => new ElasticsearchParseError({ body, cause }),
-});
+    baseUrl: (creds) => creds.apiBaseUrl,
+    headers: (creds) => ({
+      Authorization: `ApiKey ${Redacted.value(creds.apiKey)}`,
+    }),
+    // Elasticsearch's error body is `{ error?: { type, reason }, status? }`
+    // -- the factory's default lenient envelope covers `message`/`reason`.
+    unknownError: ({ code, message, body }) =>
+      new UnknownElasticsearchError({
+        code: typeof code === "string" ? code : code !== undefined ? String(code) : undefined,
+        message,
+        body,
+      }),
+    parseError: ({ body, cause }) => new ElasticsearchParseError({ body, cause }),
+  });

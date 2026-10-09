@@ -87,7 +87,7 @@ interface Prepared {
 
 // Keyed by the operation config object, which API.make memoizes per
 // operation -- one entry per operation per process.
-const preparedOps = new WeakMap<API.ProtocolOperationConfig, Prepared>();
+const preparedOps = /*@__PURE__*/ new WeakMap<API.ProtocolOperationConfig, Prepared>();
 
 const prepare = (config: API.ProtocolOperationConfig): Prepared => {
   const cached = preparedOps.get(config);
@@ -510,9 +510,9 @@ const decode = ({
  * requirement channels are erased at this boundary (see the note on
  * `encode`); the generated operation types reintroduce them.
  */
-export const AwsProtocol: Layer.Layer<API.Protocol> = Layer.succeed(
+export const AwsProtocol: Layer.Layer<API.Protocol> = /*@__PURE__*/ Layer.succeed(
   API.Protocol,
-  API.Protocol.of({
+  /*@__PURE__*/ API.Protocol.of({
     encode: (args) => encode(args) as Effect.Effect<HttpClientRequest.HttpClientRequest>,
     decode: (args) => decode(args) as Effect.Effect<unknown>,
   }),

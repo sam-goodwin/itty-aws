@@ -1,3 +1,4 @@
+import * as EffectConfig from "@distilled.cloud/core/config";
 /**
  * Fly.io credentials -- hand-written.
  *
@@ -14,7 +15,6 @@
  * mints a Sprites bearer from `FLY_API_TOKEN` (see `SpritesProtocol`).
  */
 import { ConfigError } from "@distilled.cloud/core/errors";
-import * as EffectConfig from "@distilled.cloud/core/config";
 import * as Context from "effect/Context";
 import * as Effect from "effect/Effect";
 import * as Layer from "effect/Layer";
@@ -53,27 +53,30 @@ export interface Config {
   readonly apiBaseUrl: string;
 }
 
-export class Credentials extends Context.Service<Credentials, Effect.Effect<Config>>()(
-  "Fly-ioCredentials",
-) {}
+export class Credentials
+  extends /*@__PURE__*/ Context.Service<Credentials, Effect.Effect<Config>>()(
+    "Fly-ioCredentials",
+  ) {}
 
-const envConfig = EffectConfig.all({
-  apiKey: EffectConfig.String("FLY_API_TOKEN").pipe(
-    EffectConfig.orElse(() => EffectConfig.String("FLY_IO_API_KEY")),
+const envConfig = /*@__PURE__*/ EffectConfig.all({
+  apiKey: /*@__PURE__*/ EffectConfig.String("FLY_API_TOKEN").pipe(
+    /*@__PURE__*/ EffectConfig.orElse(() => EffectConfig.String("FLY_IO_API_KEY")),
   ),
-  apiBaseUrl: EffectConfig.String("FLY_API_HOSTNAME").pipe(EffectConfig.withDefault("")),
+  apiBaseUrl: /*@__PURE__*/ EffectConfig.String("FLY_API_HOSTNAME").pipe(
+    /*@__PURE__*/ EffectConfig.withDefault(""),
+  ),
 });
 
-export const CredentialsFromEnv = Layer.succeed(
+export const CredentialsFromEnv = /*@__PURE__*/ Layer.succeed(
   Credentials,
-  envConfig.pipe(
-    Effect.mapError(
+  /*@__PURE__*/ envConfig.pipe(
+    /*@__PURE__*/ Effect.mapError(
       () =>
         new ConfigError({
           message: "FLY_API_TOKEN (or FLY_IO_API_KEY) environment variable is required",
         }),
     ),
-    Effect.map(({ apiKey, apiBaseUrl }) => ({
+    /*@__PURE__*/ Effect.map(({ apiKey, apiBaseUrl }) => ({
       apiKey: Redacted.make(apiKey),
       apiBaseUrl: normalizeApiBaseUrl(apiBaseUrl || undefined),
     })),

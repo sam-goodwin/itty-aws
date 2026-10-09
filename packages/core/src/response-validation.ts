@@ -40,19 +40,22 @@ export type Mode = "lenient" | "strict";
  * The active validation mode. Read by protocols at call time on the calling
  * fiber; `lenient` unless a {@link strict} layer is provided.
  */
-export const ResponseValidation = Context.Reference<Mode>(
+export const ResponseValidation = /*@__PURE__*/ Context.Reference<Mode>(
   "@distilled.cloud/core/ResponseValidation",
   { defaultValue: () => "lenient" },
 );
 
 /** Decode every 2xx response against its output schema; fail on mismatch. */
-export const strict: Layer.Layer<never> = Layer.succeed(ResponseValidation, "strict");
+export const strict: Layer.Layer<never> = /*@__PURE__*/ Layer.succeed(ResponseValidation, "strict");
 
 /** Return 2xx responses as read, without checking them against the schema. */
-export const lenient: Layer.Layer<never> = Layer.succeed(ResponseValidation, "lenient");
+export const lenient: Layer.Layer<never> = /*@__PURE__*/ Layer.succeed(
+  ResponseValidation,
+  "lenient",
+);
 
 /** Whether the calling fiber is in strict mode. */
-export const isStrict: Effect.Effect<boolean> = Effect.map(
+export const isStrict: Effect.Effect<boolean> = /*@__PURE__*/ Effect.map(
   ResponseValidation,
   (mode) => mode === "strict",
 );
@@ -67,7 +70,7 @@ export const failIfStrict = <A, E>(error: E, asRead: A): Effect.Effect<A, E> =>
     mode === "strict" ? Effect.fail(error) : Effect.succeed(asRead),
   );
 
-const decoders = new WeakMap<
+const decoders = /*@__PURE__*/ new WeakMap<
   AST.AST,
   (input: unknown) => Effect.Effect<unknown, Schema.SchemaError>
 >();

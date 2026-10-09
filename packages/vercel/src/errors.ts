@@ -34,9 +34,10 @@ import * as Schema from "effect/Schema";
  * ~95 operations that provision billable resources; the rest reach it through
  * the protocol's status map.
  */
-export class PaymentRequired extends Schema.TaggedError<PaymentRequired>()("PaymentRequired", {
-  message: Schema.String,
-}).pipe(Category.withQuotaError) {}
+export class PaymentRequired
+  extends /*@__PURE__*/ Schema.TaggedError<PaymentRequired>()("PaymentRequired", {
+    message: Schema.String,
+  }).pipe(Category.withQuotaError) {}
 
 /**
  * HTTP 410 -- Vercel's "Invalid API version": the versioned path segment
@@ -46,28 +47,28 @@ export class PaymentRequired extends Schema.TaggedError<PaymentRequired>()("Paym
  * pinned path version was retired and needs a regeneration, not something a
  * caller can branch on per operation.
  */
-export class Gone extends Schema.TaggedError<Gone>()("Gone", {
-  message: Schema.String,
-}).pipe(Category.withNotFoundError) {}
+export class Gone
+  extends /*@__PURE__*/ Schema.TaggedError<Gone>()("Gone", {
+    message: Schema.String,
+  }).pipe(Category.withNotFoundError) {}
 
 /**
  * Unknown Vercel error -- returned when a failed response's HTTP status has no
  * mapped error class. Carries the raw body for later cataloging.
  */
-export class UnknownVercelError extends Schema.TaggedError<UnknownVercelError>()(
-  "UnknownVercelError",
-  {
-    code: Schema.optional(Schema.String),
-    message: Schema.optional(Schema.String),
+export class UnknownVercelError
+  extends /*@__PURE__*/ Schema.TaggedError<UnknownVercelError>()("UnknownVercelError", {
+    code: /*@__PURE__*/ Schema.optional(Schema.String),
+    message: /*@__PURE__*/ Schema.optional(Schema.String),
     body: Schema.Unknown,
-  },
-).pipe(Category.withServerError) {}
+  }).pipe(Category.withServerError) {}
 
 /** Schema parse error wrapper. */
-export class VercelParseError extends Schema.TaggedError<VercelParseError>()("VercelParseError", {
-  body: Schema.Unknown,
-  cause: Schema.Unknown,
-}).pipe(Category.withParseError) {}
+export class VercelParseError
+  extends /*@__PURE__*/ Schema.TaggedError<VercelParseError>()("VercelParseError", {
+    body: Schema.Unknown,
+    cause: Schema.Unknown,
+  }).pipe(Category.withParseError) {}
 
 /**
  * Errors any Vercel operation may surface in addition to the per-operation
