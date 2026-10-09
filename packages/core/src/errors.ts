@@ -6,8 +6,8 @@
  * that are used across all SDKs.
  */
 import * as Duration from "effect/Duration";
-import * as Schema from "effect/Schema";
 import * as Category from "./category.ts";
+import * as Schema from "./schema.ts";
 
 // ============================================================================
 // Shared Schema Helpers

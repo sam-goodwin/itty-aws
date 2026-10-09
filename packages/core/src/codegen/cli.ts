@@ -25,6 +25,7 @@ import { generateService, type SdkSpec } from "./generator.ts";
 import { toLatin1 } from "./latin1.ts";
 import { privatizeSchemas } from "./privatize.ts";
 import { annotateNestedCalls } from "./pure.ts";
+import { tableSchemas } from "./table.ts";
 
 export interface GeneratorCliOptions {
   /** Command description shown in --help. */
@@ -199,8 +200,11 @@ export const runGeneratorCli = (options: GeneratorCliOptions): void => {
           const resourceFile = `${resource}.ts`;
           const marked = annotateNestedCalls(generated.code, resourceFile);
           const code = toLatin1(
-            chunkSchemas(
-              privatizeSchemas(dedupeSchemas(marked, resourceFile).code, resourceFile).code,
+            tableSchemas(
+              chunkSchemas(
+                privatizeSchemas(dedupeSchemas(marked, resourceFile).code, resourceFile).code,
+                resourceFile,
+              ).code,
               resourceFile,
             ).code,
             resourceFile,

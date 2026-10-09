@@ -20,7 +20,11 @@
  * runtime value from `effect/Schema`, except `suspend`, `Array` and
  * `Record`, which build the same schema lazily (see "Lazy schemas").
  */
-export * from "effect/Schema";
+// Types only: a value `export *` costs one binding per Effect Schema export
+// (345 of them, ~70 KB) in every process that imports an SDK. The values
+// generated and hand-written code use are re-exported explicitly below.
+export type * from "effect/Schema";
+export { declare, Duration, instanceOf, Redacted } from "effect/Schema";
 
 import { pipeArguments } from "effect/Pipeable";
 import * as S from "effect/Schema";
