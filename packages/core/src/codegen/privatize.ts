@@ -24,7 +24,7 @@ const isNode = (value: unknown): value is Node =>
   value !== null && typeof value === "object" && typeof (value as Node).type === "string";
 
 /** Value-position identifier names under `node` (type annotations, keys and member names excluded). */
-const valueRefs = (
+export const valueRefs = (
   node: unknown,
   out: Set<string>,
   parent?: Node,
