@@ -7,7 +7,7 @@
  */
 import * as Duration from "effect/Duration";
 import * as Category from "./category.ts";
-import * as Schema from "./schema.ts";
+import * as Schema from "./schema-lite.ts";
 
 // ============================================================================
 // Shared Schema Helpers

@@ -34,7 +34,7 @@ import type {
   NotFound as CoreNotFound,
   UnprocessableEntity as CoreUnprocessableEntity,
 } from "@distilled.cloud/core/errors";
-import * as Schema from "effect/Schema";
+import * as Schema from "@distilled.cloud/core/schema-lite";
 
 /**
  * Unknown Turso error -- returned when an error response cannot be mapped to

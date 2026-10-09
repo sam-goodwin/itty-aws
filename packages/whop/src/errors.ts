@@ -34,7 +34,7 @@ export {
 } from "@distilled.cloud/core/errors";
 import * as Category from "@distilled.cloud/core/category";
 import type { DefaultErrors as CoreDefaultErrors } from "@distilled.cloud/core/errors";
-import * as Schema from "effect/Schema";
+import * as Schema from "@distilled.cloud/core/schema-lite";
 
 /**
  * HTTP 402 -- the call is well-formed but the money isn't there: an ad

@@ -27,7 +27,7 @@ export {
 } from "@distilled.cloud/core/errors";
 import * as Category from "@distilled.cloud/core/category";
 import type { DefaultErrors as CoreDefaultErrors } from "@distilled.cloud/core/errors";
-import * as Schema from "effect/Schema";
+import * as Schema from "@distilled.cloud/core/schema-lite";
 
 /**
  * Unknown Prisma error -- returned when a failure matches no

@@ -40,7 +40,7 @@ import type {
   NotFound as CoreNotFound,
   UnprocessableEntity as CoreUnprocessableEntity,
 } from "@distilled.cloud/core/errors";
-import * as Schema from "effect/Schema";
+import * as Schema from "@distilled.cloud/core/schema-lite";
 
 /**
  * HTTP 408 -- a long-poll `read` (one with `wait` set) elapsed before any

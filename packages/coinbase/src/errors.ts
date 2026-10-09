@@ -52,7 +52,7 @@ import {
   TooManyRequests,
   Unauthorized,
 } from "@distilled.cloud/core/errors";
-import * as Schema from "effect/Schema";
+import * as Schema from "@distilled.cloud/core/schema-lite";
 
 // ============================================================================
 // Base fields shared by all Coinbase CDP errors

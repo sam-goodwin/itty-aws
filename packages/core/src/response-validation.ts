@@ -31,8 +31,9 @@
 import * as Context from "effect/Context";
 import * as Effect from "effect/Effect";
 import * as Layer from "effect/Layer";
-import * as Schema from "effect/Schema";
+import type * as Schema from "effect/Schema";
 import type * as AST from "effect/SchemaAST";
+import { type Decode, decoderFor } from "./response-validation-strict.ts";
 
 export type Mode = "lenient" | "strict";
 
@@ -46,7 +47,18 @@ export const ResponseValidation = /*@__PURE__*/ Context.Reference<Mode>(
 );
 
 /** Decode every 2xx response against its output schema; fail on mismatch. */
-export const strict: Layer.Layer<never> = /*@__PURE__*/ Layer.succeed(ResponseValidation, "strict");
+/**
+ * The decoder strict mode uses. The `strict` layer provides it, so Effect
+ * Schema is bundled only with programs that use `strict`.
+ */
+export const StrictDecoder = /*@__PURE__*/ Context.Reference<
+  ((ast: AST.AST) => Decode) | undefined
+>("@distilled.cloud/core/ResponseValidation/StrictDecoder", { defaultValue: () => undefined });
+
+export const strict: Layer.Layer<never> = /*@__PURE__*/ Layer.mergeAll(
+  /*@__PURE__*/ Layer.succeed(ResponseValidation, "strict"),
+  /*@__PURE__*/ Layer.succeed(StrictDecoder, decoderFor),
+);
 
 /** Return 2xx responses as read, without checking them against the schema. */
 export const lenient: Layer.Layer<never> = /*@__PURE__*/ Layer.succeed(
@@ -70,34 +82,6 @@ export const failIfStrict = <A, E>(error: E, asRead: A): Effect.Effect<A, E> =>
     mode === "strict" ? Effect.fail(error) : Effect.succeed(asRead),
   );
 
-const decoders = /*@__PURE__*/ new WeakMap<
-  AST.AST,
-  (input: unknown) => Effect.Effect<unknown, Schema.SchemaError>
->();
-
-const decoderFor = (ast: AST.AST) => {
-  let decode = decoders.get(ast);
-  if (!decode) {
-    decode = Schema.decodeUnknownEffect(Schema.make<Schema.Top>(ast)) as (
-      input: unknown,
-    ) => Effect.Effect<unknown, Schema.SchemaError>;
-    decoders.set(ast, decode);
-  }
-  return decode;
-};
-
-/**
- * Check a 2xx response value against the operation's output schema.
- *
- * Lenient mode returns `value` untouched. Strict mode decodes it and, on a
- * mismatch, fails with `onError(schemaError)` -- protocols pass their SDK's
- * `<Sdk>ParseError` constructor. On success the ORIGINAL value is returned
- * (members the schema does not model are kept), so switching modes never
- * changes what a successful call returns.
- *
- * `value` must already be in the schema's shape (TS member names), i.e.
- * after any wire->TS key mapping and before `Redacted` wrapping.
- */
 export const validateResponse = <E>(
   outputAst: AST.AST,
   value: unknown,
@@ -106,5 +90,11 @@ export const validateResponse = <E>(
   Effect.flatMap(ResponseValidation, (mode) =>
     mode === "lenient"
       ? Effect.succeed(value)
-      : decoderFor(outputAst)(value).pipe(Effect.mapError(onError), Effect.as(value)),
+      : Effect.flatMap(StrictDecoder, (decoderOf) =>
+          decoderOf
+            ? decoderOf(outputAst)(value).pipe(Effect.mapError(onError), Effect.as(value))
+            : Effect.die(
+                new Error("strict response validation needs the ResponseValidation.strict layer"),
+              ),
+        ),
   );

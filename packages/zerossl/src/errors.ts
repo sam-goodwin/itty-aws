@@ -31,7 +31,7 @@ import type {
   Forbidden as CoreForbidden,
   NotFound as CoreNotFound,
 } from "@distilled.cloud/core/errors";
-import * as Schema from "effect/Schema";
+import * as Schema from "@distilled.cloud/core/schema-lite";
 
 /**
  * Unknown ZeroSSL error -- an error envelope whose `type` matches no typed

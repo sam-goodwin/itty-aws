@@ -20,7 +20,7 @@ export {
 } from "@distilled.cloud/core/errors";
 import * as Category from "@distilled.cloud/core/category";
 import type { DefaultErrors as CoreDefaultErrors } from "@distilled.cloud/core/errors";
-import * as Schema from "effect/Schema";
+import * as Schema from "@distilled.cloud/core/schema-lite";
 
 // Schema parse error wrapper
 export class CloudflareParseError
@@ -90,7 +90,7 @@ export type DefaultErrors = CoreDefaultErrors | ClientErrors;
 import { withThrottlingError } from "@distilled.cloud/core/category";
 import { withCategory } from "@distilled.cloud/core/error-category";
 import { RETRYABLE } from "@distilled.cloud/core/errors";
-import * as S from "effect/Schema";
+import * as S from "@distilled.cloud/core/schema-lite";
 
 /** A single `{ code, message }` entry from the envelope's `errors` array. */
 export interface CloudflareApiError {

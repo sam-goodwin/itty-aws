@@ -34,7 +34,7 @@ import type {
   Forbidden as CoreForbidden,
   NotFound as CoreNotFound,
 } from "@distilled.cloud/core/errors";
-import * as Schema from "effect/Schema";
+import * as Schema from "@distilled.cloud/core/schema-lite";
 
 /**
  * Unknown ACME error -- a problem document whose `type` matches no typed
