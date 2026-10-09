@@ -12,7 +12,16 @@ import * as Effect from "effect/Effect";
 import * as Schema from "effect/Schema";
 import type * as AST from "effect/SchemaAST";
 import * as Stream from "effect/Stream";
-import { parseEventStream } from "../eventstream/parser.ts";
+// The event stream codec (CRC32, binary framing) loads with the first event stream.
+const parseEventStream = (
+  raw: Parameters<typeof import("../eventstream/parser.ts").parseEventStream>[0],
+) =>
+  Stream.unwrap(
+    Effect.map(
+      Effect.promise(() => import("../eventstream/parser.ts")),
+      (m) => m.parseEventStream(raw),
+    ),
+  );
 import { isStreamingType } from "../traits.ts";
 import { getEncodedPropertySignatures } from "../util/ast.ts";
 

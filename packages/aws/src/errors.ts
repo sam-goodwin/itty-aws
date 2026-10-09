@@ -1,5 +1,5 @@
+import * as S from "@distilled.cloud/core/schema";
 import type * as HttpClientError from "effect/http/HttpClientError";
-import * as S from "effect/Schema";
 import * as Category from "./category.ts";
 import type * as Credentials from "./credentials-service.ts";
 // Imported from the leaf module, not `traits.ts`: that one imports every

@@ -10,20 +10,82 @@ import {
   responseCodeSymbol as coreResponseCodeSymbol,
   type Annotation,
 } from "@distilled.cloud/core/trait";
-import type * as Effect from "effect/Effect";
+import * as Effect from "effect/Effect";
 import * as S from "effect/Schema";
 import * as AST from "effect/SchemaAST";
 import * as SchemaTransformation from "effect/SchemaTransformation";
 import * as Stream from "effect/Stream";
-import type { Protocol } from "./client/protocol.ts";
+import type { Operation } from "./client/operation.ts";
+import type { DeserializedError, Protocol, ProtocolHandler } from "./client/protocol.ts";
 import type { Request as ProtocolRequest } from "./client/request.ts";
 import { ErrorMessage, errorMessageSymbol } from "./error-message.ts";
-import { applyHttpChecksum } from "./middleware/checksum.ts";
-import { awsJson1_0Protocol, awsJson1_1Protocol } from "./protocols/aws-json.ts";
-import { awsQueryProtocol } from "./protocols/aws-query.ts";
-import { ec2QueryProtocol } from "./protocols/ec2-query.ts";
-import { restJson1Protocol } from "./protocols/rest-json.ts";
-import { restXmlProtocol } from "./protocols/rest-xml.ts";
+
+/**
+ * A protocol whose implementation module loads on the first request.
+ *
+ * Every generated service module names its wire protocol through these
+ * traits, so importing them statically loaded all five protocol
+ * implementations (with XML, event stream and customization code) into
+ * every program: about 750 KB of heap, of which one protocol is used.
+ * The handler's methods are Effects, so they can wait for the import.
+ */
+const lazyProtocol = (load: () => Promise<Protocol>): Protocol => {
+  let loaded: Promise<Protocol> | undefined;
+  let ready: Protocol | undefined;
+  const protocol = Effect.promise(() => (loaded ??= load()).then((p) => (ready = p)));
+  return (operation: Operation): ProtocolHandler => {
+    let handler: ProtocolHandler | undefined;
+    // After the first request the handler is called directly: no promise per call.
+    const get = Effect.suspend(() =>
+      handler
+        ? Effect.succeed(handler)
+        : ready
+          ? Effect.succeed((handler = ready(operation)))
+          : Effect.map(protocol, (p) => (handler ??= p(operation))),
+    );
+    return {
+      serializeRequest: (input) =>
+        handler
+          ? handler.serializeRequest(input)
+          : Effect.flatMap(get, (h) => h.serializeRequest(input)),
+      deserializeResponse: (response) =>
+        handler
+          ? handler.deserializeResponse(response)
+          : Effect.flatMap(get, (h) => h.deserializeResponse(response)),
+      deserializeError: (response): Effect.Effect<DeserializedError, any> =>
+        handler
+          ? handler.deserializeError(response)
+          : Effect.flatMap(get, (h) => h.deserializeError(response)),
+    };
+  };
+};
+
+const restXmlProtocol = lazyProtocol(() =>
+  import("./protocols/rest-xml.ts").then((m) => m.restXmlProtocol),
+);
+const restJson1Protocol = lazyProtocol(() =>
+  import("./protocols/rest-json.ts").then((m) => m.restJson1Protocol),
+);
+const awsJson1_0Protocol = lazyProtocol(() =>
+  import("./protocols/aws-json.ts").then((m) => m.awsJson1_0Protocol),
+);
+const awsJson1_1Protocol = lazyProtocol(() =>
+  import("./protocols/aws-json.ts").then((m) => m.awsJson1_1Protocol),
+);
+const awsQueryProtocol = lazyProtocol(() =>
+  import("./protocols/aws-query.ts").then((m) => m.awsQueryProtocol),
+);
+const ec2QueryProtocol = lazyProtocol(() =>
+  import("./protocols/ec2-query.ts").then((m) => m.ec2QueryProtocol),
+);
+
+/** HTTP checksum middleware, loaded on the first request that needs it. */
+let checksumModule: Promise<typeof import("./middleware/checksum.ts")> | undefined;
+const applyHttpChecksum: MiddlewareFn = (schema, request) =>
+  Effect.flatMap(
+    Effect.promise(() => (checksumModule ??= import("./middleware/checksum.ts"))),
+    (m) => m.applyHttpChecksum(schema, request),
+  );
 import type { RuleSetObject } from "./rules-engine/expression.ts";
 
 // The annotation machinery (pipeable builders usable as S.Class annotation
