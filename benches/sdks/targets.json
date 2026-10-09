@@ -1419,6 +1419,30 @@
       "primary": true
     }
   },
+  "notion": {
+    "NotionProtocol": {
+      "pkg": "notion",
+      "protocol": "NotionProtocol",
+      "primary": true,
+      "imports": {
+        "Credentials": "pkg:credentials",
+        "Op": "pkg:services/users"
+      },
+      "auth": "Credentials.CredentialsFromEnv",
+      "call": "Op.listUsers({})",
+      "label": "users.listUsers",
+      "env": {
+        "NOTION_TOKEN": "bench-secret"
+      },
+      "response": {
+        "status": 200,
+        "headers": {
+          "content-type": "application/json"
+        },
+        "body": "{}"
+      }
+    }
+  },
   "okta": {
     "OktaProtocol": {
       "pkg": "okta",
